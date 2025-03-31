@@ -3,12 +3,14 @@ import Header from "@/components/header/Header";
 import TextGradient from "@/components/text/TextGradient";
 import { Fade } from "react-awesome-reveal";
 import Wave from "react-wavify";
+import Team from "@/components/team/Team";
+
 
 export default function Home() {
   return (
     <>
       <Header />
-      <main className="font-sans gap-8 p-8 flex flex-col gap-4 min-h-[80vh] items-center justify-center">
+      <main className="font-sans gap-8 p-8 flex flex-col gap-4  min-h-[80vh] items-center justify-center">
         <div className="flex flex-row gap-4 text-5xl">
           <Fade triggerOnce cascade damping={0.05}>
             Czym jest
@@ -47,7 +49,8 @@ export default function Home() {
           <CtaButton>Skontaktuj się z nami!</CtaButton>
         </Fade>
       </main>
-      <Wave fill="url(#gradient)">
+      <div className="flex flex-col">
+      <Wave fill="url(#gradient)" >
         <defs>
           <linearGradient id="gradient" gradientTransform="rotate(90)">
             <stop offset="10%" stopColor="oklch(0.627 0.194 149.214)" />
@@ -55,6 +58,16 @@ export default function Home() {
           </linearGradient>
         </defs>
       </Wave>
+      <Wave fill="url(#gradient)" className="rotate-180">
+        <defs>
+          <linearGradient id="gradient" gradientTransform="rotate(90)">
+            <stop offset="10%" stopColor="oklch(0.627 0.194 149.214)" />
+            <stop offset="90%" stopColor="#4bb651" />
+          </linearGradient>
+        </defs>
+      </Wave>
+      </div>
+      <Team/>
     </>
   );
 }
