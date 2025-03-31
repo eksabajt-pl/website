@@ -20,7 +20,7 @@ export default function TeamBox({ text, desc }: TeamBoxProps) {
           <CardHeader>
             <CardTitle>
                 <TextGradient>
-                    <p>{text}</p>
+                    {text}
                 </TextGradient>
             </CardTitle>
             <CardDescription>{desc}</CardDescription>

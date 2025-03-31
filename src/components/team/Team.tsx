@@ -30,9 +30,9 @@ export default function Team() {
   return (
     <>
       <div className="w-screen h-screen flex items-center flex-col">
-        <p className="text-center font-bold text-4xl">
-          Poznaj nasz <TextGradient> <p>zespoł!</p></TextGradient>
-        </p>
+        <div className="text-center font-bold text-4xl">
+          Poznaj nasz <TextGradient>zespoł!</TextGradient>
+        </div>
         <div className="flex flex-row gap-4 flex-wrap w-1/2 justify-center">
           {textArray.map((member) => (
             <TeamBox key={member.id} text={member.name} desc={member.desc} />
