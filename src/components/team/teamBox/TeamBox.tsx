@@ -26,6 +26,7 @@ export default function TeamBox({ text, desc }: TeamBoxProps) {
             <CardDescription>{desc}</CardDescription>
             <CardContent>
                 {/* tu bendom zdjecia :D */}
+                <img src="/image.png" className="rounded-full"/>
             </CardContent>
           </CardHeader>
         </Card>
