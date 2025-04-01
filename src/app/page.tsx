@@ -4,6 +4,7 @@ import Header from "@/components/header/Header";
 import TextGradient from "@/components/text/TextGradient";
 import { Fade } from "react-awesome-reveal";
 import Wave from "react-wavify";
+import Services from "@/components/services/Services";
 
 export default function Home() {
   return (
@@ -57,6 +58,8 @@ export default function Home() {
           </linearGradient>
         </defs>
       </Wave>
+
+      <Services></Services>
     </>
   );
 }
