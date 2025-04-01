@@ -31,7 +31,7 @@ export default function Team() {
     <>
       <div className="w-screen h-screen flex items-center flex-col">
         <div className="text-center font-bold text-4xl">
-          Poznaj nasz <TextGradient>zespoł!</TextGradient>
+          Poznaj nasz <TextGradient>zespół!</TextGradient>
         </div>
         <div className="flex flex-row gap-4 flex-wrap w-1/2 justify-center">
           {textArray.map((member) => (
