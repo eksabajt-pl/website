@@ -30,10 +30,16 @@ export default function Team() {
   return (
     <>
       <div className="w-screen h-screen flex items-center flex-col">
-        <div className="text-center font-bold text-4xl">
-          Poznaj nasz <TextGradient>zespół!</TextGradient>
+        <div className="text-center font-bold text-4xl flex flex-row gap-2">
+          Poznaj nasz <TextGradient> zespół!</TextGradient>
         </div>
-        <div className="flex flex-row gap-4 flex-wrap w-1/2 justify-center">
+        <p className="max-w-120 p-4 text-center">
+          Nasz zespół to profesjonalna grupa programistów, która jest gotowa by
+          zrealizować twoje marzenie o{" "}
+          <b className="font-bold">działającej, praktycznej i ładnej</b> stronie
+          internetowej w przystępnej cenie.
+        </p>
+        <div className="flex flex-row gap-4 flex-wrap min-w-1/2 justify-center">
           {textArray.map((member) => (
             <TeamBox key={member.id} text={member.name} desc={member.desc} />
           ))}
