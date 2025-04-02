@@ -9,7 +9,9 @@ export default function useReviews() {
 	const [loading, setLoading] = useState<boolean>(false);
 
 	useEffect(() => {
+		setLoading(true);
 		setReviews(reviewsData);
+		setLoading(false);
 	}, [loading]);
 
 	return { loading, reviews };
