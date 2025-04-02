@@ -21,7 +21,7 @@ function ReviewStars({ count = 5 }) {
 
 function Review({ name, content, stars, company }: ReviewType) {
 	return (
-		<div className="flex-1 h-full min-w-[0rem] w-[85vw] max-w-lg   bg-stone-200/20  dark:bg-stone-800/40 backdrop-blur-sm border-1 dark:border-stone-400/40 border-stone-400/30 m-2 rounded-2xl p-4 sm:p-6 md:p-8  flex flex-col gap-1  ">
+		<div className="flex-1 h-full min-w-[0rem] w-[85vw] max-w-lg   bg-neutral-200/20  dark:bg-neutral-800/40 backdrop-blur-sm border-1 dark:border-neutral-400/40 border-neutral-400/30 m-2 rounded-2xl p-4 sm:p-6 md:p-8  flex flex-col gap-1  ">
 			<div className="flex flex-row justify-between">
 				<div className="font-bold w-[100%] text-md gap-1 flex-col sm:flex-row flex sm:text-lg md:xl    ">
 					<span>{name}</span>
