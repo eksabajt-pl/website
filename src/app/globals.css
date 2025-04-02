@@ -129,6 +129,11 @@ body {
   outline: none;
 }
 
+.custom-border{
+  box-shadow: 0px 0px 10px 5px #32a852;
+  outline: none;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

@@ -2,6 +2,7 @@ import Header from "@/components/header/Header";
 import Contact from "@/components/contact/Contact";
 import BrandWave from "@/components/pearls/BrandWave";
 import HeroSection from "@/components/sections/HeroSection";
+import Projects from "@/components/projects/Projects";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <HeroSection />
       <BrandWave />
       <Contact/>
+      <Projects></Projects>
     </>
   );
 }
