@@ -66,7 +66,10 @@ export default function Contact() {
 
   return (
     <>
-      <main className="font-sans gap-8 p-8 flex flex-col gap-4 min-h-[80vh] items-center justify-center">
+      <section
+        id="contact"
+        className="font-sans gap-8 p-8 flex flex-col gap-4 min-h-[80vh] items-center justify-center"
+      >
         <div className="flex flex-col w-full gap-16  justify-center items-center">
           <div className="flex flex-col gap-2 sm:gap-4">
             {/* Black Text */}
@@ -178,7 +181,7 @@ export default function Contact() {
             </Form>
           </div>
         </div>
-      </main>
+      </section>
     </>
   );
 }

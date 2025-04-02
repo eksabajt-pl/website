@@ -13,10 +13,11 @@ export default function CtaButton({
   full = true,
 }: CtaButtonProps) {
   return (
-    <a href="#contact">
+    <a href="#contact" aria-label="Contact us link">
       <button
+        aria-label="Contact us button"
         className={twMerge(
-          "p-3 font-bold items-center max-w-md text-white flex flex-row gap-2 bg-green-600 hover:bg-green-500 transition-color cursor-pointer w-full rounded-lg",
+          "p-3 font-bold items-center max-w-md text-white flex flex-row gap-2 bg-green-800 hover:bg-green-700 transition-color cursor-pointer w-full rounded-lg",
           className
         )}
       >

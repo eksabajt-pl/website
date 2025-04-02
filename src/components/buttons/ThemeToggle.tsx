@@ -18,6 +18,7 @@ export function ThemeToggle() {
 
   return (
     <button
+      aria-label="Change theme button"
       className="p-2 bg-buttons text-textPrimary rounded cursor-pointer"
       onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
     >
