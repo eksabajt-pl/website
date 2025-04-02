@@ -8,6 +8,7 @@ import Marquee from "react-fast-marquee";
 import { ReviewType } from "../types/ReviewType";
 import { useTheme } from "next-themes";
 import { useMediaQuery } from "react-responsive";
+import { useMemo } from "react";
 
 type ReviewMarqueeProps = {
 	reviews: ReviewType[];
@@ -37,6 +38,11 @@ function ReviewMarquee({ reviews, reversed = false }: ReviewMarqueeProps) {
 
 function ReviewSection() {
 	const { reviews } = useReviews();
+
+	const half = useMemo(() => Math.ceil(reviews.length / 2), [reviews]);
+	const firstHalf = useMemo(() => reviews.slice(0, half), [reviews, half]);
+	const secondHalf = useMemo(() => reviews.slice(half), [reviews, half]);
+
 	return (
 		<div className="flex justify-center ">
 			<div className="max-w-[100vw] overflow-scroll py-4">
@@ -47,8 +53,8 @@ function ReviewSection() {
 					</Fade>
 				</div>
 				<div className="flex flex-col overflow-hidden">
-					<ReviewMarquee reviews={reviews} />
-					<ReviewMarquee reversed={true} reviews={reviews} />
+					<ReviewMarquee reviews={firstHalf} />
+					<ReviewMarquee reversed={true} reviews={secondHalf} />
 				</div>
 			</div>
 		</div>
