@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import reviewsData from "./reviews.json";
 import { ReviewType } from "../types/ReviewType";

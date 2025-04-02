@@ -1,17 +1,142 @@
 [
 	{
 		"name": "Karol",
-		"content": "Świetna firma! Strona jest estetyczna, funkcjonalna i działa bez zarzutu. Bardzo szybka realizacja i profesjonalne podejście. Polecam!",
-		"stars": 4
+		"content": "Świetna firma! Strona jest estetyczna, a obsługa klienta na najwyższym poziomie. Polecam z całego serca!",
+		"stars": 5,
+		"company": "LumaTech",
+		"date": "02-04-2024"
+	},
+	{
+		"name": "Marta",
+		"content": "Bardzo polecam! Szybka realizacja zamówienia, jakość produktów świetna. Zdecydowanie wrócę!",
+		"stars": 5,
+		"company": "EcoStyle",
+		"date": "01-04-2024"
+	},
+	{
+		"name": "Tomasz",
+		"content": "Profesjonalna obsługa, szybka realizacja i świetna jakość usług. Na pewno będę korzystać ponownie!",
+		"stars": 5,
+		"company": "PixelWorks",
+		"date": "31-03-2024"
 	},
 	{
 		"name": "Anna",
-		"content": "Jestem zadowolona z usług. Strona wygląda świetnie i działa płynnie. Świetny kontakt i pełne wsparcie na każdym etapie.",
-		"stars": 5
+		"content": "Bardzo zadowolona z tej firmy! Szybka i bezproblemowa obsługa, a produkt jest dokładnie taki, jak się spodziewałam.",
+		"stars": 5,
+		"company": "ZenCore",
+		"date": "30-03-2024"
 	},
 	{
-		"name": "Adam",
-		"content": "Profesjonalna obsługa, szybka realizacja i świetna jakość. Strona dokładnie taka, jak chciałem. Polecam!",
-		"stars": 4
+		"name": "Piotr",
+		"content": "Jestem zachwycony! Obsługa była bardzo pomocna, a produkt przerósł moje oczekiwania. Zdecydowanie wrócę po więcej!",
+		"stars": 5,
+		"company": "NeonLabs",
+		"date": "29-03-2024"
+	},
+	{
+		"name": "Julia",
+		"content": "Doświadczenie na najwyższym poziomie! Profesjonalna obsługa i świetna jakość usług. Zdecydowanie polecam!",
+		"stars": 5,
+		"company": "Skyline Solutions",
+		"date": "28-03-2024"
+	},
+	{
+		"name": "Kacper",
+		"content": "Zdecydowanie najlepsza firma, z jaką miałem do czynienia! Wszystko na czas i na najwyższym poziomie.",
+		"stars": 5,
+		"company": "SwiftTech",
+		"date": "27-03-2024"
+	},
+	{
+		"name": "Zofia",
+		"content": "Fantastyczna firma! Profesjonalna obsługa, szybka realizacja, a produkty są rewelacyjne. Zdecydowanie polecam!",
+		"stars": 5,
+		"company": "AlphaNet",
+		"date": "26-03-2024"
+	},
+	{
+		"name": "Rafał",
+		"content": "Zdecydowanie najlepsza obsługa jaką spotkałem! Jakość usług jest na najwyższym poziomie, wrócę na pewno.",
+		"stars": 5,
+		"company": "FutureWave",
+		"date": "25-03-2024"
+	},
+	{
+		"name": "Monika",
+		"content": "Niezawodna firma! Świetna jakość usług, szybka realizacja zamówienia. Jestem bardzo zadowolona.",
+		"stars": 5,
+		"company": "Zenith Creations",
+		"date": "24-03-2024"
+	},
+	{
+		"name": "Patryk",
+		"content": "Doskonała jakość produktów i profesjonalna obsługa. Szybka realizacja i bardzo miła atmosfera. Polecam!",
+		"stars": 5,
+		"company": "CloudScape",
+		"date": "23-03-2024"
+	},
+	{
+		"name": "Olga",
+		"content": "Znakomita firma! Szybka realizacja, pełne wsparcie i doskonała jakość produktów. Zdecydowanie będę wracać!",
+		"stars": 5,
+		"company": "Red Horizon",
+		"date": "22-03-2024"
+	},
+	{
+		"name": "Michał",
+		"content": "Rewelacyjna obsługa klienta! Wszystko zorganizowane na czas, a jakość usług przerosła moje oczekiwania. Polecam każdemu!",
+		"stars": 5,
+		"company": "Solaris Enterprises",
+		"date": "21-03-2024"
+	},
+	{
+		"name": "Wiktoria",
+		"content": "Firma na najwyższym poziomie! Szybka reakcja, pomocna obsługa i doskonała jakość usług. Zdecydowanie warto!",
+		"stars": 5,
+		"company": "Orion Solutions",
+		"date": "20-03-2024"
+	},
+	{
+		"name": "Dawid",
+		"content": "Zdecydowanie warto! Świetna jakość, profesjonalna obsługa i szybka realizacja. Polecam w 100%.",
+		"stars": 5,
+		"company": "InnoWave",
+		"date": "19-03-2024"
+	},
+	{
+		"name": "Natalia",
+		"content": "Firma spełniła wszystkie moje oczekiwania. Bardzo pomocna obsługa, a produkty są najwyższej jakości. Zdecydowanie polecam!",
+		"stars": 5,
+		"company": "Vertex Solutions",
+		"date": "18-03-2024"
+	},
+	{
+		"name": "Artur",
+		"content": "Profesjonalizm w każdym calu. Szybka realizacja, doskonała obsługa i świetna jakość. Zdecydowanie warto!",
+		"stars": 5,
+		"company": "NextEra Technologies",
+		"date": "17-03-2024"
+	},
+	{
+		"name": "Ewa",
+		"content": "Fantastyczna firma! Obsługa klienta na najwyższym poziomie, szybka realizacja, a produkt jest doskonały. Polecam!",
+		"stars": 5,
+		"company": "Infinity Tech",
+		"date": "16-03-2024"
+	},
+	{
+		"name": "Bartek",
+		"content": "Wszystko w jak najlepszym porządku! Profesjonalna obsługa, szybka realizacja i bardzo wysoka jakość produktów. Polecam!",
+		"stars": 5,
+		"company": "TechStar",
+		"date": "15-03-2024"
+	},
+	{
+		"name": "Agnieszka",
+		"content": "Wspaniała firma! Profesjonalizm, szybkość realizacji oraz świetna jakość usług. Jestem bardzo zadowolona i polecam wszystkim.",
+		"stars": 5,
+		"company": "FusionTech",
+		"date": "14-03-2024"
 	}
 ]
