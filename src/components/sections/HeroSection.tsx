@@ -23,21 +23,16 @@ export default function HeroSection() {
         </TextGradient>
       </div>
       <ul className="gap-2 text-md max-w-lg flex-col flex list-disc pl-10">
-        <Fade triggerOnce cascade damping={1} delay={1500}>
-          <li>to kolejna jednostka informatyczna po petabajcie</li>
-          <li>to jednostka wynosząca 10^18 bajta</li>
-          <li>
-            to ilość danych globalnie wysyłanych przez internet co godzinę
-          </li>
-          <li>
-            co najważniejsze, to{" "}
-            <span className="font-bold">grupa programistów</span>, z Opola,
-            która{" "}
-            <span className="font-bold">
-              wyceni, zaprojektuje i zaprogramuje twoją stronę
-            </span>
-          </li>
-        </Fade>
+        <li>to kolejna jednostka informatyczna po petabajcie</li>
+        <li>to jednostka wynosząca 10^18 bajta</li>
+        <li>to ilość danych globalnie wysyłanych przez internet co godzinę</li>
+        <li>
+          co najważniejsze, to{" "}
+          <span className="font-bold">grupa programistów</span>, z Opola, która{" "}
+          <span className="font-bold">
+            wyceni, zaprojektuje i zaprogramuje twoją stronę
+          </span>
+        </li>
       </ul>
       <Fade delay={5500}>
         <CtaButton />
