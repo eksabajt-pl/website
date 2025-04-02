@@ -45,7 +45,7 @@
 body {
 	transition: 200ms background-color, 200ms color;
 	max-width: 100vw;
-	overflow: hidden;
+	overflow-x: hidden;
 }
 
 :root {
