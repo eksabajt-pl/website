@@ -5,13 +5,14 @@ import HeroSection from "@/components/sections/HeroSection";
 import Projects from "@/components/projects/Projects";
 
 export default function Home() {
-  return (
-    <>
-      <Header />
-      <HeroSection />
-      <BrandWave />
-      <Contact/>
-      <Projects></Projects>
-    </>
-  );
+	return (
+		<>
+			<Header />
+			<HeroSection />
+			<BrandWave />
+			<Projects />
+			<BrandWave flipped={true} />
+			<Contact />
+		</>
+	);
 }
