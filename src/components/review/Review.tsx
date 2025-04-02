@@ -1,15 +1,14 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { ReviewType } from "../types/ReviewType";
+import { Star } from "lucide-react";
 
 function ReviewStars({ count = 5 }) {
 	return (
 		<div className=" flex justify-center items-start text-xl text-center ">
 			{Array(count)
 				.fill(
-					<FontAwesomeIcon
+					<Star
+						fill="#00c951"
 						className="text-sm sm:text-md md:text-lg text-green-500"
-						icon={faStar}
 					/>
 				)
 				.map((star, index) => (
