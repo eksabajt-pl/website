@@ -45,7 +45,7 @@ function ReviewSection() {
   const secondHalf = useMemo(() => reviews.slice(half), [reviews, half]);
 
   return (
-    <Section id="review">
+    <Section id="reviews">
       <div className="max-w-[100vw] py-4 overflow-hidden flex-col flex gap-8">
         <SectionHeading
           normal="Co myślą o nas"
