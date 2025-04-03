@@ -4,12 +4,14 @@ import ContactSection from "@/components/sections/ContactSection";
 import HeroSection from "@/components/sections/HeroSection";
 import TeamSection from "@/components/sections/TeamSection";
 import Footer from "@/components/footer/Footer";
+import Projects from "@/components/projects/Projects";
 
 export default function Home() {
   return (
     <>
       <Header />
       <HeroSection />
+      <Projects />
       <ReviewsSection />
       <TeamSection />
       <ContactSection />
