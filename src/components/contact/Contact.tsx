@@ -68,7 +68,7 @@ export default function Contact() {
     <>
       <section
         id="contact"
-        className="font-sans gap-8 p-8 flex flex-col gap-4 min-h-[80vh] items-center justify-center"
+        className="font-sans  min-h-[80vh] gap-8 p-8 flex flex-col gap-4 items-center justify-center"
       >
         <div className="flex flex-col w-full gap-16  justify-center items-center">
           <div className="flex flex-col gap-2 sm:gap-4">

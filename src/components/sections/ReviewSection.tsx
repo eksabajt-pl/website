@@ -21,12 +21,13 @@ function ReviewMarquee({ reviews, reversed = false }: ReviewMarqueeProps) {
   return (
     <div className="flex flex-row">
       <Marquee
+        autoFill={true}
         gradientWidth={isMobile ? 20 : 200}
         gradientColor={theme == "dark" ? "black" : "white"}
         direction={reversed ? "right" : "left"}
         pauseOnHover={true}
         gradient={true}
-        className=" w-[100%]"
+        className=" w-[100%] h-42 flex  overflow-hidden"
       >
         {reviews?.map((value, index) => {
           return <Review key={index} {...value} />;
@@ -44,10 +45,10 @@ function ReviewSection() {
   const secondHalf = useMemo(() => reviews.slice(half), [reviews, half]);
 
   return (
-    <section className="flex justify-center ">
-      <div className="max-w-[100vw] overflow-scroll py-4">
-        <div className="text-2xl pb-4 text-center md:text-3xl lg:text-4xl  flex-col md:flex-row flex justify-center items-center">
-          <p className="pb-2  mr-[10px]  ">Co myślą o nas</p>{" "}
+    <section className="flex  flex-col min-h-[70vh]  justify-center ">
+      <div className="max-w-[100vw] py-4 overflow-hidden">
+        <div className="text-2xl pb-4 text-center md:text-3xl lg:text-4xl gap-2 flex-wrap flex justify-center items-center">
+          <p className="pb-2  ">Co myślą o nas</p>{" "}
           <Fade triggerOnce delay={500} cascade damping={0.05}>
             <TextGradient>nasi klienci</TextGradient>
           </Fade>

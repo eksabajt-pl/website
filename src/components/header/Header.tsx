@@ -12,23 +12,25 @@ export default function Header() {
 
 	return (
 		<div
-			className={` transition-all flex-row flex items-center justify-between sticky top-0 left-0 z-10 w-full  dark:border-neutral-800 border-neutral-300 p-4  border-b-0 ${
+			className={` transition-all flex-row flex items-center justify-center sticky top-0 left-0 z-10 w-full  dark:border-neutral-800 border-neutral-300 p-4  border-b-0 ${
 				liftOff
 					? "dark:bg-neutral-800/40 bg-neutral-100/40 backdrop-blur-sm border-b-1"
 					: ""
 			}`}
 		>
-			<a href="#">
-				<div className="font-mono flex flex-row gap-2 items-center">
-					<div className="p-1 font-bold max-w-md text-white flex flex-row gap-2 bg-green-600 hover:bg-green-500 transition-color cursor-pointer rounded-sm">
-						<Code2 />
+			<div className="flex flex-row justify-between max-w-7xl w-full items-center">
+				<a href="#">
+					<div className="font-mono flex flex-row gap-2 items-center">
+						<div className="p-1 font-bold max-w-md text-white flex flex-row gap-2 bg-green-600 hover:bg-green-500 transition-color cursor-pointer rounded-sm">
+							<Code2 />
+						</div>
+						{!isMobile && <span>eksabajt.pl</span>}
 					</div>
-					{!isMobile && <span>eksabajt.pl</span>}
+				</a>
+				<div className="flex flex-row gap-1">
+					<ThemeToggle />
+					<ContactIconButton />
 				</div>
-			</a>
-			<div className="flex flex-row gap-1">
-				<ThemeToggle />
-				<ContactIconButton />
 			</div>
 		</div>
 	);

@@ -2,7 +2,7 @@
 	{
 		"name": "Karol",
 		"content": "Świetna firma! Strona jest estetyczna, a obsługa klienta na najwyższym poziomie. Polecam z całego serca!",
-		"stars": 5,
+		"stars": 4,
 		"company": "LumaTech",
 		"date": "02-04-2024"
 	},
@@ -16,7 +16,7 @@
 	{
 		"name": "Tomasz",
 		"content": "Profesjonalna obsługa, szybka realizacja i świetna jakość usług. Na pewno będę korzystać ponownie!",
-		"stars": 5,
+		"stars": 4,
 		"company": "PixelWorks",
 		"date": "31-03-2024"
 	},
@@ -30,7 +30,7 @@
 	{
 		"name": "Piotr",
 		"content": "Jestem zachwycony! Obsługa była bardzo pomocna, a produkt przerósł moje oczekiwania. Zdecydowanie wrócę po więcej!",
-		"stars": 5,
+		"stars": 4,
 		"company": "NeonLabs",
 		"date": "29-03-2024"
 	},
@@ -44,7 +44,7 @@
 	{
 		"name": "Kacper",
 		"content": "Zdecydowanie najlepsza firma, z jaką miałem do czynienia! Wszystko na czas i na najwyższym poziomie.",
-		"stars": 5,
+		"stars": 4,
 		"company": "SwiftTech",
 		"date": "27-03-2024"
 	},
@@ -58,7 +58,7 @@
 	{
 		"name": "Rafał",
 		"content": "Zdecydowanie najlepsza obsługa jaką spotkałem! Jakość usług jest na najwyższym poziomie, wrócę na pewno.",
-		"stars": 5,
+		"stars": 4,
 		"company": "FutureWave",
 		"date": "25-03-2024"
 	},
@@ -93,7 +93,7 @@
 	{
 		"name": "Wiktoria",
 		"content": "Firma na najwyższym poziomie! Szybka reakcja, pomocna obsługa i doskonała jakość usług. Zdecydowanie warto!",
-		"stars": 5,
+		"stars": 4,
 		"company": "Orion Solutions",
 		"date": "20-03-2024"
 	},
@@ -128,7 +128,7 @@
 	{
 		"name": "Bartek",
 		"content": "Wszystko w jak najlepszym porządku! Profesjonalna obsługa, szybka realizacja i bardzo wysoka jakość produktów. Polecam!",
-		"stars": 5,
+		"stars": 4,
 		"company": "TechStar",
 		"date": "15-03-2024"
 	},
