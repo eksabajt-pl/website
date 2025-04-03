@@ -14,6 +14,7 @@ export default function Home() {
       <ReviewsSection />
       <TeamSection />
       <ContactSection />
+      <Footer />
     </>
   );
 }
