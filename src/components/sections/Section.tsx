@@ -11,7 +11,7 @@ export default function Section({ id, children, className }: SectionProps) {
     <section
       id={id}
       className={twMerge(
-        "font-sans gap-8 p-8 flex flex-col gap-4 min-h-[80vh] items-center justify-center",
+        "font-sans gap-8 p-8 flex flex-col gap-4  items-center justify-center",
         className
       )}
     >

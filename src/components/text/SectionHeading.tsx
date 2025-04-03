@@ -1,9 +1,9 @@
 import TextGradient from "./TextGradient";
 
 interface SectionHeadingProps {
-  normal: string;
-  emphasis: string;
-  description: string;
+  normal?: string;
+  emphasis?: string;
+  description?: string;
 }
 export default function SectionHeading({
   normal,
@@ -13,14 +13,20 @@ export default function SectionHeading({
   return (
     <div className="flex flex-col items-center gap-1 m-4 sm:gap-4 text-center">
       <div className="gap-2 font-bold flex flex-col">
-        <p className="text-xl md:text-2xl lg:text-3xl">{normal}</p>
-        <TextGradient className="text-2xl md:text-3xl lg:text-4xl">
-          {emphasis}
-        </TextGradient>
+        {normal && (
+          <h3 className="text-xl md:text-2xl lg:text-3xl">{normal}</h3>
+        )}
+        {emphasis && (
+          <TextGradient className="text-2xl md:text-3xl lg:text-4xl">
+            <h2>{emphasis}</h2>
+          </TextGradient>
+        )}
       </div>
-      <div className="max-w-lg text-sm sm:text-base md:text-md lg:text-lg gap-2 flex flex-col">
-        <p>{description}</p>
-      </div>
+      {description && (
+        <div className="max-w-lg text-sm sm:text-base md:text-md lg:text-lg gap-2 flex flex-col">
+          <h4>{description}</h4>
+        </div>
+      )}
     </div>
   );
 }

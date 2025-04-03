@@ -6,13 +6,13 @@ export default function TextGradient({
   className,
 }: PropsWithChildren & { className?: string }) {
   return (
-    <h1
+    <div
       className={twMerge(
         "pb-2 font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-green-500",
         className
       )}
     >
       {children}
-    </h1>
+    </div>
   );
 }
