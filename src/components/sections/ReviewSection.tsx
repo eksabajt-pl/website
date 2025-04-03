@@ -16,14 +16,14 @@ type ReviewMarqueeProps = {
 };
 
 function ReviewMarquee({ reviews, reversed = false }: ReviewMarqueeProps) {
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
   const isMobile = useMediaQuery({ maxWidth: 512 });
   return (
     <div className="flex flex-row">
       <Marquee
         autoFill={true}
         gradientWidth={isMobile ? 20 : 200}
-        gradientColor={theme == "dark" ? "black" : "white"}
+        gradientColor={resolvedTheme == "dark" ? "black" : "white"}
         direction={reversed ? "right" : "left"}
         pauseOnHover={true}
         gradient={true}

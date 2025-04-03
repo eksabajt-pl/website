@@ -3,29 +3,12 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-html {
-  font-size: 18px;
+.rfm-initial-child-container {
+  height: 100%;
 }
-
-@media (max-width: 1024px) {
-  html{
-
-    font-size: 16px;
-  }
-}
-@media (max-width: 500px) {
-  html{
-
-    font-size: 12px;
-  }
-}
-
-
-.rfm-initial-child-container{
-  height: 100% ;
-}
-.rfm-child, .rfm-child > *{
-  height:90%;
+.rfm-child,
+.rfm-child > * {
+  height: 90%;
   box-sizing: border-box;
 }
 
