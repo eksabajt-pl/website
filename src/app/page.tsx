@@ -4,6 +4,7 @@ import ContactSection from "@/components/sections/ContactSection";
 import BrandWave from "@/components/pearls/BrandWave";
 import HeroSection from "@/components/sections/HeroSection";
 import TeamSection from "@/components/sections/TeamSection";
+import Footer from "@/components/footer/Footer";
 
 export default function Home() {
   return (
