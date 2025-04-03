@@ -1,33 +1,41 @@
-import CtaButton from "../buttons/CtaButton";
-import Fade from "../pearls/Fade";
-import TextGradient from "../text/TextGradient";
+import BrandWave from "../pearls/BrandWave";
 
 export default function HeroSection() {
-  return (
-    <section className="font-sans gap-1 flex flex-col h-60 items-end justify-center">
-        <div className="w-full flex items-center justify-center h-10 border-t-2 border-green-600">
-            <h1>&copy; Copyright 2024-2025</h1>
-        </div>
-        <div className="w-full h-50 flex items-center justify-center gap-10">
-        <div className="h-full flex flex-col justify-center md:text-xl text-lg  pl-3 gap-3">
-            <h1 className="font-bold">Ważne linki</h1>
-            <a href="">Home</a>
-            <a href="">Team</a>
-            <a href="">Services</a>
-        </div>
-        <div className="h-full flex flex-col justify-center md:text-xl text-lg pl-3 gap-3">
-        <h1 className="font-bold">Socjale</h1>
-            <a href="">Github</a>
-            <a href="">Instagram</a>
-            <a href="">Discord</a>
-        </div>
-        <div className="h-full flex flex-col justify-center md:text-xl text-lg pl-3 gap-3">
-        <h1 className="font-bold">Inne</h1>
-            <a href="">About us</a>
-            <a href="">Reviews</a>
-            <a href="">Contact</a>
-        </div>
-    </div>
-    </section>
-  );
+	return (
+		<>
+			<BrandWave />
+			<footer className="font-sans gap-8 -mt-16 flex flex-col items-end justify-center p-8 pt-0 bg-green-600">
+				<div className="w-full text-sm sm:text-base flex flex-col text-center sm:text-left sm:flex-row items-center sm:items-start justify-center gap-8 sm:gap-32">
+					<div className="h-full flex flex-col justify-start pl-3 gap-3">
+						<h1 className="font-bold">Kontakt</h1>
+						<a href="">Github</a>
+						<a href="mailto:kontakt@eksabajt.pl">E-mail</a>
+					</div>
+					<div className="h-full flex flex-col justify-start pl-3 gap-3">
+						<h1 className="font-bold">Dane firmy</h1>
+						<p>EksabajtPl Sp. z o.o.</p>
+						<p>ul. Jana Pawła</p>
+						<p>01-001 Warszawa</p>
+						<p>KRS </p>
+						<p>NIP</p>
+						<p>REGON</p>
+					</div>
+					<nav className="h-full flex flex-col justify-start pl-3 gap-3">
+						<h1 className="font-bold">Nawigacja</h1>
+						<a href="#home">Home</a>
+						<a href="#about-us">About us</a>
+						<a href="#team">Team</a>
+						<a href="#reviews">Reviews</a>
+						<a href="#contact">Contact</a>
+					</nav>
+				</div>
+				<div className="w-full flex items-center justify-center text-sm sm:text-base text-center ">
+					<h1>
+						&copy;{new Date().getFullYear()} Wszelkie prawa zastrzeżone,
+						eksabajt.pl{" "}
+					</h1>
+				</div>
+			</footer>
+		</>
+	);
 }
