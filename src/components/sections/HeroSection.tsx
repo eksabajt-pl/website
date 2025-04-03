@@ -23,12 +23,16 @@ export default function HeroSection() {
         </TextGradient>
       </div>
       <ul className="gap-2 text-md max-w-lg flex-col flex list-disc pl-10">
-        <li className="opacity-70">to kolejna jednostka informatyczna po petabajcie</li>
+        <li className="opacity-70">
+          to kolejna jednostka informatyczna po petabajcie
+        </li>
         <li className="opacity-70">to jednostka wynosząca 10^18 bajta</li>
-        <li className="opacity-70">to ilość danych globalnie wysyłanych przez internet co godzinę</li>
+        <li className="opacity-70">
+          to ilość danych globalnie wysyłanych przez internet co godzinę
+        </li>
         <li>
-          to {" "}
-          <span className="font-bold">zespół profesjonalistów</span>, który: <br/>
+          to <span className="font-bold">zespół profesjonalistów</span>, który:{" "}
+          <br />
           <span className="font-bold">
             wyceni, zaprojektuje i zaprogramuje twoją stronę
           </span>

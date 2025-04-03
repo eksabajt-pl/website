@@ -1,14 +1,14 @@
 "use client";
 
 import useReviews from "../hooks/useReviews";
-import TextGradient from "../text/TextGradient";
-import Review from "../review/Review";
-import Fade from "../pearls/Fade";
 import Marquee from "react-fast-marquee";
 import { ReviewType } from "../types/ReviewType";
 import { useTheme } from "next-themes";
 import { useMediaQuery } from "react-responsive";
 import { useMemo } from "react";
+import SectionHeading from "../text/SectionHeading";
+import ReviewCard from "../cards/ReviewCard";
+import Section from "./Section";
 
 type ReviewMarqueeProps = {
   reviews: ReviewType[];
@@ -30,7 +30,7 @@ function ReviewMarquee({ reviews, reversed = false }: ReviewMarqueeProps) {
         className=" w-[100%] h-42 flex  overflow-hidden"
       >
         {reviews?.map((value, index) => {
-          return <Review key={index} {...value} />;
+          return <ReviewCard key={index} {...value} />;
         })}
       </Marquee>
     </div>
@@ -45,20 +45,19 @@ function ReviewSection() {
   const secondHalf = useMemo(() => reviews.slice(half), [reviews, half]);
 
   return (
-    <section className="flex  flex-col min-h-[70vh]  justify-center ">
-      <div className="max-w-[100vw] py-4 overflow-hidden">
-        <div className="text-2xl pb-4 text-center md:text-3xl lg:text-4xl gap-2 flex-wrap flex justify-center items-center">
-          <p className="pb-2  ">Co myślą o nas</p>{" "}
-          <Fade triggerOnce delay={500} cascade damping={0.05}>
-            <TextGradient>nasi klienci</TextGradient>
-          </Fade>
-        </div>
+    <Section id="review">
+      <div className="max-w-[100vw] py-4 overflow-hidden flex-col flex gap-8">
+        <SectionHeading
+          normal="Co myślą o nas"
+          emphasis="Nasi klienci"
+          description="*wszystkie recenzje mają charakter poglądowy, nie należy ich traktować na poważnie - one nie istnieją"
+        />
         <div className="flex flex-col overflow-hidden">
           <ReviewMarquee reviews={firstHalf} />
           <ReviewMarquee reversed={true} reviews={secondHalf} />
         </div>
       </div>
-    </section>
+    </Section>
   );
 }
 export default ReviewSection;

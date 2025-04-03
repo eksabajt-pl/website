@@ -1,6 +1,5 @@
 "use client";
 
-import TextGradient from "@/components/text/TextGradient";
 import { Textarea } from "@/components/ui/textarea";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -21,10 +20,11 @@ import { contactFormSchema } from "@/schemas/contactFormSchema";
 import { useCallback, useMemo, useState } from "react";
 import { Loader2, MailIcon, MailWarningIcon, Send } from "lucide-react";
 import { Label } from "../ui/label";
-import Fade from "../pearls/Fade";
+import SectionHeading from "../text/SectionHeading";
+import Section from "./Section";
 
 const useContact = () => {
-  const [message, setMessage] = useState("Skontaktuj się!");
+  const [message, setMessage] = useState("Wyślij!");
   const [loading, setLoading] = useState(false);
   const [statusCode, setStatusCode] = useState(200);
 
@@ -33,25 +33,33 @@ const useContact = () => {
   const onSubmit = useCallback(
     async (data: unknown) => {
       setLoading(true);
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          Accept: "application/json, text/plain, */*",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-      const json = await res.json();
-      setStatusCode(res.status);
-      setMessage(json.message);
-      setLoading(false);
+      try {
+        const res = await fetch("/api/contact", {
+          method: "POST",
+          headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+        const json = await res.json();
+        setStatusCode(res.status);
+        setMessage(json.message);
+        setLoading(false);
+      } catch (error: unknown) {
+        if (error instanceof TypeError) {
+          setStatusCode(500);
+          setMessage("Błąd!");
+          setLoading(false);
+        }
+      }
     },
     [setMessage, setLoading, setStatusCode]
   );
 
   return { onSubmit, loading, message, statusCode, isOK };
 };
-
+// TODO refactor
 export default function Contact() {
   const form = useForm({
     resolver: zodResolver(contactFormSchema),
@@ -62,39 +70,18 @@ export default function Contact() {
     },
   });
 
-  const { message, loading, isOK, onSubmit } = useContact();
+  const { message, loading, onSubmit, isOK } = useContact();
 
   return (
     <>
-      <section
-        id="contact"
-        className="font-sans  min-h-[80vh] gap-8 p-8 flex flex-col gap-4 items-center justify-center"
-      >
+      <Section id="contact">
         <div className="flex flex-col w-full gap-16  justify-center items-center">
-          <div className="flex flex-col gap-2 sm:gap-4">
-            {/* Black Text */}
-            <Fade
-              triggerOnce
-              cascade
-              damping={0.05}
-              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl"
-            >
-              Masz pomysł do wykonania?
-            </Fade>
+          <SectionHeading
+            normal="Potrzebujesz strony?"
+            emphasis="Zgłoś się do nas"
+            description="Nasz zespół odpowiada bardzo szybko na każde zapytanie, jeżeli masz jakiekolwiek pytania śmiało pisz poprzez formularz kontaktowy, lub email: kontakt@eksabajt.pl"
+          />
 
-            {/* Gradient Text */}
-            <TextGradient>
-              <Fade
-                triggerOnce
-                delay={500}
-                cascade
-                damping={0.05}
-                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold"
-              >
-                Zgłoś się do nas!
-              </Fade>
-            </TextGradient>
-          </div>
           <div className="flex flex-col gap-4 w-64 sm:w-86 sm:w-96 md:w-120">
             <Form {...form}>
               <form
@@ -161,19 +148,15 @@ export default function Contact() {
                     {loading ? (
                       <Loader2 className="animate-spin" />
                     ) : (
-                      <Label
-                        className={
-                          !isOK ? " flex-row  flex gap-2 font-bold" : ""
-                        }
-                      >
-                        {isOK ? <MailIcon /> : <MailWarningIcon />} {message}
+                      <Label>
+                        <MailIcon /> kontakt@eksabajt.pl
                       </Label>
                     )}
                   </div>
                   <div className="flex items-center justify-end flex-2/10">
                     <Button className="flex-1 cursor-pointer" type="submit">
-                      <Send />
-                      Wyślij
+                      {isOK ? <Send /> : <MailWarningIcon />}
+                      {message}
                     </Button>
                   </div>
                 </div>
@@ -181,7 +164,7 @@ export default function Contact() {
             </Form>
           </div>
         </div>
-      </section>
+      </Section>
     </>
   );
 }
