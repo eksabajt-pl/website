@@ -1,8 +1,9 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 interface TeamMemberType {
-	name: string;
-	title: string;
-    motto?: string;
-    website?: string;
-    email?: string;
-    profilePicture?: string;
+  name: string;
+  title: string;
+  motto?: string;
+  website?: string;
+  email?: string;
+  profilePicture?: string;
 }
