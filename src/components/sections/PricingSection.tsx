@@ -1,4 +1,4 @@
-import { BriefcaseBusiness, Building, CompassIcon, House, Pencil } from "lucide-react";
+import { BriefcaseBusiness, Building, House, Pencil } from "lucide-react";
 import PricingCard from "../cards/PricingCard";
 import SectionHeading from "../text/SectionHeading";
 import Section from "./Section";

@@ -9,11 +9,10 @@ interface PricingCardProps{
     tier:string;
     price?:number;
     description?:string;
-    footer?:string;
     best?:boolean;
 }
 
-export default function PricingCard({icon, tier, best=false, footer = "Lorem ipsum", price, description = "Lorem ipsum"}: PricingCardProps){
+export default function PricingCard({icon, tier, best=false, price, description = "Lorem ipsum"}: PricingCardProps){
     return <Card className={twMerge("relative flex min-w-2xs flex-col px-4 gap-2", (best) && "border-neutral-200 scale-[1.05]")}>
         {best && <div className="absolute -top-6 left-0 flex flex-col justify-center items-center w-full"><span className="p-2 bg-background border-1 border-white rounded-lg">Najczęściej wybierane</span></div>}
         <CardHeader className="flex flex-col justify-center items-center text-2xl text-center gap-4">
@@ -43,7 +42,7 @@ export default function PricingCard({icon, tier, best=false, footer = "Lorem ips
                     <CheckIcon className="flex-shrink-0 mt-0.5 h-4 w-4" />
                     <span className="text-muted-foreground">Lorem ipsum</span>
                 </li>
-                
+
           
 
             </ul>
