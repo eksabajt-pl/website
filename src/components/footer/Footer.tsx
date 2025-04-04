@@ -4,7 +4,7 @@ export default function HeroSection() {
 	return (
 		<>
 			<BrandWave />
-			<footer className="font-sans gap-8 -mt-16 flex flex-col items-end justify-center p-8 pt-0 bg-green-600">
+			<footer className="text-white font-sans gap-8 -mt-16 flex flex-col items-end justify-center p-8 pt-0 bg-green-600">
 				<div className="w-full text-sm sm:text-base flex flex-col text-center sm:text-left sm:flex-row items-center sm:items-start justify-center gap-8 sm:gap-32">
 					<div className="h-full flex flex-col justify-start pl-3 gap-3">
 						<h1 className="font-bold">Kontakt</h1>
