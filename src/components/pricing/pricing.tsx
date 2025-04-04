@@ -79,7 +79,7 @@ type cards ={
     const PricingCard = ({title,price,icon: Icon,unique,subtitle,features}:cards)=> {
         return(
             <CustomCard className="relative flex justify-between">
-                {unique ? <div className="absolute top-[0px] border-1 border-green-300 left-[50%] shadow-lg shadow-green-300/40 font-bold translate-[-50%] bg-[var(--award)] p-2 rounded-xl z-5">Najczęściej wybierane</div> : null}
+                {unique ? <div className="absolute w-max top-[0px] border-1 border-green-300 left-[50%] shadow-lg shadow-green-300/40 font-bold translate-[-50%] bg-[var(--award)] p-2 rounded-xl z-5">Najczęściej wybierane</div> : null}
 
         <Icon className="absolute inset-0 text-[var(--award)] z-1" size="100%" />
         
@@ -94,7 +94,7 @@ type cards ={
         
         <div className="mx-5 my-3 relative flex items-center justify-center max-w">
 </div>        
-<hr className="z-2 mx-5 h-[4px] bg-[var(--sidebar)]"/>
+<hr className="z-2 mx-5"/>
         {/* Dolna sekcja */}
         <section className="z-2 px-4 py-6 flex flex-col">
           <ul className="text-sm font-bold space-y-2">
