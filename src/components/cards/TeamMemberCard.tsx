@@ -11,6 +11,7 @@ import Image from "next/image";
 import { AtSignIcon, Link } from "lucide-react";
 import { PropsWithChildren } from "react";
 import Fade from "@/components/pearls/Fade";
+import { TeamMemberType } from "../types/TeamMemberType";
 
 interface TeamMemberFieldProps extends PropsWithChildren {
   href: string;

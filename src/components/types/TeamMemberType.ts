@@ -1,5 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-interface TeamMemberType {
+export type TeamMemberType = {
   name: string;
   title: string;
   motto?: string;
