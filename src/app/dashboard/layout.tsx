@@ -1,4 +1,4 @@
-import { PropsWithChildren, Suspense } from "react";
+import { PropsWithChildren } from "react";
 import DashboardHeader from "@/components/header/DashboardHeader";
 import Dashboard from "@/components/dashboards/Dashboard";
 
@@ -8,9 +8,7 @@ export default function Layout({ children }: PropsWithChildren) {
       <>
         {" "}
         <DashboardHeader />
-        <Suspense>
-          <Dashboard>{children}</Dashboard>
-        </Suspense>
+        <Dashboard>{children}</Dashboard>
       </>
     </div>
   );

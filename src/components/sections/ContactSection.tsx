@@ -75,7 +75,7 @@ export default function Contact() {
   return (
     <>
       <Section id="contact">
-        <div className="flex flex-col w-full gap-16  justify-center items-center">
+        <div className="flex min-h-[85vh] flex-col w-full gap-16  justify-center items-center">
           <SectionHeading
             normal="Potrzebujesz strony?"
             emphasis="Zgłoś się do nas"
