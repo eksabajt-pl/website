@@ -7,6 +7,7 @@ import { LayoutDashboard } from 'lucide-react';
 import { MailCheckIcon } from "../ui/mail-check";
 import TextGradient from "../text/TextGradient";
 import Li from "./cards/LiCard"
+import SectionHeading from "../text/SectionHeading";
 type cards ={
     title:string,
     price:string,
@@ -93,8 +94,8 @@ type cards ={
         </section>
         
         <div className="mx-5 my-3 relative flex items-center justify-center max-w">
-</div>        
-<hr className="z-2 mx-5"/>
+      </div>        
+      <hr className="z-2 mx-5"/>
         {/* Dolna sekcja */}
         <section className="z-2 px-4 py-6 flex flex-col">
           <ul className="text-sm font-bold space-y-2">
@@ -113,14 +114,8 @@ type cards ={
     return(
         <div className="max-w min-h-[100vh] flex flex-col justify-start">
     {/* Nagłówek */}
-    <div className="text-center text-5xl font-black leading-20 my-[40px] max-md:text-3xl">
-        <div>Nasz zespół wyceni</div>
-      <TextGradient>
-        <Fade triggerOnce delay={500} className="font-black tracking-wide" cascade damping={0.05}>
-          twój projekt
-        </Fade>
-      </TextGradient>
-    </div>
+    <SectionHeading normal="Nasz zespół wyceni" emphasis="twój projekt" description="Bez dodatkowej opłaty nasz wykwalifikowany zespół wyceni twoją stronę/aplikację internetową"/>
+    
 
     {/* oferta */}
     <div className=" flex flex-row max-w min-h-[60vh] flex-wrap justify-center gap-6">
