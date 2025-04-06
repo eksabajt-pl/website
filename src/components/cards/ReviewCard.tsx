@@ -24,7 +24,12 @@ function ReviewStars({ count = 5, max = 5 }) {
   /*<div className="flex-1 h-full min-w-[0rem] w-[85vw] max-w-lg   bg-neutral-200/20  dark:bg-neutral-800/40 backdrop-blur-sm border-1 dark:border-neutral-400/40 border-neutral-400/30 m-2 rounded-2xl p-4 sm:p-6 md:p-8  flex flex-col gap-1  ">
 		</div>*/
 }
-export default function ReviewCard({ content, stars, user }: ReviewType) {
+export default function ReviewCard({
+  content,
+  stars,
+  user,
+  created_at,
+}: ReviewType) {
   return (
     <Card className="min-w-[0rem] w-[85vw] max-w-lg min-h-[100%] flex flex-col m-2 p-4 gap-2 overflow-hidden">
       <div className="relative flex flex-row justify-between">
@@ -41,6 +46,9 @@ export default function ReviewCard({ content, stars, user }: ReviewType) {
       <div className="text-base sm:text-md md:text-lg text-wrap flex-1 items-center flex ">
         {content}
       </div>
+      <p className="text-muted-foreground text-sm">
+        {new Date(created_at).toLocaleDateString()}
+      </p>
     </Card>
   );
 }
