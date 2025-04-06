@@ -16,8 +16,6 @@ const pages: DashboardPage[] = [
     path: "/",
     icon: <LucideEye />,
   },
-  { name: "Chat", path: "/chat", icon: <LucideMessageCircle /> },
-
   { name: "User management", path: "/user-management", icon: <LucideUser /> },
   {
     name: "Content management",
