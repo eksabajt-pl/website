@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import writeReview from "@/lib/user-actions";
 import { Label } from "@radix-ui/react-label";
 import Link from "next/link";
 
@@ -9,26 +10,24 @@ export default function Page() {
       <form action="">
         <div className="grid gap-4">
           <div className="grid gap-2">
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="user_id">User id</Label>
             <Input
-              id="email"
-              name="email"
-              type="email"
-              placeholder="m@example.com"
+              name="user_id"
+              value="cffac6fe-2d1a-4d31-9244-3150fe4223b7"
+              type="text"
               required
             />
           </div>
           <div className="grid gap-2">
-            <div className="flex items-center">
-              <Label htmlFor="password">Password</Label>
-              <Link href="#" className="ml-auto inline-block text-sm underline">
-                Forgot your password?
-              </Link>
-            </div>
-            <Input id="password" name="password" type="password" required />
+            <Label htmlFor="stars">Stars</Label>
+            <Input value={5} name="stars" type="number" required />
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="content">Content</Label>
+            <Input value="test" name="content" type="text" required />
           </div>
           <Button type="submit" formAction={writeReview} className="w-full">
-            Login
+            Review
           </Button>
         </div>
       </form>
