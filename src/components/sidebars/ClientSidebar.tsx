@@ -16,11 +16,13 @@ const pages: DashboardPage[] = [
     path: "/",
     icon: <LucideEye />,
   },
-  { name: "Chat", path: "/chat", icon: <LucideMessageCircle /> },
   { name: "Reviews", path: "/reviews", icon: <LucideMessageCircleReply /> },
+  /*
+  
+  { name: "Chat", path: "/chat", icon: <LucideMessageCircle /> },
   { name: "Progress", path: "/progress", icon: <LucideChartBarIncreasing /> },
   { name: "Receipts", path: "/receipts", icon: <LucideReceipt /> },
-  /*{
+  {
     name: "Settings",
     path: "/settings",
     icon: <LucideCog />,
