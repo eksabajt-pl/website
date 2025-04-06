@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "burkeholland.simple-react-snippets",
+    "shailen.netlify",
+    "github.vscode-pull-request-github",
+    "bierner.github-markdown-preview",
+    "waderyan.gitblame",
+    "rvest.vs-code-prettier-eslint"
+  ]
+}
