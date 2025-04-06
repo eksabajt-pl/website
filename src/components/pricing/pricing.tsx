@@ -1,4 +1,4 @@
-import CustomCard from "../cards/CustomCard";
+import CustomCard from "./cards/CustomCard";
 import Fade from "../pearls/Fade";
 import { Award} from "lucide-react";
 import { Building } from 'lucide-react';
@@ -6,7 +6,7 @@ import { Atom } from "lucide-react";
 import { LayoutDashboard } from 'lucide-react';
 import { MailCheckIcon } from "../ui/mail-check";
 import TextGradient from "../text/TextGradient";
-import Li from "../cards/LiCard"
+import Li from "./cards/LiCard"
 type cards ={
     title:string,
     price:string,
@@ -78,8 +78,8 @@ type cards ={
     ]
     const PricingCard = ({title,price,icon: Icon,unique,subtitle,features}:cards)=> {
         return(
-            <CustomCard className="relative flex justify-between">
-                {unique ? <div className="absolute w-max top-[0px] border-1 border-green-300 left-[50%] shadow-lg shadow-green-300/40 font-bold translate-[-50%] bg-[var(--award)] p-2 rounded-xl z-5">Najczęściej wybierane</div> : null}
+             <CustomCard className={unique ? `relative flex justify-between border-green-400` : `relative flex justify-between shadow-none  border-neutral-700`}>
+                {unique ? <div className="absolute w-max top-[0px] border-1 border-green-500 left-[50%] shadow-lg shadow-green-500/40 font-bold translate-[-50%] bg-[var(--award)] p-2 rounded-xl z-5">Najczęściej wybierane</div> : null}
 
         <Icon className="absolute inset-0 text-[var(--award)] z-1" size="100%" />
         
@@ -103,7 +103,7 @@ type cards ={
             ))}
           </ul>
         </section>
-        <button className="cursor-pointer z-2 mx-8 max-w bg-linear-to-r from-green-500 transition delay-50 duration-1000 ease-in-out to-green-600 flex justify-center items-center text-white py-2 rounded-lg text-lg font-medium max-xl:text-base hover:scale-110 hover:transition hover:delay-50 hover:duration-1000 hover:ease-in-out">
+        <button className="cursor-pointer z-2 mx-8 max-w bg-linear-to-r from-green-500 transition delay-50 duration-1000 ease-in-out to-green-600 flex justify-center items-center text-white py-2 rounded-lg text-lg font-medium max-xl:text-base hover:from-green-400 hover:to-green-500 border-3 hover:border-white hover:transition hover:delay-50 hover:duration-300 hover:ease-in-out">
             <MailCheckIcon size={25} className="" /> Zamów już dziś
           </button>
       </CustomCard>

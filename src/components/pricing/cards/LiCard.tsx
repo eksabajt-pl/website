@@ -1,4 +1,4 @@
-import { CheckIcon } from "../ui/check"
+import { CheckIcon } from "../../ui/check"
 type Children ={
     children:React.ReactNode
 }
