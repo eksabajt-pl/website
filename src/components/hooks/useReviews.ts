@@ -1,20 +1,17 @@
-"use client";
-
 import { useEffect, useState } from "react";
-import reviewsData from "./reviews.json";
 import { ReviewType } from "../types/ReviewType";
 import { fetchAllReviews } from "@/app/functions/getReviews";
 
 export default function useReviews() {
-  const [reviews, setReviews] = useState<ReviewType[]>([reviewsData]);
+  const [reviews, setReviews] = useState<ReviewType[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     setLoading(true);
     fetchAllReviews()
-      .then((data) => setReviews(data))
-      .then(() => setLoading(false));
-  }, [loading]);
+      .then((data) => setReviews(data as ReviewType[]))
+      .finally(() => setLoading(false));
+  }, [setLoading]);
 
   return { loading, reviews };
 }

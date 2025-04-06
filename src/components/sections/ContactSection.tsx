@@ -59,7 +59,7 @@ const useContact = () => {
 
   return { onSubmit, loading, message, statusCode, isOK };
 };
-// TODO refactor
+
 export default function Contact() {
   const form = useForm({
     resolver: zodResolver(contactFormSchema),

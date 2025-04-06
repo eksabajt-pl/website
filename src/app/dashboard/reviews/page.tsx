@@ -1,36 +1,74 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import writeReview from "@/lib/user-actions";
-import { Label } from "@radix-ui/react-label";
-import Link from "next/link";
+import reviewForm from "@/lib/user-actions";
+import { reviewFormSchema } from "@/schemas/reviewFormSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 
 export default function Page() {
+  const form = useForm({
+    resolver: zodResolver(reviewFormSchema),
+    defaultValues: {},
+  });
   return (
     <div>
-      <form action="">
-        <div className="grid gap-4">
-          <div className="grid gap-2">
-            <Label htmlFor="user_id">User id</Label>
-            <Input
-              name="user_id"
-              value="cffac6fe-2d1a-4d31-9244-3150fe4223b7"
-              type="text"
-              required
-            />
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(reviewForm)} className="space-y-8">
+          <div className="grid gap-4">
+            <div className="grid gap-2">
+              <FormField
+                control={form.control}
+                name="stars"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Stars</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="number"
+                        className="input-focus"
+                        placeholder={5}
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="grid gap-2">
+              <FormField
+                control={form.control}
+                name="content"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Content</FormLabel>
+                    <FormControl>
+                      <Input
+                        className="input-focus"
+                        placeholder="Your review content"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <Button type="submit" className="w-full">
+              Review
+            </Button>
           </div>
-          <div className="grid gap-2">
-            <Label htmlFor="stars">Stars</Label>
-            <Input value={5} name="stars" type="number" required />
-          </div>
-          <div className="grid gap-2">
-            <Label htmlFor="content">Content</Label>
-            <Input value="test" name="content" type="text" required />
-          </div>
-          <Button type="submit" formAction={writeReview} className="w-full">
-            Review
-          </Button>
-        </div>
-      </form>
+        </form>
+      </Form>
     </div>
   );
 }

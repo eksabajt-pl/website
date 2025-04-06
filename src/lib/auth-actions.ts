@@ -25,6 +25,21 @@ export async function login(formData: FormData) {
   redirect("/dashboard");
 }
 
+export async function getUserProfileById(userId: string) {
+  const supabase = createClient();
+
+  const { data, error } = await (await supabase)
+    .from("profiles")
+    .select("*")
+    .eq("id", userId);
+
+  if (error) {
+    console.error(error);
+  }
+
+  return data[0];
+}
+
 export async function getCurrentUserId() {
   const supabase = createClient();
 
