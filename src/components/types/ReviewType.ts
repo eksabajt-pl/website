@@ -3,6 +3,7 @@ export type ReviewType = {
   stars: number;
   date: string;
   user: {
+    avatar_url: string;
     full_name: string;
   };
 };

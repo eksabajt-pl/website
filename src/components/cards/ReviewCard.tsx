@@ -28,7 +28,12 @@ export default function ReviewCard({ content, stars, user }: ReviewType) {
   return (
     <Card className="min-w-[0rem] w-[85vw] max-w-lg min-h-[100%] flex flex-col m-2 p-4 gap-2 overflow-hidden">
       <div className="relative flex flex-row justify-between">
-        <div className="font-bold w-[100%] max-w-md text-md gap-1 flex-wrap flex sm:text-lg md:xl    ">
+        <div className="font-bold w-[100%] max-w-md text-md gap-2 flex-wrap flex sm:text-lg md:xl  items-center">
+          <img
+            src={user.avatar_url}
+            className="rounded-full hidden sm:flex w-8 h-8 aspect-square object-cover"
+            alt="User Avatar"
+          />
           <span>{user.full_name}</span>
         </div>
         <ReviewStars count={stars} />
