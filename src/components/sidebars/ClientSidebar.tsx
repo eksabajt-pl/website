@@ -1,11 +1,11 @@
 "use client";
 
 import {
-  LucideCircleGauge,
+  LucideChartBarIncreasing,
   LucideEye,
   LucideMessageCircle,
-  LucideText,
-  LucideUser,
+  LucideMessageCircleReply,
+  LucideReceipt,
 } from "lucide-react";
 
 import { DashboardPage, DashboardSidebar } from "./DashboardSidebar";
@@ -17,14 +17,9 @@ const pages: DashboardPage[] = [
     icon: <LucideEye />,
   },
   { name: "Chat", path: "/chat", icon: <LucideMessageCircle /> },
-
-  { name: "User management", path: "/user-management", icon: <LucideUser /> },
-  {
-    name: "Content management",
-    path: "/content-management",
-    icon: <LucideText />,
-  },
-  { name: "Analytics", path: "/analytics", icon: <LucideCircleGauge /> },
+  { name: "Reviews", path: "/reviews", icon: <LucideMessageCircleReply /> },
+  { name: "Progress", path: "/progress", icon: <LucideChartBarIncreasing /> },
+  { name: "Receipts", path: "/receipts", icon: <LucideReceipt /> },
   /*{
     name: "Settings",
     path: "/settings",
@@ -32,6 +27,6 @@ const pages: DashboardPage[] = [
   },*/
 ];
 
-export default function AdminSidebar() {
+export default function ClientSidebar() {
   return <DashboardSidebar pages={pages} />;
 }

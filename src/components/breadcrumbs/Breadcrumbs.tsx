@@ -53,7 +53,9 @@ export default function Breadcrumbs() {
           <React.Fragment key={index}>
             <BreadcrumbItem>
               <BreadcrumbLink asChild>
-                <Link href={href}>{title}</Link>
+                <Link href={href} className="capitalize">
+                  {title}
+                </Link>
               </BreadcrumbLink>
             </BreadcrumbItem>
             {index !== breadcrumbs.length - 1 && <BreadcrumbSeparator />}
