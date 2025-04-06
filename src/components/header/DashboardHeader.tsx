@@ -8,7 +8,7 @@ import HeaderButton from "../buttons/HeaderButton";
 import Link from "next/link";
 import LogOutButton from "../buttons/LogOutButton";
 
-export default function ClientHeader() {
+export default function DashboardHeader() {
   const { liftOff } = useLiftOff();
   const isMobile = useMediaQuery({ maxWidth: 384 });
 
@@ -26,7 +26,7 @@ export default function ClientHeader() {
             <div className="p-1 font-bold max-w-md text-white flex flex-row gap-2 bg-green-600 hover:bg-green-500 transition-color cursor-pointer rounded-sm">
               <Code2 />
             </div>
-            {!isMobile && <span>eksabajt.pl (client)</span>}
+            {!isMobile && <span>eksabajt.pl (dashboard)</span>}
           </div>
         </Link>
         <div className="flex flex-row gap-1">

@@ -7,6 +7,7 @@ import Footer from "@/components/footer/Footer";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import AboutUsSection from "@/components/sections/AboutUsSection";
 import PricingSection from "@/components/sections/PricingSection";
+import { Suspense } from "react";
 
 export default function Home() {
   return (
@@ -15,9 +16,11 @@ export default function Home() {
       <HeroSection />
       <AboutUsSection />
       <ProjectsSection />
-      <ReviewsSection />
+      <Suspense>
+        <ReviewsSection />
+      </Suspense>
       <TeamSection />
-      <PricingSection/>
+      <PricingSection />
       <ContactSection />
       <Footer />
     </>

@@ -1,5 +1,3 @@
-"use client";
-
 import { ReviewForm } from "@/components/forms/ReviewForm";
 
 export default function Page() {

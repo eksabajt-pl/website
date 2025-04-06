@@ -9,7 +9,7 @@ export async function fetchAllReviews() {
 
   if (error) {
     console.error("Error fetching reviews:", error.message || error);
-    return null;
+    return [];
   }
 
   const reviews = await Promise.all(

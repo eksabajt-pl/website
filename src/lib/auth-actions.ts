@@ -111,6 +111,7 @@ export async function signup(formData: FormData) {
 
 export async function signout() {
   const supabase = createClient();
+
   const { error } = await (await supabase).auth.signOut();
   if (error) {
     console.log(error);

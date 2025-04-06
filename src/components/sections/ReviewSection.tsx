@@ -1,49 +1,15 @@
-"use client";
-
-import useReviews from "../hooks/useReviews";
-import Marquee from "react-fast-marquee";
-import { ReviewType } from "../types/ReviewType";
-import { useTheme } from "next-themes";
-import { useMediaQuery } from "react-responsive";
-import { useMemo } from "react";
-import SectionHeading from "../text/SectionHeading";
-import ReviewCard from "../cards/ReviewCard";
+"use server";
 import Section from "./Section";
-import { FaSpinner } from "react-icons/fa";
+import { ReviewMarquee } from "../marquee/SectionMarquee";
+import { fetchAllReviews } from "@/app/functions/getReviews";
+import SectionHeading from "../text/SectionHeading";
 
-type ReviewMarqueeProps = {
-  reviews: ReviewType[];
-  reversed?: boolean;
-};
+export async function ReviewSection() {
+  const reviews = await fetchAllReviews();
 
-function ReviewMarquee({ reviews, reversed = false }: ReviewMarqueeProps) {
-  const { resolvedTheme } = useTheme();
-  const isMobile = useMediaQuery({ maxWidth: 512 });
-  return (
-    <div className="flex flex-row">
-      <Marquee
-        autoFill={true}
-        gradientWidth={isMobile ? 20 : 200}
-        gradientColor={resolvedTheme == "dark" ? "black" : "white"}
-        direction={reversed ? "right" : "left"}
-        pauseOnHover={true}
-        gradient={true}
-        className=" w-[100%] h-46 flex  overflow-hidden"
-      >
-        {reviews?.map((value, index) => {
-          return <ReviewCard key={index} {...value} />;
-        })}
-      </Marquee>
-    </div>
-  );
-}
-
-function ReviewSection() {
-  const { reviews, loading } = useReviews();
-
-  const half = useMemo(() => Math.ceil(reviews.length / 2), [reviews]);
-  const firstHalf = useMemo(() => reviews.slice(0, half), [reviews, half]);
-  const secondHalf = useMemo(() => reviews.slice(half), [reviews, half]);
+  const half = Math.ceil(reviews.length / 2);
+  const firstHalf = reviews.slice(0, half);
+  const secondHalf = reviews.slice(half);
 
   return (
     <Section id="reviews">
@@ -53,16 +19,11 @@ function ReviewSection() {
           emphasis="Nasi klienci"
           description="*wszystkie recenzje mają charakter poglądowy, nie należy ich traktować na poważnie - one nie istnieją"
         />
-        {loading ? (
-          <div className="flex flex-col items-center justify-center">
-            <FaSpinner className="animate-spin text-4xl" />
-          </div>
-        ) : (
-          <div className="flex flex-col overflow-hidden">
-            <ReviewMarquee reviews={firstHalf} />
-            <ReviewMarquee reversed={true} reviews={secondHalf} />
-          </div>
-        )}
+
+        <div className="flex flex-col overflow-hidden">
+          <ReviewMarquee reviews={firstHalf} />
+          <ReviewMarquee reversed={true} reviews={secondHalf} />
+        </div>
       </div>
     </Section>
   );
