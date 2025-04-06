@@ -113,7 +113,7 @@ const PricingCard = ({
       <hr className="z-2 mx-5" />
       {/* Dolna sekcja */}
       <section className="z-2 px-4 py-6 flex flex-col text-sm sm:text-base">
-        <ul className="font-bold space-y-2">
+        <ul className="space-y-2">
           {features.map((feature, index) => (
             <Li key={index}>{feature}</Li>
           ))}
