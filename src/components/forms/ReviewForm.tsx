@@ -36,7 +36,7 @@ export function ReviewForm() {
                     <Input
                       type="number"
                       className="input-focus"
-                      placeholder={5}
+                      placeholder={"5"}
                       {...field}
                     />
                   </FormControl>

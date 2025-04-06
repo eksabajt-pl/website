@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  LucideChartBarIncreasing,
-  LucideEye,
-  LucideMessageCircle,
-  LucideMessageCircleReply,
-  LucideReceipt,
-} from "lucide-react";
+import { LucideEye, LucideMessageCircleReply } from "lucide-react";
 
 import { DashboardPage, DashboardSidebar } from "./DashboardSidebar";
 

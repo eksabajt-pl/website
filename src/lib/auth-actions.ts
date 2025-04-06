@@ -37,6 +37,10 @@ export async function getUserProfileById(userId: string) {
     console.error(error);
   }
 
+  if (!data || data.length === 0) {
+    return null;
+  }
+
   return data[0];
 }
 
@@ -68,6 +72,10 @@ export async function getCurrentUser() {
 
   if (error) {
     console.error(error);
+  }
+
+  if (!data || data.length === 0) {
+    return null;
   }
 
   return data[0];

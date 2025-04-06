@@ -1,10 +1,14 @@
 "use server";
 
-import { ReviewType } from "@/components/types/ReviewType";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 
-export default async function reviewForm(formData: ReviewType) {
+interface ReviewFormSchema {
+  stars: number;
+  content: string;
+}
+
+export default async function reviewForm(formData: ReviewFormSchema) {
   const supabase = await createClient();
   const user = (await supabase.auth.getUser()).data.user;
 
