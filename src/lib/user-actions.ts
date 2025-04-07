@@ -26,4 +26,5 @@ export default async function reviewForm(formData: ReviewFormSchema) {
 
   await insertReview(review);
   revalidatePath("/dashboard/reviews");
+  revalidatePath("/");
 }
