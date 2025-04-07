@@ -1,4 +1,3 @@
-"use server";
 import Section from "./Section";
 import { ReviewMarquee } from "../marquee/SectionMarquee";
 import { getAllReviews } from "@/db/review/getAllReviews";
