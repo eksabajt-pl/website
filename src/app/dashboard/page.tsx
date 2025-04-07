@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import UserCard from "../../components/cards/UserCard";
+import CurrentUserCard from "../../components/cards/CurrentUserCard";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export default function Page() {
@@ -8,7 +8,7 @@ export default function Page() {
       <Suspense
         fallback={<Skeleton className="h-[125px] w-[350px] rounded-xl" />}
       >
-        <UserCard />
+        <CurrentUserCard />
       </Suspense>
     </div>
   );

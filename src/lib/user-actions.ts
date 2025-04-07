@@ -1,9 +1,11 @@
 "use server";
 
+import { insertReview } from "@/db/review/insertReview";
+import { InsertReview } from "@/db/schema";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 
-interface ReviewFormSchema {
+export interface ReviewFormSchema {
   stars: number;
   content: string;
 }
@@ -16,16 +18,10 @@ export default async function reviewForm(formData: ReviewFormSchema) {
     redirect("/login");
   }
 
-  const review = {
-    user_id: user.id,
+  const review: InsertReview = {
+    userId: user.id,
     ...formData,
   };
 
-  const { data, error } = await supabase.from("reviews").insert([review]);
-
-  if (error) {
-    console.error("Error writing review:", error);
-  } else {
-    console.log("Review written successfully:", data);
-  }
+  await insertReview(review);
 }

@@ -1,7 +1,7 @@
 "use server";
 import Section from "./Section";
 import { ReviewMarquee } from "../marquee/SectionMarquee";
-import { fetchAllReviews } from "@/app/functions/getReviews";
+import { fetchAllReviews } from "@/db/review/getAllReviews";
 import SectionHeading from "../text/SectionHeading";
 
 export async function ReviewSection() {

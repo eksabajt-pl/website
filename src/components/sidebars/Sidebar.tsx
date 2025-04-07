@@ -1,10 +1,10 @@
 "use server";
-import { getCurrentUserGroup } from "@/lib/auth-actions";
 import AdminSidebar from "./AdminSidebar";
 import ClientSidebar from "./ClientSidebar";
+import { getCurrentUserProfile } from "@/db/profile/getCurrentUserProfile";
 
 export default async function Sidebar() {
-  return (await getCurrentUserGroup()) === "admin" ? (
+  return (await getCurrentUserProfile()).userGroup === "admin" ? (
     <AdminSidebar />
   ) : (
     <ClientSidebar />

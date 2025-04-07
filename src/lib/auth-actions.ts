@@ -25,62 +25,6 @@ export async function login(formData: FormData) {
   redirect("/dashboard");
 }
 
-export async function getUserProfileById(userId: string) {
-  const supabase = createClient();
-
-  const { data, error } = await (await supabase)
-    .from("profiles")
-    .select("*")
-    .eq("id", userId);
-
-  if (error) {
-    console.error(error);
-  }
-
-  if (!data || data.length === 0) {
-    return null;
-  }
-
-  return data[0];
-}
-
-export async function getCurrentUserId() {
-  const supabase = createClient();
-
-  const { data, error } = await (await supabase).auth.getUser();
-  if (error || !data?.user) {
-    redirect("/login");
-  }
-
-  return data.user.id;
-}
-
-export async function getCurrentUserGroup() {
-  const { user_group } = await getCurrentUser();
-  return user_group;
-}
-
-export async function getCurrentUser() {
-  const supabase = createClient();
-
-  const { data, error } = await (
-    await supabase
-  )
-    .from("profiles")
-    .select("*")
-    .eq("id", await getCurrentUserId());
-
-  if (error) {
-    console.error(error);
-  }
-
-  if (!data || data.length === 0) {
-    return null;
-  }
-
-  return data[0];
-}
-
 export async function signup(formData: FormData) {
   const supabase = createClient();
 

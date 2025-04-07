@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ReviewType } from "../types/ReviewType";
-import { fetchAllReviews } from "@/app/functions/getReviews";
+import { fetchAllReviews } from "@/db/review/getAllReviews";
 
 export default function useReviews() {
   const [reviews, setReviews] = useState<ReviewType[]>([]);

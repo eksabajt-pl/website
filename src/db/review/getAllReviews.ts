@@ -9,7 +9,6 @@ export async function fetchAllReviews() {
     .from(reviewsTable)
     .innerJoin(profilesTable, eq(profilesTable.id, reviewsTable.userId));
 
-  console.log(result);
   if (!result) {
     console.error("Error fetching reviews");
     return [];

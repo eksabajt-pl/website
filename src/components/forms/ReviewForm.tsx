@@ -1,6 +1,6 @@
 "use client";
 
-import { useForm } from "react-hook-form";
+import { useForm, useFormState } from "react-hook-form";
 import {
   Form,
   FormControl,
@@ -14,6 +14,7 @@ import { Input } from "@/components/ui/input";
 import { reviewFormSchema } from "@/schemas/reviewFormSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import reviewForm from "@/lib/user-actions";
+import { Loader2 } from "lucide-react";
 
 export function ReviewForm() {
   const form = useForm({
@@ -23,9 +24,20 @@ export function ReviewForm() {
       content: "",
     },
   });
+
+  const formState = useFormState({
+    control: form.control,
+  });
+
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(reviewForm)} className="space-y-8">
+      <form
+        onSubmit={form.handleSubmit(async (data) => {
+          await reviewForm(data);
+          form.reset({ stars: 5 });
+        })}
+        className="space-y-8"
+      >
         <div className="grid gap-4">
           <div className="grid gap-2">
             <FormField
@@ -66,8 +78,13 @@ export function ReviewForm() {
               )}
             />
           </div>
+
           <Button type="submit" className="w-full">
-            Review
+            {formState.isSubmitting ? (
+              <Loader2 className="animate-spin" />
+            ) : (
+              "Submit"
+            )}
           </Button>
         </div>
       </form>

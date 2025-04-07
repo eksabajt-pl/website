@@ -1,12 +1,13 @@
 "use client";
 import Marquee from "react-fast-marquee";
-import { ReviewType } from "../types/ReviewType";
 import { useTheme } from "next-themes";
 import { useMediaQuery } from "react-responsive";
 
 import ReviewCard from "../cards/ReviewCard";
+import { SelectProfile, SelectReview } from "@/db/schema";
+
 type ReviewMarqueeProps = {
-  reviews: ReviewType[];
+  reviews: { review: SelectReview; profile: SelectProfile }[];
   reversed?: boolean;
 };
 
