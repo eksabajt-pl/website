@@ -7,6 +7,7 @@ import Footer from "@/components/footer/Footer";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import AboutUsSection from "@/components/sections/AboutUsSection";
 import PricingSection from "@/components/sections/PricingSection";
+import Feedback from "@/components/sections/Feedback";
 
 export default function Home() {
   return (
@@ -20,6 +21,8 @@ export default function Home() {
       <PricingSection/>
       <ContactSection />
       <Footer />
+      <Feedback />
+    
     </>
   );
 }
