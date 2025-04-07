@@ -3,6 +3,7 @@
 import { insertReview } from "@/db/review/insertReview";
 import { InsertReview } from "@/db/schema";
 import { createClient } from "@/utils/supabase/server";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 export interface ReviewFormSchema {
@@ -24,4 +25,5 @@ export default async function reviewForm(formData: ReviewFormSchema) {
   };
 
   await insertReview(review);
+  revalidatePath("/dashboard/reviews");
 }
