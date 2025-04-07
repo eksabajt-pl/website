@@ -17,13 +17,10 @@ export default function ReviewCard({
   review: SelectReview;
 }) {
   const { content, stars, createdAt } = review;
-  const { fullName, avatarUrl } = profile;
+  const { fullName, avatarUrl, registeredWith } = profile;
   return (
     <Card
-      className={twMerge(
-        "max-w-lg flex flex-col p-4 gap-2 overflow-hidden",
-        className
-      )}
+      className={twMerge("flex flex-col p-4 gap-2 overflow-hidden ", className)}
     >
       <div className="flex flex-row justify-start sm:justify-between">
         <div className="font-bold w-[100%] max-w-md text-md gap-2 flex-wrap flex sm:text-lg md:xl items-center">
@@ -37,12 +34,15 @@ export default function ReviewCard({
         </div>
         <ReviewStars count={stars} />
       </div>
-      <div className="text-base sm:text-md md:text-lg text-wrap flex-1 items-center flex ">
+      <div className="wrap-anywhere text-base sm:text-md md:text-lg overflow-hidden text-wrap flex-1 items-center flex ">
         {content}
       </div>
-      <p className="text-muted-foreground text-sm">
-        {new Date(createdAt).toLocaleDateString()}
-      </p>
+      <div className="flex flex-row gap-2 justify-between items-center">
+        <p className="text-muted-foreground text-sm">
+          {new Date(createdAt).toLocaleDateString()}
+        </p>
+        {/*<p>Zalogowano przez: {registeredWith}</p>*/}
+      </div>
     </Card>
   );
 }

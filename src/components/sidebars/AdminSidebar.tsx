@@ -3,8 +3,8 @@
 import {
   LucideCircleGauge,
   LucideEye,
+  LucideMessageCircleReply,
   LucideText,
-  LucideUser,
 } from "lucide-react";
 
 import { DashboardPage, DashboardSidebar } from "./DashboardSidebar";
@@ -15,7 +15,7 @@ const pages: DashboardPage[] = [
     path: "/",
     icon: <LucideEye />,
   },
-  { name: "User management", path: "/user-management", icon: <LucideUser /> },
+  { name: "Reviews", path: "/reviews", icon: <LucideMessageCircleReply /> },
   {
     name: "Content management",
     path: "/content-management",

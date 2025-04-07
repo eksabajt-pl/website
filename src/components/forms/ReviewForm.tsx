@@ -36,9 +36,9 @@ export function ReviewForm() {
           await reviewForm(data);
           form.reset({ stars: 5 });
         })}
-        className="space-y-8"
+        className="space-y-8  "
       >
-        <div className="grid gap-4">
+        <div className="grid gap-4 ">
           <div className="grid gap-2">
             <FormField
               control={form.control}

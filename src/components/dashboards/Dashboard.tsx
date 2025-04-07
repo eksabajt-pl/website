@@ -9,7 +9,7 @@ export default function Dashboard({ children }: PropsWithChildren) {
       <Suspense fallback={<DashboardSidebar pages={[]} />}>
         <Sidebar />
       </Suspense>
-      <main className=" flex flex-col gap-4 p-4">
+      <main className="flex-1 flex flex-col gap-4 p-4">
         <Breadcrumbs />
         {children}
       </main>

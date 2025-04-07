@@ -1,7 +1,7 @@
 "use server";
-import { InsertReview, reviewsTable } from "@/db/schema";
+import { InsertReview, Review } from "@/db/schema";
 import { db } from "@/db/index";
 
 export async function insertReview(data: InsertReview) {
-  await db.insert(reviewsTable).values(data);
+  await db.insert(Review).values(data);
 }

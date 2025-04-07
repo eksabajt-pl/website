@@ -1,13 +1,13 @@
 "use server";
-import { profilesTable, reviewsTable } from "@/db/schema";
+import { Profile, Review } from "@/db/schema";
 import { db } from "@/db/index";
 import { eq } from "drizzle-orm";
 
 export async function getAllReviews() {
   const result = await db
     .select()
-    .from(reviewsTable)
-    .innerJoin(profilesTable, eq(profilesTable.id, reviewsTable.userId));
+    .from(Review)
+    .innerJoin(Profile, eq(Profile.id, Review.userId));
 
   if (!result) {
     console.error("Error fetching reviews");

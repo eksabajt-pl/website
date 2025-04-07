@@ -32,7 +32,7 @@ export function ReviewMarquee({
           return (
             <ReviewCard
               key={index}
-              className="min-w-[0rem] w-[85vw] min-h-[100%] m-2"
+              className="max-w-lg min-w-[0rem] w-[85vw] min-h-[100%] m-2"
               {...value}
             />
           );
