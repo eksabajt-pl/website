@@ -1,3 +1,4 @@
+"use client"
 import Section from "./Section";
 import { ReviewMarquee } from "../marquee/SectionMarquee";
 import { getAllReviews } from "@/db/review/getAllReviews";
@@ -9,7 +10,7 @@ const useReviews = () => {
   const [reviews,setReviews] = useState<SelectReviewWithProfile[]>([]);
   useEffect(()=>{
     getAllReviews().then((data)=>setReviews(data))
-  })
+  },[setReviews])
 
   const half = useMemo(()=>Math.ceil(reviews.length / 2),[reviews]);
   const firstHalf = useMemo(()=>reviews.slice(0, half), [reviews,half]);
