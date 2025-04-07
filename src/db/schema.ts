@@ -36,3 +36,8 @@ export type SelectProfile = typeof profilesTable.$inferSelect;
 
 export type InsertReview = typeof reviewsTable.$inferInsert;
 export type SelectReview = typeof reviewsTable.$inferSelect;
+
+export type SelectReviewWithProfile = {
+  review: SelectReview;
+  profile: SelectProfile;
+};

@@ -4,10 +4,10 @@ import { useTheme } from "next-themes";
 import { useMediaQuery } from "react-responsive";
 
 import ReviewCard from "../cards/ReviewCard";
-import { SelectProfile, SelectReview } from "@/db/schema";
+import { SelectReviewWithProfile } from "@/db/schema";
 
 type ReviewMarqueeProps = {
-  reviews: { review: SelectReview; profile: SelectProfile }[];
+  reviews: SelectReviewWithProfile[];
   reversed?: boolean;
 };
 

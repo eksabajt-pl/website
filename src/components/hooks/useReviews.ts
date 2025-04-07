@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import { ReviewType } from "../types/ReviewType";
-import { fetchAllReviews } from "@/db/review/getAllReviews";
+import { getAllReviews } from "@/db/review/getAllReviews";
+import { SelectReviewWithProfile } from "@/db/schema";
 
 export default function useReviews() {
-  const [reviews, setReviews] = useState<ReviewType[]>([]);
+  const [reviews, setReviews] = useState<SelectReviewWithProfile[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     setLoading(true);
-    fetchAllReviews()
-      .then((data) => setReviews(data as ReviewType[]))
+    getAllReviews()
+      .then((data) => setReviews(data as SelectReviewWithProfile[]))
       .finally(() => setLoading(false));
   }, [setLoading]);
 
