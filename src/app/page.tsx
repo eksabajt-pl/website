@@ -7,18 +7,14 @@ import Footer from "@/components/footer/Footer";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import AboutUsSection from "@/components/sections/AboutUsSection";
 import PricingSection from "@/components/sections/PricingSection";
+import FeedbackFormSection from "@/components/sections/FeedbackFormSection";
 
 export default function Home() {
   return (
     <>
       <Header />
-      <HeroSection />
-      <AboutUsSection />
-      <ProjectsSection />
-      <ReviewsSection />
-      <TeamSection />
-      <PricingSection/>
       <ContactSection />
+      <FeedbackFormSection />
       <Footer />
     </>
   );
