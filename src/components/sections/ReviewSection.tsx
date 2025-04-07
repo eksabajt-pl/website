@@ -2,13 +2,24 @@ import Section from "./Section";
 import { ReviewMarquee } from "../marquee/SectionMarquee";
 import { getAllReviews } from "@/db/review/getAllReviews";
 import SectionHeading from "../text/SectionHeading";
+import { useEffect, useMemo, useState } from "react";
+import { SelectReviewWithProfile } from "@/db/schema";
 
-export async function ReviewSection() {
-  const reviews = await getAllReviews();
+const useReviews = () => {
+  const [reviews,setReviews] = useState<SelectReviewWithProfile[]>([]);
+  useEffect(()=>{
+    getAllReviews().then((data)=>setReviews(data))
+  })
 
-  const half = Math.ceil(reviews.length / 2);
-  const firstHalf = reviews.slice(0, half);
-  const secondHalf = reviews.slice(half);
+  const half = useMemo(()=>Math.ceil(reviews.length / 2),[reviews]);
+  const firstHalf = useMemo(()=>reviews.slice(0, half), [reviews,half]);
+  const secondHalf = useMemo(()=>reviews.slice(half), [reviews,half]);
+
+  return {reviews, firstHalf, secondHalf};
+}
+
+export function ReviewSection() {
+  const {firstHalf, secondHalf} = useReviews();
 
   return (
     <Section id="reviews">
