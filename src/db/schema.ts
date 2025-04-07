@@ -10,7 +10,7 @@ import {
 
 export const groupEnum = pgEnum("user_group", ["admin", "user"]);
 
-export const profilesTable = pgTable("profiles", {
+export const profilesTable = pgTable("profile", {
   id: uuid("id").primaryKey(),
   fullName: text("full_name"),
   email: text("email"),
@@ -19,7 +19,7 @@ export const profilesTable = pgTable("profiles", {
   registered_with: text("registered_with"),
 });
 
-export const reviewsTable = pgTable("reviews", {
+export const reviewsTable = pgTable("review", {
   id: serial().primaryKey(),
   createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
   userId: uuid("user_id")

@@ -24,22 +24,19 @@ function ReviewStars({ count = 5, max = 5 }) {
   /*<div className="flex-1 h-full min-w-[0rem] w-[85vw] max-w-lg   bg-neutral-200/20  dark:bg-neutral-800/40 backdrop-blur-sm border-1 dark:border-neutral-400/40 border-neutral-400/30 m-2 rounded-2xl p-4 sm:p-6 md:p-8  flex flex-col gap-1  ">
 		</div>*/
 }
-export default function ReviewCard({
-  content,
-  stars,
-  user,
-  created_at,
-}: ReviewType) {
+export default function ReviewCard({ profile, review }) {
+  const { content, stars, createdAt } = review;
+  const { fullName, avatar_url } = profile;
   return (
     <Card className="min-w-[0rem] w-[85vw] max-w-lg min-h-[100%] flex flex-col m-2 p-4 gap-2 overflow-hidden">
       <div className="relative flex flex-row justify-between">
         <div className="font-bold w-[100%] max-w-md text-md gap-2 flex-wrap flex sm:text-lg md:xl  items-center">
           <img
-            src={user.avatar_url}
+            src={avatar_url}
             className="rounded-full hidden sm:flex w-8 h-8 aspect-square object-cover"
             alt="User Avatar"
           />
-          <span>{user.full_name}</span>
+          <span>{fullName}</span>
         </div>
         <ReviewStars count={stars} />
       </div>
@@ -47,7 +44,7 @@ export default function ReviewCard({
         {content}
       </div>
       <p className="text-muted-foreground text-sm">
-        {new Date(created_at).toLocaleDateString()}
+        {new Date(createdAt).toLocaleDateString()}
       </p>
     </Card>
   );
