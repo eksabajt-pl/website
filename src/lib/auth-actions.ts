@@ -74,7 +74,7 @@ export async function signInWithOAuth(
   ).auth.signInWithOAuth({
     provider,
     options: {
-      redirectTo: "http://localhost:3000/auth/callback",
+      redirectTo: process.env.AUTH_REDIRECT_URL ,
       queryParams: {
         access_type: "offline",
         prompt: "consent",
