@@ -6,6 +6,7 @@ import {
   uuid,
   pgEnum,
   serial,
+  boolean,
 } from "drizzle-orm/pg-core";
 
 export const groupEnum = pgEnum("user_group", ["admin", "user"]);
@@ -15,7 +16,7 @@ export const profilesTable = pgTable("profile", {
   fullName: text("full_name"),
   email: text("email").notNull(),
   avatarUrl: text("avatar_url").notNull(),
-  userGroup: groupEnum("user_group").notNull().default("user"),
+  userGroup: groupEnum("user_group").default("user"),
   registeredWith: text("registered_with"),
 });
 
@@ -29,6 +30,7 @@ export const reviewsTable = pgTable("review", {
     .references(() => profilesTable.id, { onDelete: "cascade" }),
   content: text("content").notNull(),
   stars: smallint("stars").notNull().default(5),
+  isVerified: boolean("is_verified").notNull().default(false),
 });
 
 export type InsertProfile = typeof profilesTable.$inferInsert;
