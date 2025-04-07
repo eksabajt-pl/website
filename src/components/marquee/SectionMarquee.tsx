@@ -26,10 +26,16 @@ export function ReviewMarquee({
         direction={reversed ? "right" : "left"}
         pauseOnHover={true}
         gradient={true}
-        className=" w-[100%] h-46 flex  overflow-hidden"
+        className="w-[100%] h-46 flex  overflow-hidden"
       >
         {reviews?.map((value, index) => {
-          return <ReviewCard key={index} {...value} />;
+          return (
+            <ReviewCard
+              key={index}
+              className="min-w-[0rem] w-[85vw] min-h-[100%] m-2"
+              {...value}
+            />
+          );
         })}
       </Marquee>
     </div>

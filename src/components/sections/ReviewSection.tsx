@@ -1,11 +1,11 @@
 "use server";
 import Section from "./Section";
 import { ReviewMarquee } from "../marquee/SectionMarquee";
-import { fetchAllReviews } from "@/db/review/getAllReviews";
+import { getAllReviews } from "@/db/review/getAllReviews";
 import SectionHeading from "../text/SectionHeading";
 
 export async function ReviewSection() {
-  const reviews = await fetchAllReviews();
+  const reviews = await getAllReviews();
 
   const half = Math.ceil(reviews.length / 2);
   const firstHalf = reviews.slice(0, half);

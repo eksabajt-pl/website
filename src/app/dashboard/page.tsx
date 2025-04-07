@@ -1,13 +1,11 @@
 import { Suspense } from "react";
 import CurrentUserCard from "../../components/cards/CurrentUserCard";
-import { Skeleton } from "@/components/ui/skeleton";
+import SkeletonCard from "@/components/cards/SkeletonCard";
 
 export default function Page() {
   return (
     <div>
-      <Suspense
-        fallback={<Skeleton className="h-[125px] w-[350px] rounded-xl" />}
-      >
+      <Suspense fallback={<SkeletonCard />}>
         <CurrentUserCard />
       </Suspense>
     </div>

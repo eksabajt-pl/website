@@ -7,7 +7,7 @@ export default async function CurrentUserCard() {
 
   return (
     <div className="flex-1 gap-2 flex flex-col ">
-      <Card className="p-4 flex flex-row">
+      <Card className="text-wrap overflow-hidden p-4 flex flex-row justify-center flex-wrap">
         {/*eslint-disable-next-line @next/next/no-img-element*/}
         <img
           src={avatarUrl}
