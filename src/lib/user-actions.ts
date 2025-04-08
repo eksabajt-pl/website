@@ -18,10 +18,12 @@ export default async function contactForm(formData: ContactFormData) {
     react: "Dziękujemy za kontakt", //EmailTemplate({ firstName: "John" }),
   });
 
-  await resend.emails.send({
-    from: `${username} <${email}>`,
+  const { data, error } = await resend.emails.send({
+    from: `${username} <kontakt@eksabajt.pl>`,
     to: ["kontakt@eksabajt.pl"],
     subject: `Formularz kontaktowy, tier ${tier}`,
     react: message, //EmailTemplate({ firstName: "John" }),
   });
+
+  console.log(error);
 }
