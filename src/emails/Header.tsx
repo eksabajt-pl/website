@@ -8,7 +8,7 @@ export default function Header() {
             <Img
               alt="Eksabajt logo"
               height="42"
-              src="https://react.email/static/logo-without-background.png"
+              src="https://dev.eksabajt.pl/logo.webp"
             />
           </Column>
         </Row>

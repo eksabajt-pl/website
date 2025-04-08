@@ -101,7 +101,7 @@ export default function Contact() {
                       <FormControl>
                         <Select>
                           <SelectTrigger {...field} className="w-full">
-                            <SelectValue placeholder="Theme" />
+                            <SelectValue placeholder="Inne" />
                           </SelectTrigger>
                           <SelectContent>
                             <SelectItem value="cheap">Cheap</SelectItem>

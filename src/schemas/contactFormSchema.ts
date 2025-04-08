@@ -1,6 +1,8 @@
 import { z } from "zod";
 export const contactFormSchema = z.object({
-  tier: z.enum(["cheap", "landing", "startup", "professional", "other"]),
+  tier: z
+    .enum(["cheap", "landing", "startup", "professional", "other"])
+    .default("other"),
   username: z
     .string()
     .min(1, "Name cannot be empty")

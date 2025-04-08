@@ -16,7 +16,7 @@ export default function Footer() {
             <Img
               alt="Eksabajt logo"
               height="42"
-              src="https://react.email/static/logo-without-background.png"
+              src="https://dev.eksabajt.pl/logo.webp"
             />
             <Text className="my-[8px] text-[16px] font-semibold leading-[24px] text-gray-900">
               Eksabajt.pl Sp. z o.o.
@@ -32,29 +32,9 @@ export default function Footer() {
               <Column className="pr-[8px]">
                 <Link href="#">
                   <Img
-                    alt="Facebook"
+                    alt="Github"
                     height="36"
-                    src="https://react.email/static/facebook-logo.png"
-                    width="36"
-                  />
-                </Link>
-              </Column>
-              <Column className="pr-[8px]">
-                <Link href="#">
-                  <Img
-                    alt="X"
-                    height="36"
-                    src="https://react.email/static/x-logo.png"
-                    width="36"
-                  />
-                </Link>
-              </Column>
-              <Column>
-                <Link href="#">
-                  <Img
-                    alt="Instagram"
-                    height="36"
-                    src="https://react.email/static/instagram-logo.png"
+                    src="https://dev.eksabajt.pl/github.png"
                     width="36"
                   />
                 </Link>
