@@ -17,7 +17,7 @@ export default function TeamSection() {
           internetowej w przystępnej cenie."
       />
 
-      <div className="flex flex-row  gap-4 flex-wrap min-w-1/2 justify-center">
+      <div className="flex flex-row  gap-4 flex-wrap min-w-1/2 max-w-7xl justify-center">
         {teamMembers.map((props, index) => (
           <TeamMemberCard key={index} {...props} />
         ))}

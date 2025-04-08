@@ -54,7 +54,7 @@ export default function TeamMemberCard({
                   height={160}
                   alt={name + "'s profile picture"}
                   src={profilePicture || "/team/member.png"}
-                  className="aspect-square object-contain p-0 bg-green-600/20 rounded-full "
+                  className="aspect-square object-contain p-2 border-2 bg-neutral-400/20 rounded-full "
                 />
               </CardContent>
               <CardDescription className="flex flex-col items-center justify-center mt-2 gap-1">
