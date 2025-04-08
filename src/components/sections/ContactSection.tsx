@@ -21,6 +21,13 @@ import SectionHeading from "../text/SectionHeading";
 import Section from "./Section";
 import contactForm from "@/lib/user-actions";
 import { ContactFormData } from "@/schemas/contactFormSchema";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
 
 // TODO refactor
 export default function Contact() {
@@ -92,19 +99,20 @@ export default function Contact() {
                     <FormItem>
                       <FormLabel>Wybierz usługę</FormLabel>
                       <FormControl>
-                        <select
-                          className="input-focus rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                          {...field}
-                        >
-                          <option disabled value="">
-                            Wybierz z listy
-                          </option>
-                          <option value="cheap">Cheap</option>
-                          <option value="landing">Landing</option>
-                          <option value="startup">Startup</option>
-                          <option value="professional">Professional</option>
-                          <option value="other">Inne</option>
-                        </select>
+                        <Select>
+                          <SelectTrigger {...field} className="w-full">
+                            <SelectValue placeholder="Theme" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="cheap">Cheap</SelectItem>
+                            <SelectItem value="landing">Landing</SelectItem>
+                            <SelectItem value="startup">Startup</SelectItem>
+                            <SelectItem value="professional">
+                              Professional
+                            </SelectItem>
+                            <SelectItem value="other">Inne</SelectItem>
+                          </SelectContent>
+                        </Select>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
