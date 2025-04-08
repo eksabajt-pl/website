@@ -16,6 +16,13 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "eksabajt.pl - developers studio",
   description: "...",
+  icons: [
+    {
+      rel: "icon",
+      type: "image/png",
+      url: "/logo.webp",
+    },
+  ],
 };
 
 export default function RootLayout({
