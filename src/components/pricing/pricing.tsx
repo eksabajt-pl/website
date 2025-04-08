@@ -13,7 +13,7 @@ import { useCallback } from "react";
 import { redirect } from "next/navigation";
 import { useFormContext } from "react-hook-form";
 type cards = {
-  tier: string;
+  tier: "cheap" | "landing" | "startup" | "professional";
   title: string;
   price: string;
   icon: React.ElementType;
@@ -21,7 +21,7 @@ type cards = {
   subtitle: string;
   features: string[];
 };
-const cardValues = [
+const cardValues: cards[] = [
   {
     tier: "cheap",
     title: "Twój Zamysł",
