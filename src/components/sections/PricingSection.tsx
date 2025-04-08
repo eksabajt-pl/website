@@ -75,7 +75,7 @@ const cardValues: PricingCardType[] = [
 
 export default function PricingSection() {
   return (
-    <div className="max-w min-h-[100vh] flex flex-col justify-start">
+    <div className="max-w min-h-[100vh] flex flex-col items-center justify-start">
       {/* Nagłówek */}
       <SectionHeading
         normal="Nasz zespół wyceni"
@@ -91,10 +91,14 @@ export default function PricingSection() {
       </div>
 
       {/* opis poza kartą */}
-      <p className="text-base font-medium m-5 text-gray-400 flex justify-center text-center">
-        *Ceny mogą się wahać zależnie od poziomu złożoności strony, dlatego
-        warto w tym wypadku najlepiej wypełnić poniższy formularz*
-      </p>
+      <div className="max-w-lg">
+        <p className="text-base m-5 text-muted-foreground flex justify-center text-center">
+          (podane ceny to ceny startowe, które mogą się różnić w zależności od
+          skomplikowania projektu. W celu uzyskania dokładnej wyceny, prosimy o
+          kontakt z naszym zespołem. Możesz to zrobić poprzez formularz
+          kontaktowy)
+        </p>
+      </div>
     </div>
   );
 }
