@@ -91,9 +91,9 @@ export default function PricingSection() {
       </div>
 
       {/* opis poza kartą */}
-      <p className="text-base font-medium m-5 text-gray-400 flex justify-center text-center">
-        *Ceny mogą się wahać zależnie od poziomu złożoności strony, dlatego
-        warto w tym wypadku najlepiej wypełnić poniższy formularz*
+      <p className="text-base m-5 text-muted-foreground flex justify-center text-center">
+        Ceny podane to ceny startowe, ostateczna cena zależy od zakresu,
+        złożoności projektu.
       </p>
     </div>
   );
