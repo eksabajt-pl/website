@@ -1,22 +1,11 @@
 "use client";
-import { PropsWithChildren, useEffect, useState } from "react";
+import { PropsWithChildren } from "react";
 import { twMerge } from "tailwind-merge";
+import { useCounter } from "../hooks/useCounter";
 
 interface BadgeProps extends PropsWithChildren {
   className?: string;
 }
-
-const useCounter = (ms = 10, max = 360, increment = 1) => {
-  const [value, setValue] = useState(0);
-  useEffect(() => {
-    const interval = setInterval(
-      () => setValue((v) => (v + increment) % max),
-      ms
-    );
-    return () => clearInterval(interval);
-  }, [increment, max, setValue, ms]);
-  return { value };
-};
 
 export default function Badge({ children, className }: BadgeProps) {
   const { value } = useCounter(10);
