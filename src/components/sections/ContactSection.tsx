@@ -99,8 +99,11 @@ export default function Contact() {
                     <FormItem>
                       <FormLabel>Wybierz usługę</FormLabel>
                       <FormControl>
-                        <Select>
-                          <SelectTrigger {...field} className="w-full">
+                        <Select
+                          onValueChange={field.onChange}
+                          value={field.value}
+                        >
+                          <SelectTrigger className="w-full">
                             <SelectValue placeholder="Inne" />
                           </SelectTrigger>
                           <SelectContent>
