@@ -6,6 +6,7 @@ import Footer from "@/components/footer/Footer";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import AboutUsSection from "@/components/sections/AboutUsSection";
 import ContactFormProvider from "./ContactFormProvider";
+import BrandWave from "@/components/pearls/BrandWave";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <ReviewsSection />
       <TeamSection />
       <ContactFormProvider />
+      <BrandWave />
       <Footer />
     </>
   );
