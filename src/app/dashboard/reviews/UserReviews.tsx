@@ -6,7 +6,7 @@ import { getCurrentUserProfile } from "@/db/profile/getCurrentUserProfile";
 import { getAllReviews } from "@/db/review/getAllReviews";
 import { BanIcon, CheckIcon, TrashIcon } from "lucide-react";
 
-function ReviewCardDecorator({ children }) {
+function ReviewCardDecorator({ children }: { children: React.ReactNode }) {
   return (
     <Card className="p-0 ">
       {children}

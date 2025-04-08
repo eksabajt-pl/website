@@ -17,7 +17,7 @@ export default function ReviewCard({
   review: SelectReview;
 }) {
   const { content, stars, createdAt } = review;
-  const { fullName, avatarUrl, registeredWith } = profile;
+  const { fullName, avatarUrl } = profile;
   return (
     <Card
       className={twMerge("flex flex-col p-4 gap-2 overflow-hidden ", className)}
@@ -41,7 +41,6 @@ export default function ReviewCard({
         <p className="text-muted-foreground text-sm">
           {new Date(createdAt).toLocaleDateString()}
         </p>
-        {/*<p>Zalogowano przez: {registeredWith}</p>*/}
       </div>
     </Card>
   );
