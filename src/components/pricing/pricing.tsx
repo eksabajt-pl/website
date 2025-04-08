@@ -1,3 +1,4 @@
+"use client";
 import CustomCard from "./cards/CustomCard";
 import { Award } from "lucide-react";
 import { Building } from "lucide-react";
@@ -8,7 +9,11 @@ import Li from "./cards/LiCard";
 import SectionHeading from "../text/SectionHeading";
 import { twMerge } from "tailwind-merge";
 import Badge from "../badge/Badge";
+import { useCallback } from "react";
+import { redirect } from "next/navigation";
+import { useFormContext } from "react-hook-form";
 type cards = {
+  tier: string;
   title: string;
   price: string;
   icon: React.ElementType;
@@ -18,6 +23,7 @@ type cards = {
 };
 const cardValues = [
   {
+    tier: "cheap",
     title: "Twój Zamysł",
     price: "Od 500 zł",
     icon: LayoutDashboard,
@@ -33,6 +39,7 @@ const cardValues = [
     ],
   },
   {
+    tier: "landing",
     title: "Landing Page",
     price: "Od 2000 zł",
     icon: Award,
@@ -48,6 +55,7 @@ const cardValues = [
     ],
   },
   {
+    tier: "startup",
     title: "Twoja Firma",
     price: "Od 4000 zł",
     icon: Building,
@@ -63,6 +71,7 @@ const cardValues = [
     ],
   },
   {
+    tier: "professional",
     title: "Zaawansowany",
     price: "Od 8000 zł",
     icon: Atom,
@@ -78,7 +87,9 @@ const cardValues = [
     ],
   },
 ];
+
 const PricingCard = ({
+  tier,
   title,
   price,
   icon: Icon,
@@ -86,6 +97,13 @@ const PricingCard = ({
   subtitle,
   features,
 }: cards) => {
+  const form = useFormContext();
+
+  const orderButtonHandler = useCallback(() => {
+    form.setValue("tier", tier);
+    redirect(`#contact`);
+  }, [tier, form]);
+
   return (
     <CustomCard
       className={twMerge(
@@ -119,7 +137,10 @@ const PricingCard = ({
           ))}
         </ul>
       </section>
-      <button className="z-1 text-sm flex-row font-bold p-1 flex justify-center items-center gap-2 bg-green-600 mx-4 cursor-pointer rounded-lg">
+      <button
+        onClick={orderButtonHandler}
+        className="z-1 text-sm flex-row font-bold p-1 flex justify-center items-center gap-2 bg-green-600 mx-4 cursor-pointer rounded-lg"
+      >
         <MailCheckIcon size={20} /> Zamów już dziś
       </button>
     </CustomCard>
