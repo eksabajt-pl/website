@@ -13,7 +13,7 @@
 }
 
 .animate-spin-cone {
-  background: conic-gradient(from var(--percent), #05df72, black);
+  background: conic-gradient(from var(--percent), #05df72, transparent);
 }
 @theme inline {
   --color-award: var(--award);
@@ -62,7 +62,9 @@
 }
 
 body {
-  transition: 200ms background-color, 200ms color;
+  transition:
+    200ms background-color,
+    200ms color;
   max-width: 100vw;
   overflow-x: hidden;
 }
