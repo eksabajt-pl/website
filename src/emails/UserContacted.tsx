@@ -2,7 +2,7 @@ import { Body, Head, Html, Section, Tailwind } from "@react-email/components";
 import Footer from "./Footer";
 import Header from "./Header";
 
-export default function ThankYouForContact({
+export default function UserContacted({
   name = "Robert",
   email = "robertplawski8@gmail.com",
   message = "Lorem ipsum dolor sit amet",
