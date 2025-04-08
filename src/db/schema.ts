@@ -17,7 +17,6 @@ export const Profile = pgTable("profile", {
   email: text("email").notNull(),
   avatarUrl: text("avatar_url").notNull(),
   userGroup: groupEnum("user_group").default("user"),
-  registeredWith: text("registered_with"),
 });
 
 export const Review = pgTable("review", {
