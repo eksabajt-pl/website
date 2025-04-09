@@ -84,7 +84,7 @@ export default function PricingSection() {
       />
 
       {/* oferta */}
-      <div className="p-8 items-center flex flex-row max-w min-h-[60vh] flex-wrap justify-center gap-4 ">
+      <div className="p-8 xl:p-2 2xl:p-5  grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 max-w min-h-[60vh] flex-wrap justify-center">
         {cardValues.map((option, index) => (
           <PricingCard key={index} {...option} />
         ))}
