@@ -1,14 +1,20 @@
 "use server";
-import { Profile, Review } from "@/db/schema";
+import { profile, review } from "@/db/schema";
 import { db } from "@/db/index";
-import { eq } from "drizzle-orm";
+import { desc, eq } from "drizzle-orm";
+import { getCurrentUserProfile } from "../profile/getCurrentUserProfile";
 
 export async function getUserReviews(userId: string) {
+  const user = await getCurrentUserProfile();
+  if (userId != user.id && user.userGroup !== "admin") {
+    return [];
+  }
   const result = await db
     .select()
-    .from(Review)
-    .where(eq(Review.userId, userId))
-    .innerJoin(Profile, eq(Profile.id, Review.userId));
+    .from(review)
+    .where(eq(review.userId, userId))
+    .innerJoin(profile, eq(profile.id, review.userId))
+    .orderBy(desc(review.createdAt));
 
   if (!result) {
     console.error("Error fetching reviews");

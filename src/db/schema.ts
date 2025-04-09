@@ -1,44 +1,57 @@
 import {
-  timestamp,
   pgTable,
-  text,
-  smallint,
   uuid,
-  pgEnum,
+  text,
+  foreignKey,
   serial,
-  boolean,
+  timestamp,
+  smallint,
+  pgEnum,
 } from "drizzle-orm/pg-core";
 
-export const groupEnum = pgEnum("user_group", ["admin", "user"]);
+export const reviewType = pgEnum("review_type", [
+  "pending",
+  "rejected",
+  "verified",
+]);
+export const userGroup = pgEnum("user_group", ["admin", "user"]);
 
-export const Profile = pgTable("profile", {
-  id: uuid("id").primaryKey(),
+export const profile = pgTable("profile", {
+  id: uuid().primaryKey().notNull(),
   fullName: text("full_name"),
-  email: text("email").notNull(),
+  email: text().notNull(),
   avatarUrl: text("avatar_url").notNull(),
-  userGroup: groupEnum("user_group").default("user"),
+  userGroup: userGroup("user_group").default("user"),
 });
 
-export const Review = pgTable("review", {
-  id: serial().primaryKey(),
-  createdAt: timestamp("created_at", { withTimezone: true })
-    .notNull()
-    .defaultNow(),
-  userId: uuid("user_id")
-    .notNull()
-    .references(() => Profile.id, { onDelete: "cascade" }),
-  content: text("content").notNull(),
-  stars: smallint("stars").notNull().default(5),
-  isVerified: boolean("is_verified").notNull().default(false),
-});
+export const review = pgTable(
+  "review",
+  {
+    id: serial().primaryKey().notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true, mode: "string" })
+      .defaultNow()
+      .notNull(),
+    userId: uuid("user_id").notNull(),
+    content: text().notNull(),
+    stars: smallint().default(5).notNull(),
+    status: reviewType("status").default("pending"),
+  },
+  (table) => [
+    foreignKey({
+      columns: [table.userId],
+      foreignColumns: [profile.id],
+      name: "review_user_id_profile_id_fk",
+    }).onDelete("cascade"),
+  ]
+);
 
-export type InsertProfile = typeof Profile.$inferInsert;
-export type SelectProfile = typeof Profile.$inferSelect;
-
-export type InsertReview = typeof Review.$inferInsert;
-export type SelectReview = typeof Review.$inferSelect;
+export type SelectProfile = typeof profile.$inferSelect;
+export type SelectReview = typeof review.$inferSelect;
 
 export type SelectReviewWithProfile = {
-  review: SelectReview;
-  profile: SelectProfile;
+  review: typeof review.$inferSelect;
+  profile: typeof profile.$inferSelect;
 };
+
+export type InsertProfile = typeof profile.$inferInsert;
+export type InsertReview = typeof review.$inferInsert;
