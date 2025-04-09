@@ -1,16 +1,16 @@
 {
-  "id": "3e79e7db-a546-48eb-9fd3-cec5de220fee",
+  "id": "e4bd09c7-c0cd-4fe5-abfa-fe5dc27304f8",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.profiles": {
-      "name": "profiles",
+    "public.profile": {
+      "name": "profile",
       "schema": "",
       "columns": {
         "id": {
           "name": "id",
-          "type": "serial",
+          "type": "uuid",
           "primaryKey": true,
           "notNull": true
         },
@@ -24,25 +24,21 @@
           "name": "email",
           "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "avatar_url": {
           "name": "avatar_url",
           "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "user_group": {
           "name": "user_group",
-          "type": "text",
+          "type": "user_group",
+          "typeSchema": "public",
           "primaryKey": false,
-          "notNull": false
-        },
-        "registered_with": {
-          "name": "registered_with",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
+          "notNull": false,
+          "default": "'user'"
         }
       },
       "indexes": {},
@@ -53,8 +49,8 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.reviews": {
-      "name": "reviews",
+    "public.review": {
+      "name": "review",
       "schema": "",
       "columns": {
         "id": {
@@ -65,14 +61,14 @@
         },
         "created_at": {
           "name": "created_at",
-          "type": "timestamp",
+          "type": "timestamp with time zone",
           "primaryKey": false,
-          "notNull": false,
+          "notNull": true,
           "default": "now()"
         },
         "user_id": {
           "name": "user_id",
-          "type": "text",
+          "type": "uuid",
           "primaryKey": false,
           "notNull": true
         },
@@ -80,22 +76,29 @@
           "name": "content",
           "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "stars": {
           "name": "stars",
-          "type": "integer",
+          "type": "smallint",
           "primaryKey": false,
-          "notNull": false,
+          "notNull": true,
           "default": 5
+        },
+        "is_verified": {
+          "name": "is_verified",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
         }
       },
       "indexes": {},
       "foreignKeys": {
-        "reviews_user_id_profiles_id_fk": {
-          "name": "reviews_user_id_profiles_id_fk",
-          "tableFrom": "reviews",
-          "tableTo": "profiles",
+        "review_user_id_profile_id_fk": {
+          "name": "review_user_id_profile_id_fk",
+          "tableFrom": "review",
+          "tableTo": "profile",
           "columnsFrom": [
             "user_id"
           ],
@@ -113,7 +116,16 @@
       "isRLSEnabled": false
     }
   },
-  "enums": {},
+  "enums": {
+    "public.user_group": {
+      "name": "user_group",
+      "schema": "public",
+      "values": [
+        "admin",
+        "user"
+      ]
+    }
+  },
   "schemas": {},
   "sequences": {},
   "roles": {},
