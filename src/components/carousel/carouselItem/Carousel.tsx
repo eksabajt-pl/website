@@ -24,7 +24,7 @@ const CarouselSlot: React.FC<MyComponentProps> = ({
       <CarouselItem className="1/2 flex items-center justify-center">
         <div className="w-110 h-130 border-3 border-green-600 rounded-3xl">
           <div className="w-full h-3/6 rounded-t-2xl flex items-center bg-[#32a834] p-3 gap-4 relative">
-            <img src={banner} className="h-full w-full rounded-3xl" />
+            <img src={banner} className="h-full w-full rounded-3xl"/>
             <div className="h-22 w-22 z-10 bg-white absolute border-8 border-[#32a834] rounded-xl top-50 left-80">
               <img src={logo} className="h-full w-full rounded-sm" />
             </div>

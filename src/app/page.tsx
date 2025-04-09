@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Header from "@/components/header/Header";
 import ReviewsSection from "@/components/sections/ReviewSection";
 import ContactSection from "@/components/sections/ContactSection";
@@ -8,22 +8,19 @@ import Footer from "@/components/footer/Footer";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import AboutUsSection from "@/components/sections/AboutUsSection";
 import PricingSection from "@/components/sections/PricingSection";
-import Link from "next/link";
-
 
 export default function Home() {
-  return (
-    <>
-      <Header />
-      <HeroSection />
-      <AboutUsSection />
-      <ProjectsSection />
-      <ReviewsSection />
-      <TeamSection />
-      <PricingSection/>
-      <ContactSection />
-      <Footer />
-      
-    </>
-  );
+	return (
+		<>
+			<Header />
+			<HeroSection />
+			<AboutUsSection />
+			<ProjectsSection />
+			<ReviewsSection />
+			<TeamSection />
+			<PricingSection />
+			<ContactSection />
+			<Footer />
+		</>
+	);
 }
