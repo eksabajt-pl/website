@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { reviewFormSchema } from "@/schemas/reviewFormSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import reviewForm from "@/lib/user-actions";
+import { reviewForm } from "@/lib/user-actions";
 import { Loader2 } from "lucide-react";
 
 export function ReviewForm() {

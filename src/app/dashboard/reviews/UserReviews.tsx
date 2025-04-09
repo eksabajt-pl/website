@@ -34,7 +34,6 @@ export default async function UserReviews() {
     return;
   }
   const reviews = await getAllReviews();
-  console.log(reviews);
   return reviews.map((value, key) => (
     <ReviewCardDecorator key={key}>
       <ReviewCard className="border-0" key={key} {...value} />

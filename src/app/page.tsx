@@ -7,6 +7,7 @@ import ProjectsSection from "@/components/sections/ProjectsSection";
 import AboutUsSection from "@/components/sections/AboutUsSection";
 import ContactFormProvider from "./ContactFormProvider";
 import BrandWave from "@/components/pearls/BrandWave";
+import { Suspense } from "react";
 
 export default function Home() {
   return (

@@ -58,7 +58,7 @@ export async function signout() {
 
   const { error } = await (await supabase).auth.signOut();
   if (error) {
-    console.log(error);
+    console.error(error);
     redirect("/error");
   }
 
@@ -74,7 +74,7 @@ export async function signInWithOAuth(
   ).auth.signInWithOAuth({
     provider,
     options: {
-      redirectTo: process.env.AUTH_REDIRECT_URL + "/auth/callback" ,
+      redirectTo: process.env.AUTH_REDIRECT_URL + "/auth/callback",
       queryParams: {
         access_type: "offline",
         prompt: "consent",
@@ -83,7 +83,7 @@ export async function signInWithOAuth(
   });
 
   if (error) {
-    console.log(error);
+    console.error(error);
     redirect("/error");
   }
 

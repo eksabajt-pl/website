@@ -16,7 +16,7 @@ export interface ReviewFormSchema {
   content: string;
 }
 
-export default async function reviewForm(formData: ReviewFormSchema) {
+export async function reviewForm(formData: ReviewFormSchema) {
   const supabase = await createClient();
   const user = (await supabase.auth.getUser()).data.user;
 
@@ -30,13 +30,13 @@ export default async function reviewForm(formData: ReviewFormSchema) {
   };
 
   await insertReview(review);
-  revalidatePath("/dashboard/reviews","page");
+  revalidatePath("/dashboard/reviews", "page");
   revalidatePath("/", "page");
 }
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export default async function contactForm(formData: ContactFormData) {
+export async function contactForm(formData: ContactFormData) {
   const { tier, username, email, message } = formData;
   await resend.emails.send({
     from: "Kontakt <kontakt@eksabajt.pl>",
@@ -52,5 +52,5 @@ export default async function contactForm(formData: ContactFormData) {
     react: UserContacted({ name: username, email, message, topic: tier }),
   });
 
-  console.log(error);
+  console.error(error);
 }
