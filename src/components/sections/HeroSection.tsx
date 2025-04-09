@@ -5,8 +5,6 @@ import TextGradient from "../text/TextGradient";
 export default function HeroSection() {
 	return (
 		<section className="font-sans relative gap-8 p-8 flex flex-col gap-4 min-h-[80vh] items-center justify-center">
-			<div className="-z-20 w-auto h-[40rem] top-[50%] -translate-y-[50%] aspect-square absolute rounded-full  dark:bg-green-500/10 blur-[10rem]"></div>
-
 			<div className="flex  flex-row gap-4 text-5xl justify-center flex-wrap">
 				<Fade triggerOnce cascade damping={0.05}>
 					Czym jest
