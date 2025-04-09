@@ -1,8 +1,24 @@
 "use server";
 
+import { changeUserGroup } from "@/db/profile/changeUserGroup";
+import { deleteUserProfile } from "@/db/profile/deleteUserProfile";
 import { changeReviewStatus } from "@/db/review/changeReviewStatus";
 import { deleteReview } from "@/db/review/deleteReview";
 import { revalidatePath } from "next/cache";
+
+export async function deleteUserProfileAction(userId: string) {
+  await deleteUserProfile(userId);
+  revalidatePath("/dashboard/users", "page");
+  revalidatePath("/", "page");
+}
+
+export async function changeUserGroupAction(
+  userId: string,
+  userGroup: "user" | "admin"
+) {
+  await changeUserGroup(userId, userGroup);
+  revalidatePath("/dashboard/users", "page");
+}
 
 export async function rejectReviewWithId(reviewId: number) {
   await changeReviewStatus(reviewId, "rejected");
