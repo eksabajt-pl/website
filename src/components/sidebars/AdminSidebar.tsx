@@ -1,9 +1,6 @@
 "use client";
 
-import {
-  LucideEye,
-  LucideMessageCircleReply,
-} from "lucide-react";
+import { LucideEye, LucideMessageCircleReply, LucideUser } from "lucide-react";
 
 import { DashboardPage, DashboardSidebar } from "./DashboardSidebar";
 
@@ -14,6 +11,7 @@ const pages: DashboardPage[] = [
     icon: <LucideEye />,
   },
   { name: "Reviews", path: "/reviews", icon: <LucideMessageCircleReply /> },
+  { name: "Users", path: "/users", icon: <LucideUser /> },
   /*{
     name: "Content management",
     path: "/content-management",
