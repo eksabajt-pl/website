@@ -23,7 +23,7 @@ export default function Home() {
       <PricingSection/>
       <ContactSection />
       <Footer />
-      <Link href="/feedback">Go to Feedback Page 2</Link>
+      
     </>
   );
 }
