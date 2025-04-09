@@ -1,12 +1,8 @@
 "use server";
 import { InsertReview, review } from "@/db/schema";
 import { db } from "@/db/index";
-import { getCurrentUserProfile } from "../profile/getCurrentUserProfile";
 
 export async function insertReview(data: InsertReview) {
-  const user = await getCurrentUserProfile();
-  if (user.userGroup !== "admin") {
-    return [];
-  }
+  data.status = "pending";
   await db.insert(review).values(data);
 }
