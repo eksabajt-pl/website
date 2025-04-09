@@ -5,7 +5,7 @@ export default function Footer() {
         <div className="w-full text-sm sm:text-base flex flex-col text-center sm:text-left sm:flex-row items-center sm:items-start justify-center gap-8 sm:gap-32">
           <div className="h-full flex flex-col justify-start pl-3 gap-3">
             <h5 className="font-bold">Kontakt</h5>
-            <a href="">Github</a>
+            <a href="https://github.com/eksabajt-pl">Github</a>
             <a href="mailto:kontakt@eksabajt.pl">E-mail</a>
           </div>
           <div className="h-full flex flex-col justify-start pl-3 gap-3">
@@ -19,7 +19,7 @@ export default function Footer() {
           </div>
           <nav className="h-full flex flex-col justify-start pl-3 gap-3">
             <h5 className="font-bold">Nawigacja</h5>
-            <a href="#home">Home</a>
+            <a href="#">Home</a>
             <a href="#about-us">About us</a>
             <a href="#team">Team</a>
             <a href="#reviews">Reviews</a>
