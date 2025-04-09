@@ -21,7 +21,7 @@ export function ModerateUserReviewDecorator({
   return (
     <Card className="p-0 ">
       {children}
-      <div className="p-4 -mt-10 grid grid-cols-3 gap-2">
+      <div className="p-4 -mt-10 grid grid-cols-1 sm:grid-cols-3 gap-2">
         <AsyncButton
           className="flex-1 cursor-pointer"
           action={async () => await rejectReviewWithId(review.id)}

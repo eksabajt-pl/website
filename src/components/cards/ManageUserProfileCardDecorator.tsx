@@ -19,7 +19,7 @@ export function ManageUserProfileCardDecorator({
   return (
     <Card className="p-0 ">
       {children}
-      <div className="p-4 grid grid-cols-2 -mt-10 flex overflow-hidden flex-wrap flex-row gap-2">
+      <div className="p-4 grid grid-cols-1 sm:grid-cols-2 -mt-10 flex overflow-hidden flex-wrap flex-row gap-2">
         <AsyncButton
           className=" cursor-pointer"
           action={async () => changeUserGroupAction(id, "admin")}
