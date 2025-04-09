@@ -2,6 +2,64 @@ import { SelectProfile, SelectReview } from "@/db/schema";
 import { Card } from "../ui/card";
 import ReviewStars from "../stars/ReviewStars";
 import { twMerge } from "tailwind-merge";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "../ui/tooltip";
+import {
+  LucideBan,
+  LucideHourglass,
+  LucideMessageCircleQuestion,
+  LucideVerified,
+} from "lucide-react";
+
+const ReviewVerifiedTooltip = () => {
+  return (
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger>
+          {" "}
+          <LucideVerified />
+        </TooltipTrigger>
+        <TooltipContent>
+          Zatwierdzono treść jako zgodną z regulaminem
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  );
+};
+
+const ReviewRejectedTooltip = () => {
+  return (
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger>
+          {" "}
+          <LucideBan />
+        </TooltipTrigger>
+        <TooltipContent>
+          Treść odrzucona, niezgodna z regulaminem
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  );
+};
+
+const ReviewNotVerifiedTooltip = () => {
+  return (
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger>
+          {" "}
+          <LucideHourglass />
+        </TooltipTrigger>
+        <TooltipContent>Oczekiwanie na zatwierdzenie treści</TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  );
+};
 
 {
   /*<div className="flex-1 h-full min-w-[0rem] w-[85vw] max-w-lg   bg-neutral-200/20  dark:bg-neutral-800/40 backdrop-blur-sm border-1 dark:border-neutral-400/40 border-neutral-400/30 m-2 rounded-2xl p-4 sm:p-6 md:p-8  flex flex-col gap-1  ">
@@ -16,7 +74,7 @@ export default function ReviewCard({
   profile: SelectProfile;
   review: SelectReview;
 }) {
-  const { content, stars, createdAt } = review;
+  const { content, stars, createdAt, status } = review;
   const { fullName, avatarUrl } = profile;
   return (
     <Card
@@ -41,6 +99,15 @@ export default function ReviewCard({
         <p className="text-muted-foreground text-sm">
           {new Date(createdAt).toLocaleDateString()}
         </p>
+        {status === "verified" ? (
+          <ReviewVerifiedTooltip />
+        ) : status === "pending" ? (
+          <ReviewNotVerifiedTooltip />
+        ) : status === "rejected" ? (
+          <ReviewRejectedTooltip />
+        ) : (
+          <LucideMessageCircleQuestion />
+        )}
       </div>
     </Card>
   );

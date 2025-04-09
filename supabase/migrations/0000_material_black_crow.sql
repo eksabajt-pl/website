@@ -1,4 +1,5 @@
 CREATE TYPE "public"."user_group" AS ENUM('admin', 'user');--> statement-breakpoint
+CREATE TYPE "public"."review_status" AS ENUM('approved', 'rejected', 'pending');--> statement-breakpoint
 CREATE TABLE "profile" (
 	"id" uuid PRIMARY KEY NOT NULL,
 	"full_name" text,

@@ -1,9 +1,9 @@
 import { ReviewForm } from "@/components/forms/ReviewForm";
-import CurrentUserReviews from "./CurrentUserReviews";
+import CurrentUserReviews from "../../../components/reviews/CurrentUserReviews";
 import BentoCard from "@/components/cards/BentoCard";
-import UserReviews from "./UserReviews";
-import IsAdmin from "./IsAdmin";
+import IsAdmin from "@/components/auth/IsAdmin";
 import { Suspense } from "react";
+import ModerateUserReviews from "@/components/reviews/ModerateUserReviews";
 
 export default function Page() {
   return (
@@ -20,7 +20,7 @@ export default function Page() {
       <Suspense>
         <IsAdmin>
           <BentoCard className="sm:row-span-2 " title="All reviews">
-            <UserReviews />
+            <ModerateUserReviews />
           </BentoCard>
         </IsAdmin>
       </Suspense>

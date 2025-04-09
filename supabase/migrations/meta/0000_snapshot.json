@@ -1,5 +1,5 @@
 {
-  "id": "e4bd09c7-c0cd-4fe5-abfa-fe5dc27304f8",
+  "id": "93381809-930c-4e73-91ec-0b45b42179cb",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -123,6 +123,15 @@
       "values": [
         "admin",
         "user"
+      ]
+    },
+    "public.review_status": {
+      "name": "review_status",
+      "schema": "public",
+      "values": [
+        "approved",
+        "rejected",
+        "pending"
       ]
     }
   },
