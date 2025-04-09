@@ -19,7 +19,7 @@ export default function Badge({ children, className }: BadgeProps) {
     >
       <div
         className={
-          "bg-neutral-900 rounded-lg text-white p-2 text-nowrap text-center"
+          "bg-background rounded-lg text-foreground p-2 text-nowrap text-center"
         }
       >
         {children}
