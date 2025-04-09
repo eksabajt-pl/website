@@ -19,7 +19,7 @@ import { Loader2, MailIcon, Send } from "lucide-react";
 import { Label } from "../ui/label";
 import SectionHeading from "../text/SectionHeading";
 import Section from "./Section";
-import contactForm from "@/lib/user-actions";
+import { contactForm } from "@/lib/user-actions";
 import { ContactFormData } from "@/schemas/contactFormSchema";
 import {
   Select,
@@ -29,7 +29,6 @@ import {
   SelectValue,
 } from "../ui/select";
 
-// TODO refactor
 export default function Contact() {
   const form = useFormContext<ContactFormData>();
   const {

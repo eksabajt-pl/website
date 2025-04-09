@@ -1,48 +1,26 @@
-"use client";
-
-import useReviews from "../hooks/useReviews";
-import Marquee from "react-fast-marquee";
-import { ReviewType } from "../types/ReviewType";
-import { useTheme } from "next-themes";
-import { useMediaQuery } from "react-responsive";
-import { useMemo } from "react";
-import SectionHeading from "../text/SectionHeading";
-import ReviewCard from "../cards/ReviewCard";
+"use client"
 import Section from "./Section";
+import { ReviewMarquee } from "../marquee/SectionMarquee";
+import { getAllReviews } from "@/db/review/getAllReviews";
+import SectionHeading from "../text/SectionHeading";
+import { useEffect, useMemo, useState } from "react";
+import { SelectReviewWithProfile } from "@/db/schema";
 
-type ReviewMarqueeProps = {
-  reviews: ReviewType[];
-  reversed?: boolean;
-};
+const useReviews = () => {
+  const [reviews,setReviews] = useState<SelectReviewWithProfile[]>([]);
+  useEffect(()=>{
+    getAllReviews().then((data)=>setReviews(data))
+  },[setReviews])
 
-function ReviewMarquee({ reviews, reversed = false }: ReviewMarqueeProps) {
-  const { resolvedTheme } = useTheme();
-  const isMobile = useMediaQuery({ maxWidth: 512 });
-  return (
-    <div className="flex flex-row">
-      <Marquee
-        autoFill={true}
-        gradientWidth={isMobile ? 20 : 200}
-        gradientColor={resolvedTheme == "dark" ? "black" : "white"}
-        direction={reversed ? "right" : "left"}
-        pauseOnHover={true}
-        gradient={true}
-        className=" w-[100%] h-42 flex  overflow-hidden"
-      >
-        {reviews?.map((value, index) => {
-          return <ReviewCard key={index} {...value} />;
-        })}
-      </Marquee>
-    </div>
-  );
+  const half = useMemo(()=>Math.ceil(reviews.length / 2),[reviews]);
+  const firstHalf = useMemo(()=>reviews.slice(0, half), [reviews,half]);
+  const secondHalf = useMemo(()=>reviews.slice(half), [reviews,half]);
+
+  return {reviews, firstHalf, secondHalf};
 }
 
-function ReviewSection() {
-  const { reviews } = useReviews();
-
-  const half = useMemo(() => Math.ceil(reviews.length / 2), [reviews]);
-  const firstHalf = useMemo(() => reviews.slice(0, half), [reviews, half]);
-  const secondHalf = useMemo(() => reviews.slice(half), [reviews, half]);
+export function ReviewSection() {
+  const {firstHalf, secondHalf} = useReviews();
 
   return (
     <Section id="reviews">
@@ -52,6 +30,7 @@ function ReviewSection() {
           emphasis="Nasi klienci"
           description="*wszystkie recenzje mają charakter poglądowy, nie należy ich traktować na poważnie - one nie istnieją"
         />
+
         <div className="flex flex-col overflow-hidden">
           <ReviewMarquee reviews={firstHalf} />
           <ReviewMarquee reversed={true} reviews={secondHalf} />

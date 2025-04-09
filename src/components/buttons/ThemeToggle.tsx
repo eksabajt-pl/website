@@ -3,6 +3,7 @@
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
+import HeaderButton from "./HeaderButton";
 
 export function ThemeToggle() {
   const { setTheme, resolvedTheme } = useTheme();
@@ -17,12 +18,11 @@ export function ThemeToggle() {
   }
 
   return (
-    <button
+    <HeaderButton
       aria-label="Change theme button"
-      className="p-2 bg-buttons text-textPrimary rounded cursor-pointer"
       onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
     >
       {resolvedTheme === "dark" ? <Sun /> : <Moon />}
-    </button>
+    </HeaderButton>
   );
 }
