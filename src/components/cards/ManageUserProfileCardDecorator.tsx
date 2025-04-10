@@ -1,6 +1,10 @@
 "use client";
 import { SelectProfile } from "@/db/schema";
-import { banUserAction, changeUserGroupAction } from "@/lib/admin-actions";
+import {
+  banUserAction,
+  changeUserGroupAction,
+  deleteUnverifiedUserReviewsAction,
+} from "@/lib/admin-actions";
 import { BanIcon, ShieldIcon, TrashIcon, UserIcon } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import AsyncButton from "../buttons/AsyncButton";
@@ -49,7 +53,7 @@ export function ManageUserProfileCardDecorator({
         </AsyncButton>
         <AsyncButton
           className="cursor-pointer "
-          action={async () => deleteUsersUnverifiedReviews(id)}
+          action={async () => deleteUnverifiedUserReviewsAction(id)}
         >
           <TrashIcon />
           Delete unverified

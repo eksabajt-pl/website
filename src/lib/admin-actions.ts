@@ -7,6 +7,7 @@ import { getCurrentUserProfile } from "@/db/profile/getCurrentUserProfile";
 import { getUserProfile } from "@/db/profile/getUserProfile";
 import { changeReviewStatus } from "@/db/review/changeReviewStatus";
 import { deleteReview } from "@/db/review/deleteReview";
+import { deleteUnverifiedUserReviews } from "@/db/review/deleteUnverifiedUserReviews";
 import { revalidatePath } from "next/cache";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -44,6 +45,12 @@ export async function verifyReviewWithId(reviewId: number) {
 export async function deleteReviewWithId(reviewId: number) {
   await deleteReview(reviewId);
   revalidatePath("/dashboard/reviews", "page");
+  revalidatePath("/", "page");
+}
+
+export async function deleteUnverifiedUserReviewsAction(userId: string) {
+  await deleteUnverifiedUserReviews(userId);
+  revalidatePath("/dashboard/users", "page");
   revalidatePath("/", "page");
 }
 
