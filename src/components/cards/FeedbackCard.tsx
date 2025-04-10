@@ -8,7 +8,6 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
-import { useEffect } from "react";
 import {
 	Popover,
 	PopoverContent,
@@ -32,30 +31,7 @@ import StarsBox from "../starsBox/StarsBox";
 export default function FeedbackCard() {
 	const [open, setOpen] = React.useState(false);
 	const [value, setValue] = React.useState("");
-	useEffect(() => {
-		const starContainers = document.querySelectorAll<HTMLElement>(".flex-row");
-		starContainers.forEach(container => {
-			const stars = container.querySelectorAll<HTMLElement>(".star");
-			const handleClick = (event: Event) => {
-				const star = event.currentTarget as HTMLElement;
-				const value = parseInt(star.getAttribute("values") || "0") || 5;
-				stars.forEach((s, index) => {
-					s.style.color = index < value ? "gold" : "white";
-					s.style.fill = index < value ? "gold" : "";
-				});
-			};
-
-			stars.forEach(star => {
-				star.addEventListener("click", handleClick);
-			});
-
-			return () => {
-				stars.forEach(star => {
-					star.removeEventListener("click", handleClick);
-				});
-			};
-		});
-	}, []);
+	
 
 	const frameworks = [
 		{
@@ -78,7 +54,7 @@ export default function FeedbackCard() {
 
 	return (
 		<>
-			<Card className="max-w-120 min-h-90 flex flex-col gap-4 m-4">
+			<Card className="max-w-120 min-h-120 flex flex-col gap-4 m-4">
 				<CardHeader>
 					<CardTitle>Ocena produktu</CardTitle>
 					<CardDescription>Oceń nasz produkt, obsługę i cenę</CardDescription>
@@ -131,15 +107,15 @@ export default function FeedbackCard() {
 						</PopoverContent>
 					</Popover>
 					<div className="flex flex-col items-center text-center">
-						<p className="m-2">Oceń jakość wykonania swojego projektu</p>
+						<p className="m-2 mt-0">Oceń jakość wykonania swojego projektu</p>
 						<StarsBox />
 						<hr className="m-2 w-60" />
-						<p className="w-full m-2">
+						<p className="w-full m-2 mt-0">
 							W jakim stopniu cena była odpowiednia do jakości?
 						</p>
 						<StarsBox />
 						<hr className="m-2 w-60" />
-						<p className="m-2">Jak oceniasz całokształt naszej usługi?</p>
+						<p className="m-2 mt-0">Jak oceniasz całokształt naszej usługi?</p>
 						<StarsBox />
 					</div>
 					<Textarea placeholder="Opisz swoje doświadczenia z naszą usługą..." />
