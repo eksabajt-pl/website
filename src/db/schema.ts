@@ -7,8 +7,8 @@ import {
   timestamp,
   smallint,
   pgEnum,
+  integer,
 } from "drizzle-orm/pg-core";
-
 export const reviewType = pgEnum("review_type", [
   "pending",
   "rejected",
@@ -44,7 +44,17 @@ export const review = pgTable(
     }).onDelete("cascade"),
   ]
 );
-
+export const project = pgTable("project", {
+  id: serial().primaryKey().notNull(),
+  created_at: timestamp("created_at", { withTimezone: true }),
+  user_id: uuid("user_id"),
+  type: text("type"),
+  phase: text("phase"),
+  link: text("link"),
+  price: integer(),
+  email: text(),
+});
+export type SelectProject = typeof project.$inferSelect;
 export type SelectProfile = typeof profile.$inferSelect;
 export type SelectReview = typeof review.$inferSelect;
 
@@ -52,6 +62,10 @@ export type SelectReviewWithProfile = {
   review: typeof review.$inferSelect;
   profile: typeof profile.$inferSelect;
 };
-
+export type SelectProjectWithProfile = {
+  Project: typeof project.$inferSelect;
+  Profile: typeof profile.$inferSelect;
+};
+export type InsertProject = typeof project.$inferInsert;
 export type InsertProfile = typeof profile.$inferInsert;
 export type InsertReview = typeof review.$inferInsert;

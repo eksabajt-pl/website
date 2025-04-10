@@ -2,6 +2,7 @@
 
 import { useMediaQuery } from "react-responsive";
 import { ThemeToggle } from "../buttons/ThemeToggle";
+import { useState, useEffect } from "react";
 import useLiftOff from "../hooks/useLiftOff";
 import { Code2, LucideArrowLeftCircle } from "lucide-react";
 import HeaderButton from "../buttons/HeaderButton";
@@ -10,8 +11,12 @@ import LogOutButton from "../buttons/LogOutButton";
 
 export default function DashboardHeader() {
   const { liftOff } = useLiftOff();
+  const [isMounted, setIsMounted] = useState(false);
   const isMobile = useMediaQuery({ maxWidth: 384 });
-
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+  if (!isMounted) return null;
   return (
     <div
       className={`bg-neutral-100 dark:bg-neutral-900 flex-row flex items-center justify-center sticky top-0 left-0 z-10 w-full  dark:border-neutral-800 border-neutral-300 p-4  border-b-0 ${

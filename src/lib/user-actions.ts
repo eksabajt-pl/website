@@ -1,7 +1,7 @@
 "use server";
 
 import { insertReview } from "@/db/review/insertReview";
-import { InsertReview } from "@/db/schema";
+import { InsertProject, InsertReview } from "@/db/schema";
 import { createClient } from "@/utils/supabase/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
@@ -10,12 +10,35 @@ import { ContactFormData } from "@/schemas/contactFormSchema";
 import { Resend } from "resend";
 import ThankYouForContact from "@/emails/ThankYouForContact";
 import UserContacted from "@/emails/UserContacted";
+import InsertProjectFn from "@/db/project/InsertProjectFn";
 
 export interface ReviewFormSchema {
   stars: number;
   content: string;
 }
-
+export type ProjectFormSchema = {
+  email: string;
+  type: string;
+  price: number;
+};
+export async function projectForm(formData: ProjectFormSchema) {
+  console.log("projectForm called with data:", formData); // Ensure this logs
+  const supabase = await createClient();
+  console.log("Supabase client initialized:", supabase);
+  const verify = (await supabase.auth.getUser()).data.user;
+  console.log("verify:", verify);
+  if (!verify) {
+    console.log("redirected");
+    redirect("/login");
+  }
+  const review: InsertProject = {
+    user_id: verify.id,
+    ...formData,
+  };
+  await InsertProjectFn(review);
+  revalidatePath("/dashboard/projects", "page");
+  revalidatePath("/", "page");
+}
 export async function reviewForm(formData: ReviewFormSchema) {
   const supabase = await createClient();
   const user = (await supabase.auth.getUser()).data.user;

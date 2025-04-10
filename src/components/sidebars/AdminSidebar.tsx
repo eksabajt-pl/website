@@ -2,6 +2,7 @@
 
 import {
   LucideEye,
+  LucideProjector,
   LucideMessageCircleReply,
 } from "lucide-react";
 
@@ -14,11 +15,12 @@ const pages: DashboardPage[] = [
     icon: <LucideEye />,
   },
   { name: "Reviews", path: "/reviews", icon: <LucideMessageCircleReply /> },
-  /*{
-    name: "Content management",
-    path: "/content-management",
-    icon: <LucideText />,
+  {
+    name: "Projects",
+    path: "/projects",
+    icon: <LucideProjector />,
   },
+  /*
   { name: "Analytics", path: "/analytics", icon: <LucideCircleGauge /> },
   {
     name: "Settings",
