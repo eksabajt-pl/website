@@ -25,7 +25,7 @@ const GetAllProjects = async () => {
     return [];
   }
   return (
-    <div className="grid grid-cols-4 w-full">
+    <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 w-full">
       {result.map((item, key): Iterable<React.ReactNode> => {
         return [
           <ProjectCard
