@@ -1,48 +1,27 @@
 "use client";
-
-import useReviews from "../hooks/useReviews";
-import Marquee from "react-fast-marquee";
-import { ReviewType } from "../types/ReviewType";
-import { useTheme } from "next-themes";
-import { useMediaQuery } from "react-responsive";
-import { useMemo } from "react";
-import SectionHeading from "../text/SectionHeading";
-import ReviewCard from "../cards/ReviewCard";
 import Section from "./Section";
+import { ReviewMarquee } from "../marquee/SectionMarquee";
+import SectionHeading from "../text/SectionHeading";
+import { useEffect, useMemo, useState } from "react";
+import { SelectReviewWithProfile } from "@/db/schema";
+import { getVerifiedReviews } from "@/db/review/getVerifiedReviews";
+import { HourglassIcon } from "lucide-react";
 
-type ReviewMarqueeProps = {
-  reviews: ReviewType[];
-  reversed?: boolean;
-};
-
-function ReviewMarquee({ reviews, reversed = false }: ReviewMarqueeProps) {
-  const { resolvedTheme } = useTheme();
-  const isMobile = useMediaQuery({ maxWidth: 512 });
-  return (
-    <div className="flex flex-row">
-      <Marquee
-        autoFill={true}
-        gradientWidth={isMobile ? 20 : 200}
-        gradientColor={resolvedTheme == "dark" ? "black" : "white"}
-        direction={reversed ? "right" : "left"}
-        pauseOnHover={true}
-        gradient={true}
-        className=" w-[100%] h-42 flex  overflow-hidden"
-      >
-        {reviews?.map((value, index) => {
-          return <ReviewCard key={index} {...value} />;
-        })}
-      </Marquee>
-    </div>
-  );
-}
-
-function ReviewSection() {
-  const { reviews } = useReviews();
+const useReviews = () => {
+  const [reviews, setReviews] = useState<SelectReviewWithProfile[]>([]);
+  useEffect(() => {
+    getVerifiedReviews().then((data) => setReviews(data));
+  }, [setReviews]);
 
   const half = useMemo(() => Math.ceil(reviews.length / 2), [reviews]);
   const firstHalf = useMemo(() => reviews.slice(0, half), [reviews, half]);
   const secondHalf = useMemo(() => reviews.slice(half), [reviews, half]);
+
+  return { reviews, firstHalf, secondHalf };
+};
+
+export function ReviewSection() {
+  const { reviews, firstHalf, secondHalf } = useReviews();
 
   return (
     <Section id="reviews">
@@ -50,9 +29,15 @@ function ReviewSection() {
         <SectionHeading
           normal="Co myślą o nas"
           emphasis="Nasi klienci"
-          description="*wszystkie recenzje mają charakter poglądowy, nie należy ich traktować na poważnie - one nie istnieją"
+          description="Wszystkie recenzje zostały napisane przez użytkowników, napisz swoją poprzez sekcje w panelu klienta, lub poprzez link z emaila. Uwaga, recenzje niezgodne z regulaminem, nie będą pokazywane na stronie głównej, zapoznaj się z regulaminem na eksabajt.pl/regulamin"
         />
-        <div className="flex flex-col overflow-hidden">
+
+        <div className="flex flex-col overflow-hidden w-screen relative">
+          {reviews.length === 0 && (
+            <p className="flex flex-row gap-4 text-muted-foreground absolute top-[50%] left-[50%] -translate-x-[50%]">
+              <HourglassIcon /> Czekamy na twoją opinię...
+            </p>
+          )}
           <ReviewMarquee reviews={firstHalf} />
           <ReviewMarquee reversed={true} reviews={secondHalf} />
         </div>

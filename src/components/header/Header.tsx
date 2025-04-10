@@ -5,6 +5,8 @@ import { ThemeToggle } from "../buttons/ThemeToggle";
 import useLiftOff from "../hooks/useLiftOff";
 import { Code2 } from "lucide-react";
 import ContactIconButton from "../buttons/ContactIconButton";
+import AdminDashboardButton from "../buttons/AdminDashboardButton";
+import Link from "next/link";
 
 export default function Header() {
   const { liftOff } = useLiftOff();
@@ -19,15 +21,16 @@ export default function Header() {
       }`}
     >
       <div className="flex flex-row justify-between max-w-7xl w-full items-center">
-        <a href="#">
+        <Link href="/#">
           <div className="font-mono flex flex-row gap-2 items-center">
             <div className="p-1 font-bold max-w-md text-white flex flex-row gap-2 bg-green-600 hover:bg-green-500 transition-color cursor-pointer rounded-sm">
               <Code2 />
             </div>
             {!isMobile && <span>eksabajt.pl</span>}
           </div>
-        </a>
+        </Link>
         <div className="flex flex-row gap-1">
+          <AdminDashboardButton />
           <ThemeToggle />
           <ContactIconButton />
         </div>

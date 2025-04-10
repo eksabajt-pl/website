@@ -1,18 +1,17 @@
-"use client";
-
 import { useEffect, useState } from "react";
-import reviewsData from "./reviews.json";
-import { ReviewType } from "../types/ReviewType";
+import { getAllReviews } from "@/db/review/getAllReviews";
+import { SelectReviewWithProfile } from "@/db/schema";
 
 export default function useReviews() {
-	const [reviews, setReviews] = useState<ReviewType[]>(reviewsData);
-	const [loading, setLoading] = useState<boolean>(false);
+  const [reviews, setReviews] = useState<SelectReviewWithProfile[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
-	useEffect(() => {
-		setLoading(true);
-		setReviews(reviewsData);
-		setLoading(false);
-	}, [loading]);
+  useEffect(() => {
+    setLoading(true);
+    getAllReviews()
+      .then((data) => setReviews(data as SelectReviewWithProfile[]))
+      .finally(() => setLoading(false));
+  }, [setLoading]);
 
-	return { loading, reviews };
+  return { loading, reviews };
 }
