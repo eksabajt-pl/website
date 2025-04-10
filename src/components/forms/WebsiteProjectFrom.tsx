@@ -1,8 +1,8 @@
 "use client";
 import { useForm, useFormState } from "react-hook-form";
-import { projectForm } from "@/lib/admin-actions";
+import { WebsiteprojectForm } from "@/lib/admin-actions";
 import { zodResolver } from "@hookform/resolvers/zod";
-import ProjectFormSchema from "@/schemas/projectFormSchema";
+import WebsiteProjectSchema from "@/schemas/WebsiteProjectSchema";
 import { Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import {
@@ -15,13 +15,13 @@ import {
 } from "../ui/form";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-const UserProjectForm = () => {
+const WebsiteProjectForm = () => {
   const form = useForm({
-    resolver: zodResolver(ProjectFormSchema),
+    resolver: zodResolver(WebsiteProjectSchema),
     defaultValues: {
-      email: "",
-      type: "Cheap",
-      price: 0,
+      Title: "",
+      Description: "",
+      Link: "",
     },
   });
   const [mount, setMount] = useState(true);
@@ -38,8 +38,8 @@ const UserProjectForm = () => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(async (data) => {
-          await projectForm(data);
-          form.reset({ email: "", price: 0, type: "Cheap" });
+          await WebsiteprojectForm(data);
+          form.reset({ Title: "" });
         })}
         className="space-y-8  "
       >
@@ -47,10 +47,10 @@ const UserProjectForm = () => {
           <div className="grid gap-2">
             <FormField
               control={form.control}
-              name="email"
+              name="Title"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>Title</FormLabel>
                   <FormControl>
                     <Input
                       type="text"
@@ -65,15 +65,15 @@ const UserProjectForm = () => {
             />
             <FormField
               control={form.control}
-              name="price"
+              name="Description"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Price</FormLabel>
+                  <FormLabel>Description</FormLabel>
                   <FormControl>
                     <Input
-                      type="number"
+                      type="text"
                       className="input-focus"
-                      placeholder={"250"}
+                      placeholder={"Description"}
                       {...field}
                     />
                   </FormControl>
@@ -84,22 +84,18 @@ const UserProjectForm = () => {
           </div>
           <div className="grid gap-2">
             <FormField
-              name="type"
               control={form.control}
+              name="Link"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Type</FormLabel>
+                  <FormLabel>Link</FormLabel>
                   <FormControl>
-                    <select
+                    <Input
+                      type="text"
+                      className="input-focus"
+                      placeholder={"Link"}
                       {...field}
-                      value={field.value}
-                      onChange={field.onChange}
-                      onBlur={field.onBlur}
-                      className="block w-full p-2 border border-gray-300 bg-primary-foreground text-foreground rounded-md shadow-sm"
-                    >
-                      <option value="Cheap">Cheap</option>
-                      <option value="Landing">Landing</option>
-                    </select>
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -119,4 +115,4 @@ const UserProjectForm = () => {
     </Form>
   );
 };
-export default UserProjectForm;
+export default WebsiteProjectForm;
