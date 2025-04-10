@@ -15,6 +15,7 @@ import {
 } from "../ui/form";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
+import { Select } from "@radix-ui/react-select";
 const UserProjectForm = () => {
   const form = useForm({
     resolver: zodResolver(ProjectFormSchema),
@@ -88,14 +89,16 @@ const UserProjectForm = () => {
               name="type"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Content</FormLabel>
+                  <FormLabel>Type</FormLabel>
                   <FormControl>
-                    <Input
-                      type="text"
-                      className="input-focus"
-                      placeholder="Type of Website"
+                    <select
                       {...field}
-                    />
+                      className="block w-full p-2 border border-gray-300 bg-primary-foreground text-foreground rounded-md shadow-sm"
+                    >
+                      <option value="">Wybierz opcję</option>
+                      <option value="cheap">Cheap</option>
+                      <option value="landing">Landing</option>
+                    </select>
                   </FormControl>
                   <FormMessage />
                 </FormItem>

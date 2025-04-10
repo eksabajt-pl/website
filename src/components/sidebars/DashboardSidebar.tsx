@@ -23,7 +23,7 @@ export function DashboardSidebar({ pages }: SidebarListProps) {
       <div className="  p-4 pr-6 h-full ">
         <nav
           className={twMerge(
-            " flex flex-col gap-2 transition-[width] transition-200 w-6 overflow-clip text-nowrap items-start gap-4",
+            " flex flex-col gap-4 transition-[width] transition-200 w-6 overflow-clip text-nowrap items-start",
             extended && "w-52"
           )}
         >

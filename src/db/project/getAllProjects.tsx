@@ -6,12 +6,20 @@ import { project, profile } from "../schema";
 import ProjectCard from "@/components/cards/ProjectCard";
 const GetAllProjects = async () => {
   const user = await getCurrentUserProfile();
-  if (user.userGroup !== "admin") return [];
-  const result = await db
-    .select()
-    .from(project)
-    .innerJoin(profile, eq(profile.id, project.user_id))
-    .orderBy(desc(project.created_at));
+  const result =
+    user.userGroup === "admin"
+      ? await db
+          .select()
+          .from(project)
+          .innerJoin(profile, eq(profile.id, project.user_id))
+          .orderBy(desc(project.created_at))
+      : await db
+          .select()
+          .from(project)
+          .innerJoin(profile, eq(profile.id, project.user_id))
+          .where(eq(profile.id, user.id))
+          .orderBy(desc(project.created_at));
+
   if (!result) {
     console.error("getAllProject.tsx");
     return [];
