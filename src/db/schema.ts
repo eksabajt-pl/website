@@ -7,6 +7,9 @@ import {
   timestamp,
   smallint,
   pgEnum,
+  integer,
+  bigint,
+  pgSchema,
 } from "drizzle-orm/pg-core";
 
 export const reviewType = pgEnum("review_type", [
@@ -24,6 +27,40 @@ export const profile = pgTable("profile", {
   userGroup: userGroup("user_group").default("user"),
 });
 
+export const project = pgTable(
+  "project",
+  {
+    // You can use { mode: "bigint" } if numbers are exceeding js number limitations
+    id: bigint({ mode: "bigint" })
+      .primaryKey()
+      .generatedByDefaultAsIdentity({
+        name: "project_id_seq",
+        startWith: 1,
+        increment: 1,
+        minValue: 1,
+        maxValue: 92233720368547,
+        cache: 1,
+      })
+      .primaryKey()
+      .notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true, mode: "string" })
+      .defaultNow()
+      .notNull(),
+    userId: uuid("user_id"),
+    type: text(),
+    phase: text().default("Unpaid"),
+    link: text(),
+    price: integer(),
+    email: text(),
+  },
+  (table) => [
+    foreignKey({
+      columns: [table.userId],
+      foreignColumns: [profile.id],
+      name: "project_user_id_fkey",
+    }),
+  ]
+);
 export const review = pgTable(
   "review",
   {
@@ -44,6 +81,31 @@ export const review = pgTable(
     }).onDelete("cascade"),
   ]
 );
+const authSchema = pgSchema("auth");
+
+const users = authSchema.table("users", {
+  id: uuid("id").primaryKey(),
+});
+export const usersInAuth = users;
+
+export const ban = pgTable("ban", {
+  // You can use { mode: "bigint" } if numbers are exceeding js number limitations
+  id: bigint({ mode: "bigint" }).primaryKey().generatedByDefaultAsIdentity({
+    name: "ban_id_seq",
+    startWith: 1,
+    increment: 1,
+    minValue: 1,
+    maxValue: 92233720368547,
+    cache: 1,
+  }),
+  createdAt: timestamp("created_at", { withTimezone: true, mode: "string" })
+    .defaultNow()
+    .notNull(),
+  email: text("email").notNull(),
+});
+
+export type SelectBan = typeof ban.$inferSelect;
+export type InsertBan = typeof ban.$inferInsert;
 
 export type SelectProfile = typeof profile.$inferSelect;
 export type SelectReview = typeof review.$inferSelect;

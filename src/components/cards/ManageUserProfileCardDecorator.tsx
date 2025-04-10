@@ -1,12 +1,11 @@
 "use client";
 import { SelectProfile } from "@/db/schema";
-import {
-  changeUserGroupAction,
-  deleteUserProfileAction,
-} from "@/lib/admin-actions";
-import { ShieldIcon, TrashIcon, UserIcon } from "lucide-react";
+import { banUserAction, changeUserGroupAction } from "@/lib/admin-actions";
+import { BanIcon, ShieldIcon, TrashIcon, UserIcon } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import AsyncButton from "../buttons/AsyncButton";
+import { useSearchParams } from "next/navigation";
+import { twMerge } from "tailwind-merge";
 
 export function ManageUserProfileCardDecorator({
   children,
@@ -16,8 +15,15 @@ export function ManageUserProfileCardDecorator({
   profile: SelectProfile;
 }) {
   const { id } = profile;
+  const params = useSearchParams();
+  const searchUser = params.get("user");
   return (
-    <Card className="p-0 ">
+    <Card
+      className={twMerge(
+        "p-0 ",
+        searchUser == id && "border-2 rounded-lg border-green-400"
+      )}
+    >
       {children}
       <div className="p-4 grid grid-cols-1 sm:grid-cols-2 -mt-10 flex overflow-hidden flex-wrap flex-row gap-2">
         <AsyncButton
@@ -36,10 +42,17 @@ export function ManageUserProfileCardDecorator({
         </AsyncButton>
         <AsyncButton
           className="cursor-pointer"
-          action={async () => deleteUserProfileAction(id)}
+          action={async () => banUserAction(id)}
+        >
+          <BanIcon />
+          Ban user
+        </AsyncButton>
+        <AsyncButton
+          className="cursor-pointer "
+          action={async () => deleteUsersUnverifiedReviews(id)}
         >
           <TrashIcon />
-          Delete user
+          Delete unverified
         </AsyncButton>
       </div>
     </Card>

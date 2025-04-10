@@ -1,9 +1,98 @@
 {
-  "id": "93381809-930c-4e73-91ec-0b45b42179cb",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "00000000-0000-0000-0000-000000000000",
+  "prevId": "",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
+    "public.project": {
+      "name": "project",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "bigint",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "byDefault",
+            "name": "project_id_seq",
+            "increment": "1",
+            "minValue": "1",
+            "maxValue": "9223372036854775807",
+            "startWith": "1",
+            "cache": "1",
+            "cycle": false,
+            "schema": "public"
+          }
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "type": {
+          "name": "type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "phase": {
+          "name": "phase",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'Unpaid'"
+        },
+        "link": {
+          "name": "link",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "price": {
+          "name": "price",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "project_user_id_fkey": {
+          "name": "project_user_id_fkey",
+          "tableFrom": "project",
+          "tableTo": "profile",
+          "schemaTo": "public",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {},
+      "policies": {},
+      "isRLSEnabled": false
+    },
     "public.profile": {
       "name": "profile",
       "schema": "",
@@ -45,8 +134,8 @@
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
-      "policies": {},
       "checkConstraints": {},
+      "policies": {},
       "isRLSEnabled": false
     },
     "public.review": {
@@ -85,12 +174,13 @@
           "notNull": true,
           "default": 5
         },
-        "is_verified": {
-          "name": "is_verified",
-          "type": "boolean",
+        "status": {
+          "name": "status",
+          "type": "review_type",
+          "typeSchema": "public",
           "primaryKey": false,
-          "notNull": true,
-          "default": false
+          "notNull": false,
+          "default": "'pending'"
         }
       },
       "indexes": {},
@@ -99,6 +189,7 @@
           "name": "review_user_id_profile_id_fk",
           "tableFrom": "review",
           "tableTo": "profile",
+          "schemaTo": "public",
           "columnsFrom": [
             "user_id"
           ],
@@ -111,28 +202,28 @@
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
-      "policies": {},
       "checkConstraints": {},
+      "policies": {},
       "isRLSEnabled": false
     }
   },
   "enums": {
+    "public.review_type": {
+      "name": "review_type",
+      "values": [
+        "pending",
+        "rejected",
+        "verified"
+      ],
+      "schema": "public"
+    },
     "public.user_group": {
       "name": "user_group",
-      "schema": "public",
       "values": [
         "admin",
         "user"
-      ]
-    },
-    "public.review_status": {
-      "name": "review_status",
-      "schema": "public",
-      "values": [
-        "approved",
-        "rejected",
-        "pending"
-      ]
+      ],
+      "schema": "public"
     }
   },
   "schemas": {},
@@ -141,8 +232,11 @@
   "policies": {},
   "views": {},
   "_meta": {
-    "columns": {},
     "schemas": {},
+    "tables": {},
+    "columns": {}
+  },
+  "internal": {
     "tables": {}
   }
 }

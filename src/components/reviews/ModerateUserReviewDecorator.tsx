@@ -5,9 +5,10 @@ import {
   rejectReviewWithId,
   deleteReviewWithId,
 } from "@/lib/admin-actions";
-import { CheckIcon, TrashIcon } from "lucide-react";
+import { BanIcon, CheckIcon, TrashIcon, UserIcon } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import AsyncButton from "../buttons/AsyncButton";
+import { redirect } from "next/navigation";
 
 export function ModerateUserReviewDecorator({
   children,
@@ -16,17 +17,17 @@ export function ModerateUserReviewDecorator({
   children: React.ReactNode;
   reviewWithProfile: SelectReviewWithProfile;
 }) {
-  const { review } = reviewWithProfile;
-
+  const { review, profile } = reviewWithProfile;
+  const { id } = profile;
   return (
     <Card className="p-0 ">
       {children}
-      <div className="p-4 -mt-10 grid grid-cols-1 sm:grid-cols-3 gap-2">
+      <div className="p-4 -mt-10 grid grid-cols-2 gap-2">
         <AsyncButton
           className="flex-1 cursor-pointer"
           action={async () => await rejectReviewWithId(review.id)}
         >
-          <TrashIcon />
+          <BanIcon />
           Reject
         </AsyncButton>
         <AsyncButton
@@ -42,6 +43,13 @@ export function ModerateUserReviewDecorator({
         >
           <TrashIcon />
           Delete
+        </AsyncButton>
+        <AsyncButton
+          action={async () => redirect(`/dashboard/users?user=${id}`)}
+          className="flex-1 cursor-pointer"
+        >
+          <UserIcon />
+          Manage user
         </AsyncButton>
       </div>
     </Card>
