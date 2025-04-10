@@ -50,7 +50,7 @@ export async function deleteReviewWithId(reviewId: number) {
 
 export async function deleteUnverifiedUserReviewsAction(userId: string) {
   await deleteUnverifiedUserReviews(userId);
-  revalidatePath("/dashboard/users", "page");
+  revalidatePath("/dashboard/reviews", "page");
   revalidatePath("/", "page");
 }
 
