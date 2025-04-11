@@ -39,7 +39,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider>
-          <main className="flex-1 flex gap-2 flex-col">{children}</main>
+          <main className="flex-1 flex gap-2 flex-col  font-sans ">
+            {children}
+          </main>
         </ThemeProvider>
       </body>
     </html>

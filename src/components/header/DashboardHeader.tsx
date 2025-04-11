@@ -22,7 +22,7 @@ export default function DashboardHeader() {
     >
       <div className="flex flex-row justify-between  w-full items-center">
         <Link href="/#">
-          <div className="font-mono flex flex-row gap-2 items-center">
+          <div className="font-bolder flex flex-row gap-2 items-center">
             <div className="p-1 font-bold max-w-md text-white flex flex-row gap-2 bg-green-600 hover:bg-green-500 transition-color cursor-pointer rounded-sm">
               <Code2 />
             </div>
