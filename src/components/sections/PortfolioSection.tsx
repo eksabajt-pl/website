@@ -4,7 +4,6 @@ import { Button } from "../ui/button";
 import { LinkIcon } from "lucide-react";
 import Link from "next/link";
 import { PortfolioProjectsLists } from "../lists/PortfolioProjectsLists";
-import { Suspense } from "react";
 
 export default function PortfolioSection() {
   return (

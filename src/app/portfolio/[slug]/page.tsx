@@ -1,18 +1,29 @@
-import Breadcrumbs from "@/components/breadcrumbs/Breadcrumbs";
 import { PortfolioImageCarousel } from "@/components/carousel/PortfolioImageCarousel";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { getSinglePortfolio } from "@/db/portfolio/getSinglePortfolio";
+import { getPortfolioSlug } from "@/utils/slug/portfolioSlugs";
 import { getIdFromSlug } from "@/utils/slug/slug";
 import { Code, Github, LucideLink, User } from "lucide-react";
-import { isRedirectError } from "next/dist/client/components/redirect-error";
-
-type PortfolioPageParams = {
-  params: { slug: string };
-};
+import {
+  isRedirectError,
+  RedirectType,
+} from "next/dist/client/components/redirect-error";
+import { redirect } from "next/navigation";
 
 function NotFound() {
-  return <p>not found</p>;
+  return (
+    <div className="flex flex-col items-center justify-center  gap-2 p-8 py-32 text-center">
+      <h1 className="text-4xl font-bold">404 - Nie znaleziono</h1>
+      <p className="mt-4 text-lg flex flex-col items-center gap-4">
+        Zobacz inne...
+      </p>
+    </div>
+  );
+}
+
+interface PortfolioPageParams {
+  params: Promise<{ slug: string }>;
 }
 
 export default async function Page({ params }: PortfolioPageParams) {
@@ -20,6 +31,10 @@ export default async function Page({ params }: PortfolioPageParams) {
   let portfolio;
   try {
     portfolio = await getSinglePortfolio(id as unknown as bigint);
+    const correctSlug = getPortfolioSlug(portfolio.title, portfolio.id);
+    if (correctSlug !== (await params).slug) {
+      await redirect(`/portfolio/${correctSlug}`, RedirectType.replace);
+    }
   } catch (e) {
     if (isRedirectError(e)) {
       throw e;
@@ -29,7 +44,7 @@ export default async function Page({ params }: PortfolioPageParams) {
   if (!portfolio) {
     return <NotFound />;
   }
-  const { title, portfolioImages, shortDescription } = portfolio;
+  const { title, portfolioImages } = portfolio;
   return (
     <>
       {" "}
