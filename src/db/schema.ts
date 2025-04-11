@@ -112,6 +112,7 @@ export const portfolio = pgTable("portfolio", {
   githubUrl: text("github_url").notNull(),
   liveUrl: text("live_url").notNull(),
   author: text().notNull().default("Cały zespół"),
+  keywords: text("keywords").notNull().default(""),
 });
 
 export const portfolioFeature = pgTable("portfolio_project_feature", {

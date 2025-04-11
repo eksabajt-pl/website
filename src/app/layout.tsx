@@ -1,8 +1,23 @@
-import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ThemeProvider from "@/components/providers/ThemeProvider";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "eksabajt.pl - twoje drzwi do świata IT ",
+  description:
+    "Na Eksabajt.pl masz stały kontakt z twórcami swojej strony dzięki zintegrowanemu komunikatorowi, szybki dostęp do wyceny oraz statusu projektu i możliwość sprawdzenia opinii innych użytkowników. Tworzenie strony jeszcze nigdy nie było tak przejrzyste i wygodne.",
+  icons: [
+    {
+      rel: "icon",
+      type: "image/png",
+      url: "/logo.webp",
+    },
+  ],
+  openGraph: {
+    images: "/og.png",
+  },
+};
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -13,25 +28,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "eksabajt.pl - developers studio",
-  description: "...",
-  icons: [
-    {
-      rel: "icon",
-      type: "image/png",
-      url: "/logo.webp",
-    },
-  ],
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={"dark"}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

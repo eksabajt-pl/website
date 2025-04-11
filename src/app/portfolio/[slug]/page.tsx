@@ -8,6 +8,7 @@ import { PortfolioAll } from "@/db/portfolio/getPortfolio";
 import { getSinglePortfolio } from "@/db/portfolio/getSinglePortfolio";
 import { getPortfolioSlug } from "@/utils/slug/portfolioSlugs";
 import { getIdFromSlug } from "@/utils/slug/slug";
+import { createClient } from "@/utils/supabase/client";
 import {
   Code,
   Github,
@@ -16,12 +17,45 @@ import {
   SquareArrowOutUpRight,
   User,
 } from "lucide-react";
+import { Metadata } from "next";
 import {
   isRedirectError,
   RedirectType,
 } from "next/dist/client/components/redirect-error";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+
+interface PortfolioPageParams {
+  params: Promise<{ slug: string }>;
+}
+export async function generateMetadata({
+  params,
+}: PortfolioPageParams): Promise<Metadata> {
+  const id = getIdFromSlug((await params).slug);
+  if (isNaN(id)) {
+    return {
+      title: "Not found",
+    };
+  }
+  const { title, shortDescription, keywords, portfolioImages } =
+    await getSinglePortfolio(id as unknown as bigint);
+  const path = portfolioImages[0].path;
+  const supabase = await createClient();
+  const {
+    data: { publicUrl: image },
+  } = await supabase.storage.from("portfolio").getPublicUrl(path!);
+  return {
+    title: `Firma eksabajt.pl przedstawia "${title.toLowerCase()}"`,
+    description: shortDescription ?? "No description",
+    keywords: keywords ?? "",
+    alternates: {
+      canonical: `https://eksabajt.pl/portfolio/${(await params).slug}`,
+    },
+    openGraph: {
+      images: image,
+    },
+  };
+}
 
 function NotFound() {
   return (
@@ -32,10 +66,6 @@ function NotFound() {
       </p>
     </div>
   );
-}
-
-interface PortfolioPageParams {
-  params: Promise<{ slug: string }>;
 }
 
 export default async function Page({ params }: PortfolioPageParams) {
@@ -69,7 +99,6 @@ export default async function Page({ params }: PortfolioPageParams) {
     portfolioFeatures,
   } = portfolio;
 
-  console.log(portfolio);
   return (
     <>
       {" "}
