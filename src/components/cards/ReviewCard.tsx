@@ -1,3 +1,4 @@
+"use client";
 import {SelectProfile, SelectReview} from "@/db/schema";
 import {Card} from "../ui/card";
 import ReviewStars from "../stars/ReviewStars";
