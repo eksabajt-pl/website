@@ -106,12 +106,27 @@ export const portfolio = pgTable("portfolio", {
     .notNull(),
   title: text().notNull(),
   draft: boolean().notNull().default(true),
-  overview: text(),
+  overview: text().notNull().default(""),
   shortDescription: text().notNull().default("Lorem ipsum dolor sit amet"),
   description: text().notNull().default(""),
   githubUrl: text("github_url").notNull(),
   liveUrl: text("live_url").notNull(),
   author: text().notNull().default("Cały zespół"),
+});
+
+export const portfolioFeature = pgTable("portfolio_project_feature", {
+  id: bigint({ mode: "number" }).primaryKey().generatedByDefaultAsIdentity({
+    startWith: 1,
+    increment: 1,
+    minValue: 1,
+    maxValue: 922337203685477,
+    cache: 1,
+  }),
+  content: text().notNull().default("Lorem ipsum"),
+  order: bigint({ mode: "number" }).notNull().default(0),
+  portfolioId: bigint({ mode: "bigint" })
+    .notNull()
+    .references(() => portfolio.id),
 });
 
 export const portfolioImage = pgTable("portfolio_image", {
@@ -124,6 +139,7 @@ export const portfolioImage = pgTable("portfolio_image", {
     maxValue: 922337203685477,
     cache: 1,
   }),
+  order: bigint({ mode: "number" }).notNull().default(0),
   createdAt: timestamp("created_at", { withTimezone: true, mode: "string" })
     .defaultNow()
     .notNull(),

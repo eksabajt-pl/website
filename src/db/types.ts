@@ -6,6 +6,7 @@ import {
   portfolioTech,
   review,
   tech,
+  portfolioFeature,
 } from "./schema";
 
 export type SelectTech = typeof tech.$inferSelect;
@@ -27,3 +28,5 @@ export type SelectReviewWithProfile = {
 
 export type InsertProfile = typeof profile.$inferInsert;
 export type InsertReview = typeof review.$inferInsert;
+
+export type SelectPortfolioFeatures = typeof portfolioFeature.$inferSelect;

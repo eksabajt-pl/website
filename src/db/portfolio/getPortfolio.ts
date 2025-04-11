@@ -1,12 +1,24 @@
 "use server";
 
 import { db } from "@/db/index";
-import { SelectPortfolio, SelectPortfolioImage, SelectTech } from "../types";
+import {
+  SelectPortfolio,
+  SelectPortfolioFeatures,
+  SelectPortfolioImage,
+  SelectTech,
+} from "../types";
+import { eq } from "drizzle-orm";
 
 export async function getPortfolio() {
   const result = await db.query.portfolio.findMany({
+    where: (portfolio) => eq(portfolio.draft, false),
     with: {
-      portfolioImages: true,
+      portfolioFeatures: {
+        orderBy: (portfolioFeatures, { asc }) => [asc(portfolioFeatures.order)],
+      },
+      portfolioImages: {
+        orderBy: (portfolioImages, { asc }) => [asc(portfolioImages.order)],
+      },
       portfolioTech: {
         with: {
           tech: true,
@@ -33,4 +45,5 @@ export async function getPortfolio() {
 export type PortfolioAll = {
   portfolioImages: SelectPortfolioImage[];
   portfolioTech: SelectTech[];
+  portfolioFeatures: SelectPortfolioFeatures[];
 } & SelectPortfolio;

@@ -20,6 +20,9 @@ export async function getSinglePortfolio(id: bigint) {
     | undefined = await db.query.portfolio.findFirst({
     where: eq(portfolio.id, id),
     with: {
+      portfolioFeatures: {
+        orderBy: (portfolioFeatures, { asc }) => [asc(portfolioFeatures.order)],
+      },
       portfolioImages: true,
       portfolioTech: {
         with: {

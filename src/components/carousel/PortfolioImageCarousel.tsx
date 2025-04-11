@@ -28,8 +28,8 @@ export function PortfolioImageCarousel({
           />
         ))}
       </CarouselContent>
-      <CarouselNext variant={"ghost"} className="absolute z-10 right-2" />
-      <CarouselPrevious variant={"ghost"} className="absolute z-10 left-2" />
+      <CarouselNext className="absolute z-2 right-2" />
+      <CarouselPrevious className="absolute z-2 left-2" />
     </Carousel>
   );
 }

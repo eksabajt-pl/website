@@ -7,6 +7,7 @@ import {
   review,
   portfolioImage,
   tech,
+  portfolioFeature,
 } from "./schema";
 
 export const portfolioTechRelations = relations(portfolioTech, ({ one }) => ({
@@ -19,6 +20,16 @@ export const portfolioTechRelations = relations(portfolioTech, ({ one }) => ({
     references: [portfolio.id],
   }),
 }));
+
+export const portfolioFeatureRelations = relations(
+  portfolioFeature,
+  ({ one }) => ({
+    portfolio: one(portfolio, {
+      fields: [portfolioFeature.portfolioId],
+      references: [portfolio.id],
+    }),
+  })
+);
 
 export const portfolioImageRelations = relations(portfolioImage, ({ one }) => ({
   portfolio: one(portfolio, {
@@ -33,6 +44,7 @@ export const techRelations = relations(tech, ({ many }) => ({
 }));
 
 export const portfolioRelations = relations(portfolio, ({ many }) => ({
+  portfolioFeatures: many(portfolioFeature),
   portfolioImages: many(portfolioImage),
   portfolioTech: many(portfolioTech),
 }));

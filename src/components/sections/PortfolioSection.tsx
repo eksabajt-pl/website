@@ -15,7 +15,7 @@ export default function PortfolioSection() {
           description="Projekty mniejsze oraz większe, te zlecone przez klientów, oraz nasze oryginalne produkcje, zobacz na żywym przykładzie czym się zajmujemy"
         />{" "}
         <PortfolioProjectsLists />
-        <Link href="/portfolio">
+        <Link href="/portfolio#top">
           <Button size="lg" className="text-md cursor-pointer">
             <LinkIcon />
             Zobacz wszystkie...

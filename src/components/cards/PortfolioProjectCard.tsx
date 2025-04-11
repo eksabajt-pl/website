@@ -105,7 +105,7 @@ export default function PortfolioProjectCard({
             </Button>
           </Link>
         </div>
-        <Link href={`/portfolio/${getPortfolioSlug(title, id)}`}>
+        <Link href={`/portfolio/${getPortfolioSlug(title, id)}#top`}>
           <Button className="cursor-pointer">
             Zobacz więcej
             <ArrowRight />
