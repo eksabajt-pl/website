@@ -1,6 +1,10 @@
+import BrandWave from "../pearls/BrandWave";
+
 export default function Footer() {
   return (
     <>
+      <BrandWave />
+
       <footer className="text-white font-sans gap-8 -mt-16 flex flex-col items-end justify-center p-8 pt-0 bg-green-600">
         <div className="w-full text-sm sm:text-base flex flex-col text-center sm:text-left sm:flex-row items-center sm:items-start justify-center gap-8 sm:gap-32">
           <div className="h-full flex flex-col justify-start pl-3 gap-3">

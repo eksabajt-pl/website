@@ -1,5 +1,41 @@
 import { relations } from "drizzle-orm/relations";
-import { profile, project, review, usersInAuth, ban } from "./schema";
+import {
+  portfolio,
+  portfolioTech,
+  profile,
+  project,
+  review,
+  portfolioImage,
+  tech,
+} from "./schema";
+
+export const portfolioTechRelations = relations(portfolioTech, ({ one }) => ({
+  tech: one(tech, {
+    fields: [portfolioTech.techId],
+    references: [tech.id],
+  }),
+  portfolio: one(portfolio, {
+    fields: [portfolioTech.portfolioId],
+    references: [portfolio.id],
+  }),
+}));
+
+export const portfolioImageRelations = relations(portfolioImage, ({ one }) => ({
+  portfolio: one(portfolio, {
+    fields: [portfolioImage.portfolioId],
+    references: [portfolio.id],
+  }),
+}));
+
+export const techRelations = relations(tech, ({ many }) => ({
+  portfolios: many(portfolioTech),
+  techs: many(tech),
+}));
+
+export const portfolioRelations = relations(portfolio, ({ many }) => ({
+  portfolioImages: many(portfolioImage),
+  portfolioTech: many(portfolioTech),
+}));
 
 export const projectRelations = relations(project, ({ one }) => ({
   profile: one(profile, {
@@ -18,8 +54,4 @@ export const reviewRelations = relations(review, ({ one }) => ({
     fields: [review.userId],
     references: [profile.id],
   }),
-}));
-
-export const usersInAuthRelations = relations(usersInAuth, ({ many }) => ({
-  bans: many(ban),
 }));
