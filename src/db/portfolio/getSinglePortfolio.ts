@@ -1,7 +1,7 @@
 "use server";
 
 import { db } from "@/db/index";
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 import { portfolio } from "../schema";
 import {
   SelectPortfolio,
@@ -18,7 +18,7 @@ export async function getSinglePortfolio(id: bigint) {
         portfolioTech: (SelectPortfolioTech & { tech: SelectTech })[];
       })
     | undefined = await db.query.portfolio.findFirst({
-    where: eq(portfolio.id, id),
+    where: and(eq(portfolio.id, id), eq(portfolio.draft, false)),
     with: {
       portfolioFeatures: {
         orderBy: (portfolioFeatures, { asc }) => [asc(portfolioFeatures.order)],
@@ -33,7 +33,7 @@ export async function getSinglePortfolio(id: bigint) {
   });
 
   if (!result) {
-    throw Error("Not found");
+    return null;
   }
   // @ts-expect-error its supposed to error
   result.portfolioTech = result.portfolioTech.map((item) => ({

@@ -14,7 +14,7 @@ export default function PortfolioSection() {
           emphasis="Nasze portfolio"
           description="Projekty mniejsze oraz większe, te zlecone przez klientów, oraz nasze oryginalne produkcje, zobacz na żywym przykładzie czym się zajmujemy"
         />{" "}
-        <PortfolioProjectsLists />
+        <PortfolioProjectsLists maxProjectsCount={3} />
         <Link href="/portfolio#top">
           <Button size="lg" className="text-md cursor-pointer">
             <LinkIcon />

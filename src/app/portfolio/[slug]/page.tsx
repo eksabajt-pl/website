@@ -37,8 +37,11 @@ export async function generateMetadata({
       title: "Not found",
     };
   }
-  const { title, shortDescription, keywords, portfolioImages } =
-    await getSinglePortfolio(id as unknown as bigint);
+  const result = await getSinglePortfolio(id as unknown as bigint);
+  if (!result) {
+    return { title: "Not found" };
+  }
+  const { title, shortDescription, keywords, portfolioImages } = result;
   const path = portfolioImages[0].path;
   const supabase = await createClient();
   const {
@@ -178,7 +181,7 @@ export default async function Page({ params }: PortfolioPageParams) {
               <TechList maxBadgesCount={2137} tech={portfolio.portfolioTech} />
             </div>
           </div>
-          <div className=" my-2 flex flex-col gap-2 items-center ">
+          <div className=" my-2 flex flex-col gap-2">
             <h4 className="flex text-lg font-bold  flex-row gap-2 w-full">
               <User /> Autor
             </h4>
