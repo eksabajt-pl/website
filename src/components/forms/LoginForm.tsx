@@ -1,3 +1,5 @@
+"use client";
+
 import {
 	Card,
 	CardContent,
@@ -9,7 +11,7 @@ import SignInWithOAuthButton from "../buttons/SignInWithOAuthButton";
 import {FaDiscord, FaGithub, FaGoogle} from "react-icons/fa";
 import {useTranslation} from "react-i18next";
 
-export function LoginForm() {
+export default function LoginForm() {
 	const {t} = useTranslation("auth");
 	return (
 		<Card className="mx-auto max-w-sm">
