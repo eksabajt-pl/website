@@ -1,10 +1,10 @@
 "use client";
 
-import { Textarea } from "@/components/ui/textarea";
+import {Textarea} from "@/components/ui/textarea";
 
-import { useFormContext } from "react-hook-form";
+import {useFormContext} from "react-hook-form";
 
-import { Button } from "@/components/ui/button";
+import {Button} from "@/components/ui/button";
 import {
 	Form,
 	FormControl,
@@ -13,14 +13,15 @@ import {
 	FormLabel,
 	FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+import {Input} from "@/components/ui/input";
 
-import { Loader2, MailIcon, Send } from "lucide-react";
-import { Label } from "../ui/label";
+import {Loader2, MailIcon, Send} from "lucide-react";
+import {Label} from "../ui/label";
 import SectionHeading from "../text/SectionHeading";
 import Section from "./Section";
-import { contactForm } from "@/lib/user-actions";
-import { ContactFormData } from "@/schemas/contactFormSchema";
+import {contactForm} from "@/lib/user-actions";
+import {ContactFormData} from "@/schemas/contactFormSchema";
+import {useTranslation} from "react-i18next";
 import {
 	Select,
 	SelectContent,
@@ -32,16 +33,17 @@ import {
 export default function Contact() {
 	const form = useFormContext<ContactFormData>();
 	const {
-		formState: { isSubmitting },
+		formState: {isSubmitting},
 	} = form;
+	const {t} = useTranslation("contact");
 	return (
 		<>
 			<Section id="contact">
 				<div className="flex flex-col w-full gap-16 py-32 justify-center items-center">
 					<SectionHeading
-						normal="Potrzebujesz strony?"
-						emphasis="Zgłoś się do nas"
-						description="Nasz zespół odpowiada bardzo szybko na każde zapytanie, jeżeli masz jakiekolwiek pytania śmiało pisz poprzez formularz kontaktowy, lub email: kontakt@eksabajt.pl"
+						normal={t("section.title")}
+						emphasis={t("section.emphasis")}
+						description={t("section.description")}
 					/>
 
 					<div className="flex flex-col gap-4 w-64 sm:w-86 sm:w-96 md:w-120">
@@ -51,19 +53,18 @@ export default function Contact() {
 									await contactForm(data);
 									form.reset({});
 								})}
-								className="space-y-8"
-							>
+								className="space-y-8">
 								{/* Username Field */}
 								<FormField
 									control={form.control}
 									name="username"
-									render={({ field }) => (
+									render={({field}) => (
 										<FormItem>
-											<FormLabel>Imię</FormLabel>
+											<FormLabel>{t("form.name")}</FormLabel>
 											<FormControl>
 												<Input
 													className="input-focus"
-													placeholder="Wpisz swoje imię"
+													placeholder={t("form.placeholder.name")}
 													{...field}
 												/>
 											</FormControl>
@@ -75,14 +76,14 @@ export default function Contact() {
 								<FormField
 									control={form.control}
 									name="email"
-									render={({ field }) => (
+									render={({field}) => (
 										<FormItem>
-											<FormLabel>Email</FormLabel>
+											<FormLabel>{t("form.email")}</FormLabel>
 											<FormControl>
 												<Input
 													type="email"
 													className="input-focus"
-													placeholder="twoj@email.pl"
+													placeholder={t("form.placeholder.email")}
 													{...field}
 												/>
 											</FormControl>
@@ -94,25 +95,32 @@ export default function Contact() {
 								<FormField
 									control={form.control}
 									name="tier"
-									render={({ field }) => (
+									render={({field}) => (
 										<FormItem>
-											<FormLabel>Wybierz usługę</FormLabel>
+											<FormLabel>{t("form.service")}</FormLabel>
 											<FormControl>
 												<Select
 													onValueChange={field.onChange}
-													value={field.value}
-												>
+													value={field.value}>
 													<SelectTrigger className="w-full">
 														<SelectValue placeholder="Inne" />
 													</SelectTrigger>
 													<SelectContent>
-														<SelectItem value="cheap">Cheap</SelectItem>
-														<SelectItem value="landing">Landing</SelectItem>
-														<SelectItem value="startup">Startup</SelectItem>
-														<SelectItem value="professional">
-															Professional
+														<SelectItem value="cheap">
+															{t("services.cheap")}
 														</SelectItem>
-														<SelectItem value="other">Inne</SelectItem>
+														<SelectItem value="landing">
+															{t("services.landing")}
+														</SelectItem>
+														<SelectItem value="startup">
+															{t("services.startup")}
+														</SelectItem>
+														<SelectItem value="professional">
+															{t("services.professional")}
+														</SelectItem>
+														<SelectItem value="other">
+															{t("services.other")}
+														</SelectItem>
 													</SelectContent>
 												</Select>
 											</FormControl>
@@ -124,13 +132,13 @@ export default function Contact() {
 								<FormField
 									control={form.control}
 									name="message"
-									render={({ field }) => (
+									render={({field}) => (
 										<FormItem>
-											<FormLabel>Wiadomość</FormLabel>
+											<FormLabel>{t("form.message")}</FormLabel>
 											<FormControl>
 												<Textarea
 													className="input-focus"
-													placeholder="Miejsce na twoją wiadomość..."
+													placeholder={t("form.placeholder.message")}
 													{...field}
 												/>
 											</FormControl>
@@ -149,7 +157,7 @@ export default function Contact() {
 											{!isSubmitting ? (
 												<>
 													<Send />
-													Wyślij
+													{t("form.submit")}
 												</>
 											) : (
 												<Loader2 className="animate-spin" />

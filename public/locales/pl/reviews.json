@@ -1,0 +1,13 @@
+{
+	"section": {
+		"title": "Co myślą o nas",
+		"emphasis": "Nasi klienci",
+		"description": "Wszystkie recenzje zostały napisane przez użytkowników, napisz swoją poprzez sekcje w panelu klienta, lub poprzez link z emaila. Uwaga, recenzje niezgodne z regulaminem, nie będą pokazywane na stronie głównej, zapoznaj się z regulaminem na eksabajt.pl/regulamin"
+	},
+	"waiting": "Czekamy na twoją opinię...",
+	"tooltip": {
+		"verified": "Zatwierdzono treść jako zgodną z regulaminem",
+		"rejected": "Treść odrzucona, niezgodna z regulaminem",
+		"pending": "Oczekiwanie na zatwierdzenie treści"
+	}
+}

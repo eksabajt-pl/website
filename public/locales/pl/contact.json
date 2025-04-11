@@ -1,0 +1,26 @@
+{
+	"section": {
+		"title": "Potrzebujesz strony?",
+		"emphasis": "Zgłoś się do nas",
+		"description": "Nasz zespół odpowiada bardzo szybko na każde zapytanie, jeżeli masz jakiekolwiek pytania śmiało pisz poprzez formularz kontaktowy, lub email: kontakt@eksabajt.pl"
+	},
+	"form": {
+		"name": "Imię",
+		"email": "Email",
+		"service": "Wybierz usługę",
+		"message": "Wiadomość",
+		"placeholder": {
+			"name": "Wpisz swoje imię",
+			"email": "twoj@email.pl",
+			"message": "Opisz swój projekt..."
+		},
+		"submit": "Wyślij"
+	},
+	"services": {
+		"cheap": "Twój Zamysł",
+		"landing": "Landing Page",
+		"startup": "Twoja Firma",
+		"professional": "Zaawansowany",
+		"other": "Inne"
+	}
+}

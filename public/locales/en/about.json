@@ -1,0 +1,25 @@
+{
+	"section": {
+		"title": "Get to know us,",
+		"emphasis": "eksabajt.pl",
+		"description": "Questions and answers about our programming activities"
+	},
+	"cards": {
+		"established": {
+			"title": "In the market since 2025",
+			"content": "We are a new company in the market, but we are already dynamically developing in the IT industry. We have been operating since 2025, providing innovative programming solutions. Our goal is to create modern, functional products that meet the expectations of the most demanding customers."
+		},
+		"services": {
+			"title": "What do we do?",
+			"content": "We specialize in creating web, mobile, desktop applications and websites. Our team of programmers designs and develops solutions that are tailored to the individual needs of our clients. Thanks to a wide range of services, we are able to offer comprehensive solutions in every field of technology."
+		},
+		"mission": {
+			"title": "Our company's principles",
+			"content": "Our mission is to deliver products that not only meet the needs of our customers, but also exceed their expectations. We focus on innovation, reliability and simplicity. We care that our solutions are intuitive, and their implementation and subsequent operation are as simple as possible."
+		},
+		"whyUs": {
+			"title": "Why us?",
+			"content": "By choosing us, you gain a partner who is involved in every project. Our approach is based on close cooperation with the client and transparency. We always strive to make our solutions not only effective, but also long-term. We invest in development, which is why we carry out each project with the utmost care."
+		}
+	}
+}

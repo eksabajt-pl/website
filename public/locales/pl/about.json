@@ -1,0 +1,25 @@
+{
+	"section": {
+		"title": "Poznaj nas, czyli",
+		"emphasis": "eksabajt.pl",
+		"description": "Pytania i odpowiedzi na temat naszej działalności programistycznej"
+	},
+	"cards": {
+		"established": {
+			"title": "Na rynku od 2025",
+			"content": "Jesteśmy nową firmą na rynku, ale już teraz dynamicznie rozwijamy się w branży IT. Działamy od 2025 roku, dostarczając innowacyjne rozwiązania programistyczne. Naszym celem jest stworzenie nowoczesnych, funkcjonalnych produktów, które spełnią oczekiwania najbardziej wymagających klientów."
+		},
+		"services": {
+			"title": "Czym się zajmujemy?",
+			"content": "Specjalizujemy się w tworzeniu aplikacji webowych, mobilnych, desktopowych oraz stron internetowych. Nasz zespół programistów projektuje i rozwija rozwiązania, które są dopasowane do indywidualnych potrzeb naszych klientów. Dzięki szerokiemu wachlarzowi usług, jesteśmy w stanie zaoferować kompleksowe rozwiązania w każdej dziedzinie technologii."
+		},
+		"mission": {
+			"title": "Założenia naszej firmy",
+			"content": "Naszą misją jest dostarczanie produktów, które nie tylko spełniają potrzeby naszych klientów, ale także przewyższają ich oczekiwania. Stawiamy na innowacyjność, niezawodność i prostotę. Zależy nam na tym, aby nasze rozwiązania były intuicyjne, a ich wdrożenie i późniejsza obsługa były jak najprostsze."
+		},
+		"whyUs": {
+			"title": "Dlaczego my?",
+			"content": "Wybierając nas, zyskujesz partnera, który angażuje się w każdy projekt. Nasze podejście opiera się na bliskiej współpracy z klientem oraz transparentności. Zawsze dążymy do tego, by nasze rozwiązania były nie tylko efektywne, ale również długofalowe. Inwestujemy w rozwój, dlatego każdy projekt realizujemy z najwyższą starannością."
+		}
+	}
+}

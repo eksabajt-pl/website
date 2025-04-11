@@ -1,0 +1,13 @@
+{
+	"sidebar": {
+		"overview": "Przegląd",
+		"reviews": "Opinie",
+		"users": "Użytkownicy",
+		"chat": "Czat",
+		"progress": "Postęp",
+		"receipts": "Rachunki",
+		"settings": "Ustawienia",
+		"contentManagement": "Zarządzanie treścią",
+		"analytics": "Analityka"
+	}
+}

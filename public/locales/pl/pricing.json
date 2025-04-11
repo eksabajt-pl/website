@@ -1,0 +1,63 @@
+{
+	"section": {
+		"title": "Nasz zespół wyceni",
+		"emphasis": "twój projekt",
+		"description": "Bez dodatkowej opłaty nasz wykwalifikowany zespół wyceni twoją stronę/aplikację internetową"
+	},
+	"disclaimer": "(podane ceny to ceny startowe, które mogą się różnić w zależności od skomplikowania projektu. W celu uzyskania dokładnej wyceny, prosimy o kontakt z naszym zespołem. Możesz to zrobić poprzez formularz kontaktowy)",
+	"mostPopular": "Najpopularniejszy",
+	"tiers": {
+		"cheap": {
+			"title": "Twój Zamysł",
+			"price": "Od 500 zł",
+			"subtitle": "Makieta graficzna",
+			"features": [
+				"Responsywność",
+				"Optymalizacja SEO (podstawowa)",
+				"Statyczna strona",
+				"Szybkie wdrożenie (1-3 dni)",
+				"Podstawowe Sekcje",
+				"Prosta nawigacja"
+			]
+		},
+		"landing": {
+			"title": "Landing Page",
+			"price": "Od 2000 zł",
+			"subtitle": "E-wizytówka",
+			"features": [
+				"Unikalny design",
+				"Optymalizacja SEO",
+				"Formularz kontaktowy / CTA",
+				"Analityka (Google Analytics)",
+				"Szybkie ładowanie",
+				"Wersje językowe (opcjonalnie)"
+			]
+		},
+		"startup": {
+			"title": "Twoja Firma",
+			"price": "Od 4000 zł",
+			"subtitle": "Strona dla twojej firmy",
+			"features": [
+				"Indywidualny projekt graficzny",
+				"Optymalizacja SEO (rozszerzona)",
+				"Integracja z bazą danych",
+				"Integracja z social media + newsletter",
+				"Moduły: blog, FAQ, cennik, usługi",
+				"Bezpieczeństwo i certyfikat SSL"
+			]
+		},
+		"professional": {
+			"title": "Zaawansowany",
+			"price": "Od 8000 zł",
+			"subtitle": "Dla profesjonalistów",
+			"features": [
+				"Zaawansowany design UI/UX",
+				"Optymalizacja SEO + strategia contentowa",
+				"Własny panel zarządzania treścią",
+				"Wydajność + optymalizacja Core Web Vitals",
+				"Wersje językowe i RODO",
+				"Obsługa e-commerce lub system rezerwacji"
+			]
+		}
+	}
+}

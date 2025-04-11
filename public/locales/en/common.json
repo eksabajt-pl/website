@@ -1,0 +1,27 @@
+{
+	"language": "English",
+	"changeLanguage": "Change language",
+	"site": {
+		"name": "eksabajt.pl"
+	},
+	"navigation": {
+		"home": "Home",
+		"about": "About us",
+		"projects": "Projects",
+		"reviews": "Reviews",
+		"team": "Team",
+		"contact": "Contact"
+	},
+	"buttons": {
+		"contactUs": "Contact us",
+		"learnMore": "Learn more",
+		"submit": "Submit",
+		"send": "Send"
+	},
+	"footer": {
+		"rights": "All rights reserved",
+		"privacy": "Privacy Policy",
+		"terms": "Terms of Service",
+		"companyData": "Company Data"
+	}
+}

@@ -1,0 +1,34 @@
+{
+	"hero": {
+		"title": "Czym jest",
+		"titleHighlight": "eksabajt?",
+		"points": [
+			"to kolejna jednostka informatyczna po petabajcie",
+			"to jednostka wynosząca 10^18 bajta",
+			"to ilość danych globalnie wysyłanych przez internet co godzinę",
+			"co najważniejsze, to firma programistyczna, z Opola, która wyceni, zaprojektuje i zaprogramuje twoją stronę"
+		],
+		"highlight": "firma programistyczna",
+		"highlight2": "wyceni, zaprojektuje i zaprogramuje twoją stronę"
+	},
+	"about": {
+		"title": "O nas"
+	},
+	"projects": {
+		"title": "Projekty"
+	},
+	"reviews": {
+		"title": "Opinie"
+	},
+	"team": {
+		"title": "Nasz Zespół"
+	},
+	"contact": {
+		"title": "Kontakt",
+		"name": "Imię",
+		"email": "Email",
+		"message": "Wiadomość",
+		"success": "Wiadomość wysłana pomyślnie!",
+		"error": "Błąd podczas wysyłania wiadomości. Spróbuj ponownie."
+	}
+}

@@ -1,0 +1,13 @@
+{
+	"sidebar": {
+		"overview": "Overview",
+		"reviews": "Reviews",
+		"users": "Users",
+		"chat": "Chat",
+		"progress": "Progress",
+		"receipts": "Receipts",
+		"settings": "Settings",
+		"contentManagement": "Content management",
+		"analytics": "Analytics"
+	}
+}

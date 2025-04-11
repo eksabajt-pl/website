@@ -1,0 +1,27 @@
+{
+	"language": "Polski",
+	"changeLanguage": "Zmień język",
+	"site": {
+		"name": "eksabajt.pl"
+	},
+	"navigation": {
+		"home": "Strona główna",
+		"about": "O nas",
+		"projects": "Projekty",
+		"reviews": "Opinie",
+		"team": "Zespół",
+		"contact": "Kontakt"
+	},
+	"buttons": {
+		"contactUs": "Skontaktuj się",
+		"learnMore": "Dowiedz się więcej",
+		"submit": "Wyślij",
+		"send": "Wyślij"
+	},
+	"footer": {
+		"rights": "Wszelkie prawa zastrzeżone",
+		"privacy": "Polityka prywatności",
+		"terms": "Warunki korzystania z usługi",
+		"companyData": "Dane firmy"
+	}
+}
