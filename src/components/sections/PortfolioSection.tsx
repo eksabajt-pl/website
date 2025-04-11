@@ -1,21 +1,12 @@
-import React, { useEffect, useState } from "react";
 import Section from "./Section";
 import SectionHeading from "../text/SectionHeading";
-import PortfolioProjectCard from "../cards/PortfolioProjectCard";
-import { getPortfolio, PortfolioAll } from "@/db/portfolio/getPortfolio";
+import { Button } from "../ui/button";
+import { LinkIcon } from "lucide-react";
+import Link from "next/link";
+import { PortfolioProjectsLists } from "../lists/PortfolioProjectsLists";
+import { Suspense } from "react";
 
 export default function PortfolioSection() {
-  const [portfolio, setPortfolio] = useState<PortfolioAll[]>([]);
-
-  useEffect(() => {
-    // @ts-expect-error yeah idk
-
-    getPortfolio().then((value) => setPortfolio(value));
-  }, []);
-  useEffect(() => {
-    console.log("B", portfolio);
-  }, [portfolio]);
-
   return (
     <>
       <Section id="portfolio">
@@ -23,12 +14,14 @@ export default function PortfolioSection() {
           normal="Przedstawiamy"
           emphasis="Nasze portfolio"
           description="Projekty mniejsze oraz większe, te zlecone przez klientów, oraz nasze oryginalne produkcje, zobacz na żywym przykładzie czym się zajmujemy"
-        />
-        <div className="flex flex-row gap-4 grid-cols-1 sm:grid-cols-2 xl:grid-cols-3  grid ">
-          {portfolio.map((value, index) => (
-            <PortfolioProjectCard key={index} {...value} />
-          ))}
-        </div>
+        />{" "}
+        <PortfolioProjectsLists />
+        <Link href="/portfolio">
+          <Button size="lg" className="text-md cursor-pointer">
+            <LinkIcon />
+            Zobacz wszystkie...
+          </Button>
+        </Link>
       </Section>
     </>
   );

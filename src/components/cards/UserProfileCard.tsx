@@ -28,10 +28,11 @@ export default function UserProfileCard({
           className
         )}
       >
-        { }
+        {}
         {userId && id == userId && (
           <p className="absolute top-4 right-4 font-bold">(you)</p>
         )}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={avatarUrl}
           alt={fullName + "'s profile picture"}

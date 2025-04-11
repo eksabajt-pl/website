@@ -10,19 +10,12 @@ import {
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
 import { Badge } from "../ui/badge";
-import { useEffect, useState } from "react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "../ui/carousel";
-import { createClient } from "@/utils/supabase/client";
-import { SelectPortfolioImage, SelectTech } from "@/db/types";
+
+import { SelectTech } from "@/db/types";
 import { PortfolioAll } from "@/db/portfolio/getPortfolio";
 import * as icons from "react-icons/si";
 import { getPortfolioSlug } from "@/utils/slug/portfolioSlugs";
+import { PortfolioImageCarousel } from "../carousel/PortfolioImageCarousel";
 
 const TechnologyBadge = ({ name, icon }: SelectTech) => {
   return (
@@ -33,65 +26,6 @@ const TechnologyBadge = ({ name, icon }: SelectTech) => {
     </Badge>
   );
 };
-
-const CarouselPortfolioImage = ({
-  label,
-  path,
-  //= "https://placehold.co/600x400/777/31343C",
-}: SelectPortfolioImage) => {
-  const [src, setSrc] = useState<string | null>(null);
-  useEffect(() => {
-    const payload = async () => {
-      if (!path) {
-        setSrc("https://placehold.co/600x400/777/31343C?text=placeholder");
-        return;
-      }
-      const supabase = await createClient();
-      const { data } = await supabase.storage
-        .from("portfolio")
-        .getPublicUrl(path);
-
-      setSrc(data.publicUrl);
-    };
-
-    payload();
-  }, []);
-
-  return (
-    <CarouselItem className="relative overflow-clip">
-      {src && (
-        <img
-          className="w-full aspect-[4/3] object-cover"
-          src={src}
-          alt={label!}
-        />
-      )}
-      {label && (
-        <p className="absolute p-4 text-white  bottom-0 bg-gradient-to-b  from-transparent to-black w-full">
-          {label}
-        </p>
-      )}
-    </CarouselItem>
-  );
-};
-
-function PortfolioImageCarousel({
-  portfolioImages,
-}: {
-  portfolioImages: SelectPortfolioImage[];
-}) {
-  return (
-    <Carousel className="relative">
-      <CarouselContent>
-        {portfolioImages.map((props, index) => (
-          <CarouselPortfolioImage key={index} {...props} />
-        ))}
-      </CarouselContent>
-      <CarouselNext variant={"ghost"} className="absolute z-10 right-2" />
-      <CarouselPrevious variant={"ghost"} className="absolute z-10 left-2" />
-    </Carousel>
-  );
-}
 
 interface TechListProps {
   tech: SelectTech[];
