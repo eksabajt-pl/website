@@ -1,7 +1,7 @@
 "use client";
 import { Card } from "@/components/ui/card";
 import { getCurrentUser } from "@/db/auth/getCurrentUser";
-import { SelectProfile } from "@/db/schema";
+import { SelectProfile } from "@/db/types";
 import { Shield, UserIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
@@ -28,7 +28,7 @@ export default function UserProfileCard({
           className
         )}
       >
-        {/*eslint-disable-next-line @next/next/no-img-element*/}
+        { }
         {userId && id == userId && (
           <p className="absolute top-4 right-4 font-bold">(you)</p>
         )}

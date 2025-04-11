@@ -1,7 +1,7 @@
 "use server";
 
 import { insertReview } from "@/db/review/insertReview";
-import { InsertReview } from "@/db/schema";
+import { InsertReview } from "@/db/types";
 import { createClient } from "@/utils/supabase/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";

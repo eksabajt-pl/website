@@ -1,5 +1,6 @@
 "use server";
-import { ban, InsertBan } from "@/db/schema";
+import { ban } from "@/db/schema";
+import { InsertBan } from "@/db/types";
 import { db } from "@/db/index";
 import { getCurrentUserProfile } from "../profile/getCurrentUserProfile";
 

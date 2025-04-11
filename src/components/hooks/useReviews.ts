@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAllReviews } from "@/db/review/getAllReviews";
-import { SelectReviewWithProfile } from "@/db/schema";
+import { SelectReviewWithProfile } from "@/db/types";
 
 export default function useReviews() {
   const [reviews, setReviews] = useState<SelectReviewWithProfile[]>([]);

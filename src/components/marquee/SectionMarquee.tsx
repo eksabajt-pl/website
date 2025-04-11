@@ -4,7 +4,7 @@ import { useTheme } from "next-themes";
 import { useMediaQuery } from "react-responsive";
 
 import ReviewCard from "../cards/ReviewCard";
-import { SelectReviewWithProfile } from "@/db/schema";
+import { SelectReviewWithProfile } from "@/db/types";
 
 type ReviewMarqueeProps = {
   reviews: SelectReviewWithProfile[];
