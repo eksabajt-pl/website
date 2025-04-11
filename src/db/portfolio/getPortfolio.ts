@@ -30,7 +30,7 @@ export async function getPortfolio() {
   return result; //.map((val: SelectPortfolioTech) => val.tech as SelectTech);
 }
 
-export type PortfolioAll = SelectPortfolio & {
+export type PortfolioAll = {
   portfolioImages: SelectPortfolioImage[];
   portfolioTech: SelectTech[];
-};
+} & SelectPortfolio;

@@ -16,14 +16,20 @@ import { PortfolioAll } from "@/db/portfolio/getPortfolio";
 import * as icons from "react-icons/si";
 import { getPortfolioSlug } from "@/utils/slug/portfolioSlugs";
 import { PortfolioImageCarousel } from "../carousel/PortfolioImageCarousel";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
-const TechnologyBadge = ({ name, icon }: SelectTech) => {
+const TechnologyBadgeContent = ({
+  name,
+  icon,
+}: {
+  name: string;
+  icon: string;
+}) => {
   return (
-    <Badge variant="outline" color="secondary">
+    <div className="flex flex-row gap-1 items-center">
       {/* @ts-expect-error cus there is not a type */}
-      {icons[icon || "SiReact"]()}
-      {name}
-    </Badge>
+      {icons[icon || "SiReact"]()} {name}
+    </div>
   );
 };
 
@@ -32,18 +38,32 @@ interface TechListProps {
   maxBadgesCount?: number;
 }
 
-function TechList({ tech, maxBadgesCount = 3 }: TechListProps) {
+export function TechList({ tech, maxBadgesCount = 3 }: TechListProps) {
   return (
-    <CardContent className="pb-6 bg-muted-background gap-2 flex flex-row">
-      {tech.slice(0, maxBadgesCount).map((tech, index) => (
-        <TechnologyBadge key={index} {...tech} />
+    <>
+      {" "}
+      {tech.slice(0, maxBadgesCount).map(({ name, icon }, index) => (
+        <Badge variant="outline" color="secondary" key={index}>
+          <TechnologyBadgeContent name={name} icon={icon} />
+        </Badge>
       ))}
       {tech.length > maxBadgesCount && (
-        <Badge variant={"outline"} color="secondary">
-          + {tech.length - maxBadgesCount}
-        </Badge>
+        <Tooltip>
+          <TooltipTrigger>
+            <Badge variant={"outline"} color="secondary">
+              + {tech.length - maxBadgesCount}
+            </Badge>
+          </TooltipTrigger>
+          <TooltipContent>
+            {tech
+              .slice(maxBadgesCount, tech.length)
+              .map(({ name, icon }: SelectTech, index) => (
+                <TechnologyBadgeContent key={index} name={name} icon={icon} />
+              ))}
+          </TooltipContent>
+        </Tooltip>
       )}
-    </CardContent>
+    </>
   );
 }
 
@@ -68,7 +88,9 @@ export default function PortfolioProjectCard({
         <p className="text-xl sm:text-2xl font-bold ">{title}</p>
         <p>{description}</p>
       </CardContent>
-      <TechList tech={portfolioTech} />
+      <CardContent className="pb-6 bg-muted-background gap-2 flex flex-row">
+        <TechList tech={portfolioTech} />
+      </CardContent>
       <CardAction className="p-6 pt-0 flex flex-row flex-wrap justify-between w-full gap-2">
         <div className="gap-2 flex flex-row">
           <Link href={githubUrl!}>

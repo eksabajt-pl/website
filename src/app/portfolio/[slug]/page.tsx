@@ -1,10 +1,20 @@
+import { TechList } from "@/components/cards/PortfolioProjectCard";
 import { PortfolioImageCarousel } from "@/components/carousel/PortfolioImageCarousel";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { PortfolioAll } from "@/db/portfolio/getPortfolio";
 import { getSinglePortfolio } from "@/db/portfolio/getSinglePortfolio";
 import { getPortfolioSlug } from "@/utils/slug/portfolioSlugs";
 import { getIdFromSlug } from "@/utils/slug/slug";
-import { Code, Github, LucideLink, User } from "lucide-react";
+import {
+  Code,
+  Github,
+  LucideLink,
+  SquareArrowOutUpRight,
+  SquareArrowUpRight,
+  User,
+  UserIcon,
+} from "lucide-react";
 import {
   isRedirectError,
   RedirectType,
@@ -28,9 +38,12 @@ interface PortfolioPageParams {
 
 export default async function Page({ params }: PortfolioPageParams) {
   const id = getIdFromSlug((await params).slug);
-  let portfolio;
+  let portfolio: PortfolioAll | null;
   try {
     portfolio = await getSinglePortfolio(id as unknown as bigint);
+    if (!portfolio) {
+      throw Error("Not found");
+    }
     const correctSlug = getPortfolioSlug(portfolio.title, portfolio.id);
     if (correctSlug !== (await params).slug) {
       await redirect(`/portfolio/${correctSlug}`, RedirectType.replace);
@@ -44,41 +57,44 @@ export default async function Page({ params }: PortfolioPageParams) {
   if (!portfolio) {
     return <NotFound />;
   }
-  const { title, portfolioImages } = portfolio;
+  const { title, portfolioImages, overview, shortDescription } = portfolio;
   return (
     <>
       {" "}
       <h1 className="text-4xl font-bold">{title}</h1>
-      <p className="text-xl mb-4">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi
-        exercitationem quas quidem pariatur sequi facilis tempora consequuntur.
-        Necessitatibus officia molestiae recusandae reiciendis a facere sint?
-        Autem commodi veritatis earum quas!
-      </p>
+      <p className="text-xl mb-4">{shortDescription}</p>
       <PortfolioImageCarousel
         className=" rounded-lg overflow-clip"
         imagesClassName="sm:basis-1/2 xl:basis-1/3"
         portfolioImages={portfolioImages}
       />
-      <div className="flex flex-row gap-8">
+      <div className="flex md:flex-row flex-col gap-8">
+        <Card className="p-4 flex md:hidden flex-col gap-4">
+          <div className="flex flex-row gap-4">
+            <Button className="flex flex-row " variant={"secondary"}>
+              <Github />
+              Github
+            </Button>
+            <Button variant={"secondary"}>
+              <SquareArrowOutUpRight /> Live demo
+            </Button>
+          </div>
+          <div className="text-muted-foreground flex justify-between flex-row gap-2">
+            <div className="flex flex-row gap-2">
+              <UserIcon />
+              {portfolio?.author} z eksabajt.pl
+            </div>
+
+            <div className="flex flex-row gap-2">
+              <TechList tech={portfolio.portfolioTech} />
+            </div>
+          </div>
+        </Card>
         <div className="flex flex-col gap-4">
           <h3 className="text-2xl font-bold">Project overview</h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est
-            similique itaque quia accusantium voluptate accusamus fugiat iusto
-            eaque soluta vitae dolore aliquam, fuga unde. Officia temporibus
-            magnam alias reprehenderit nobis? Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Blanditiis, accusantium quibusdam
-            eius, eos tenetur voluptatum excepturi odit saepe sequi, neque
-            reiciendis dolorem. Voluptates veritatis nulla tempora omnis maiores
-            animi! Expedita. Lorem ipsum dolor sit amet consectetur, adipisicing
-            elit. Est similique itaque quia accusantium voluptate accusamus
-            fugiat iusto eaque soluta vitae dolore aliquam, fuga unde. Officia
-            temporibus magnam alias reprehenderit nobis? Lorem ipsum dolor sit
-            amet consectetur adipisicing elit. Blanditiis, accusantium quibusdam
-            eius, eos tenetur voluptatum excepturi odit saepe sequi, neque
-            reiciendis dolorem. Voluptates veritatis nulla tempora omnis maiores
-            animi! Expedita.
+            {overview ||
+              ` Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint quidem doloremque illo, natus deleniti inventore facilis perspiciatis repellendus. A nobis veritatis tenetur itaque aliquam fuga incidunt ipsam. Minima, alias ab.Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint quidem doloremque illo, natus deleniti inventore facilis perspiciatis repellendus. A nobis veritatis tenetur itaque aliquam fuga incidunt ipsam. Minima, alias ab.Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint quidem doloremque illo, natus deleniti inventore facilis perspiciatis repellendus. A nobis veritatis tenetur itaque aliquam fuga incidunt ipsam. Minima, alias ab.`}
           </p>
           <h3 className="text-2xl font-bold">Key features</h3>
           <ul>
@@ -89,17 +105,27 @@ export default async function Page({ params }: PortfolioPageParams) {
             <li>test</li>
           </ul>
         </div>
-        <Card className="p-4 max-w-lg w-full flex flex-col gap-2">
+        <Card className="p-4  max-w-lg w-full md:flex flex-col gap-2 hidden">
           <h4 className="text-lg my-2 font-bold flex flex-row gap-2 items-center ">
             <LucideLink /> Project links
           </h4>
-          <Button className="flex flex-row " variant={"secondary"}>
-            <Github />
-            Github
-          </Button>
-          <Button variant={"secondary"}>Live demo</Button>
-          <h4 className="text-lg my-2 font-bold flex flex-row gap-2 items-center ">
-            <Code /> Technologies
+          <div className="grid grid-cols-2 gap-2">
+            <Button className="cursor-pointer" variant={"secondary"}>
+              <Github />
+              Github
+            </Button>
+            <Button className="cursor-pointer" variant={"secondary"}>
+              <SquareArrowOutUpRight />
+              Live demo
+            </Button>
+          </div>
+          <h4 className="text-lg my-2 font-bold flex flex-col gap-2 items-center ">
+            <div className="flex flex-row gap-2 w-full">
+              <Code /> Technologies
+            </div>
+            <div className="flex flex-row gap-2 w-full flex-wrap pt-2">
+              <TechList maxBadgesCount={2137} tech={portfolio.portfolioTech} />
+            </div>
           </h4>
           <h4 className="text-lg my-2 font-bold flex flex-row gap-2 items-center ">
             <User /> Author

@@ -9,7 +9,7 @@ export default function Layout({ children }: PropsWithChildren) {
     <>
       <Header />
       <div className="flex flex-col  items-center">
-        <main className="w-full max-w-7xl min-h-screen p-0 flex flex-col gap-8">
+        <main className="w-full max-w-7xl  min-h-screen p-4 flex flex-col gap-8">
           <Breadcrumbs />
           {children} <PortfolioProjectsLists />
         </main>

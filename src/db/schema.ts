@@ -10,7 +10,7 @@ import {
   integer,
   bigint,
   pgSchema,
-  primaryKey,
+  boolean,
 } from "drizzle-orm/pg-core";
 export const reviewType = pgEnum("review_type", [
   "pending",
@@ -89,7 +89,7 @@ export const ban = pgTable("ban", {
   createdAt: timestamp("created_at", { withTimezone: true, mode: "string" })
     .defaultNow()
     .notNull(),
-  email: text("email").notNull(),
+  email: text("email").notNull().unique(),
 });
 
 export const portfolio = pgTable("portfolio", {
@@ -105,10 +105,13 @@ export const portfolio = pgTable("portfolio", {
     .defaultNow()
     .notNull(),
   title: text().notNull(),
-  description: text().notNull(),
+  draft: boolean().notNull().default(true),
+  overview: text(),
+  shortDescription: text().notNull().default("Lorem ipsum dolor sit amet"),
+  description: text().notNull().default(""),
   githubUrl: text("github_url").notNull(),
   liveUrl: text("live_url").notNull(),
-  author: text().notNull(),
+  author: text().notNull().default("Cały zespół"),
 });
 
 export const portfolioImage = pgTable("portfolio_image", {
@@ -127,7 +130,9 @@ export const portfolioImage = pgTable("portfolio_image", {
   path: text(),
   label: text(),
   // You can use { mode: "bigint" } if numbers are exceeding js number limitations
-  portfolioId: bigint("portfolio_id", { mode: "bigint" }).notNull(),
+  portfolioId: bigint("portfolio_id", { mode: "bigint" })
+    .notNull()
+    .references(() => portfolio.id),
 });
 
 export const tech = pgTable("tech", {
@@ -140,35 +145,29 @@ export const tech = pgTable("tech", {
     maxValue: 922337203685477,
     cache: 1,
   }),
-  name: text(),
-  icon: text(),
+  name: text().notNull(),
+  icon: text().notNull(),
 });
 
-export const portfolioTech = pgTable(
-  "portfolio_tech",
-  {
-    // You can use { mode: "bigint" } if numbers are exceeding js number limitations
-    id: bigint({ mode: "bigint" }).generatedByDefaultAsIdentity({
-      name: "portfolio_tech_id_seq",
-      startWith: 1,
-      increment: 1,
-      minValue: 1,
-      maxValue: 922337203685477,
-      cache: 1,
-    }),
-    createdAt: timestamp("created_at", { withTimezone: true, mode: "string" })
-      .defaultNow()
-      .notNull(),
-    // You can use { mode: "bigint" } if numbers are exceeding js number limitations
-    portfolioId: bigint("portfolio_id", { mode: "bigint" })
-      .notNull()
-      .references(() => portfolio.id),
-    // You can use { mode: "bigint" } if numbers are exceeding js number limitations
-    techId: bigint("tech_id", { mode: "bigint" })
-      .notNull()
-      .references(() => tech.id),
-  },
-  (table) => [
-    primaryKey({ name: "dupa", columns: [table.techId, table.portfolioId] }),
-  ]
-);
+export const portfolioTech = pgTable("portfolio_tech", {
+  // You can use { mode: "bigint" } if numbers are exceeding js number limitations
+  id: bigint({ mode: "bigint" }).generatedByDefaultAsIdentity({
+    name: "portfolio_tech_id_seq",
+    startWith: 1,
+    increment: 1,
+    minValue: 1,
+    maxValue: 922337203685477,
+    cache: 1,
+  }),
+  createdAt: timestamp("created_at", { withTimezone: true, mode: "string" })
+    .defaultNow()
+    .notNull(),
+  // You can use { mode: "bigint" } if numbers are exceeding js number limitations
+  portfolioId: bigint("portfolio_id", { mode: "bigint" })
+    .notNull()
+    .references(() => portfolio.id),
+  // You can use { mode: "bigint" } if numbers are exceeding js number limitations
+  techId: bigint("tech_id", { mode: "bigint" })
+    .notNull()
+    .references(() => tech.id),
+});

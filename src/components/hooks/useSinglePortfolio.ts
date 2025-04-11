@@ -11,7 +11,6 @@ export const useSinglePortfolio = (id: bigint) => {
   useEffect(() => {
     setLoading(false);
     getSinglePortfolio(id)
-      // @ts-expect-error yeah idk
       .then((value) => setPortfolio(value))
       .finally(() => setLoading(true));
   }, [id]);
