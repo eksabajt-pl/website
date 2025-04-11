@@ -5,7 +5,7 @@ import { twMerge } from "tailwind-merge";
 
 type ProjectCardType = {
   title: string | undefined;
-  description?: string;
+  description?: string | undefined;
   className: string;
   children: React.ReactNode;
 };

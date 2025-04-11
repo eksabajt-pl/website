@@ -1,10 +1,12 @@
 "use server";
-
+import { eq } from "drizzle-orm";
+import { db } from "@/db";
 import InsertProjectFn from "@/db/project/InsertProjectFn";
 import { changeReviewStatus } from "@/db/review/changeReviewStatus";
 import { deleteReview } from "@/db/review/deleteReview";
-import { InsertProject } from "@/db/schema";
+import { InsertProject, profile } from "@/db/schema";
 import { createClient } from "@/utils/supabase/server";
+
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
@@ -49,11 +51,20 @@ export async function projectForm(formData: ProjectFormSchema) {
   if (!verify) {
     redirect("/login");
   }
-  const review: InsertProject = {
-    user_id: verify.id,
-    ...formData,
+  const result = await db
+    .select()
+    .from(profile)
+    .where(eq(profile.email, formData.email));
+  if (!result) {
+    console.log("no result");
+  }
+  const resultProject: InsertProject = {
+    user_id: result[0].id,
+    email: formData.email,
+    type: formData.type,
+    price: formData.price,
   };
-  await InsertProjectFn(review);
+  await InsertProjectFn(resultProject);
   revalidatePath("/dashboard/projects", "page");
   revalidatePath("/", "page");
 }
