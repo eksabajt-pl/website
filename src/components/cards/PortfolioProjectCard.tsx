@@ -125,7 +125,7 @@ export default function PortfolioProjectCard({
         <p className="text-xl sm:text-2xl font-bold ">{title}</p>
         <p>{description}</p>
       </CardContent>
-      <CardContent className="pb-6 bg-muted-background gap-2 flex flex-row">
+      <CardContent className="flex-wrap pb-6 bg-muted-background gap-2 flex flex-row">
         <TechList tech={portfolioTech} />
       </CardContent>
       <CardAction className="p-6 pt-0 flex flex-row flex-wrap justify-between w-full gap-2">

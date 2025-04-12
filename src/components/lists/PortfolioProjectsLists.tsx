@@ -1,5 +1,7 @@
 "use client";
-import PortfolioProjectCard from "../cards/PortfolioProjectCard";
+import PortfolioProjectCard, {
+  PortfolioProjectSkeletonCard,
+} from "../cards/PortfolioProjectCard";
 import { usePortfolio } from "../hooks/usePortfolio";
 
 export function PortfolioProjectsLists({
@@ -7,13 +9,19 @@ export function PortfolioProjectsLists({
 }: {
   maxProjectsCount?: number;
 }) {
-  const { portfolio } = usePortfolio();
+  const { portfolio, loading } = usePortfolio();
 
   return (
     <div className="flex flex-row gap-4  grid-cols-1 sm:grid-cols-2 xl:grid-cols-3  grid ">
-      {portfolio.slice(0, maxProjectsCount).map((value, index) => (
-        <PortfolioProjectCard key={index} {...value} />
-      ))}
+      {loading ? (
+        <PortfolioProjectSkeletonCard />
+      ) : (
+        portfolio
+          .slice(0, maxProjectsCount)
+          .map((value, index) => (
+            <PortfolioProjectCard key={index} {...value} />
+          ))
+      )}
     </div>
   );
 }
