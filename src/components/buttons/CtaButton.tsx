@@ -1,5 +1,6 @@
 import { MailPlus } from "lucide-react";
 import { twMerge } from "tailwind-merge";
+import { Button } from "../ui/button";
 
 type CtaButtonProps = {
   className?: string;
@@ -14,7 +15,9 @@ export default function CtaButton({
 }: CtaButtonProps) {
   return (
     <a href="#contact" aria-label="Contact us link">
-      <button
+      <Button
+        color="green"
+        size="lg"
         aria-label="Contact us button"
         className={twMerge(
           "p-3 font-bold items-center max-w-md text-white flex flex-row gap-2 bg-green-800 hover:bg-green-700 transition-color cursor-pointer w-full rounded-lg",
@@ -23,7 +26,7 @@ export default function CtaButton({
       >
         <MailPlus />
         {full && <p>{text || "Skontaktuj się z nami"}</p>}
-      </button>
+      </Button>
     </a>
   );
 }

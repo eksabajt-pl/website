@@ -7,11 +7,11 @@ export const usePortfolio = () => {
   const [portfolio, setPortfolio] = useState<PortfolioAll[]>([]);
 
   useEffect(() => {
-    setLoading(false);
+    setLoading(true);
     getPortfolio()
       // @ts-expect-error yeah idk
       .then((value) => setPortfolio(value))
-      .finally(() => setLoading(true));
+      .finally(() => setLoading(false));
   }, []);
   return { portfolio, loading };
 };

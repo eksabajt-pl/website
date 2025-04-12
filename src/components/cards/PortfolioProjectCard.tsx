@@ -1,4 +1,4 @@
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, Loader2, Play } from "lucide-react";
 import { Button } from "../ui/button";
 import {
   Card,
@@ -17,6 +17,7 @@ import * as icons from "react-icons/si";
 import { getPortfolioSlug } from "@/utils/slug/portfolioSlugs";
 import { PortfolioImageCarousel } from "../carousel/PortfolioImageCarousel";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
+import { Skeleton } from "../ui/skeleton";
 
 const TechnologyBadgeContent = ({
   name,
@@ -64,6 +65,42 @@ export function TechList({ tech, maxBadgesCount = 3 }: TechListProps) {
         </Tooltip>
       )}
     </>
+  );
+}
+
+export function PortfolioProjectSkeletonCard({}) {
+  return (
+    <Card className="p-0 rounded-lg overflow-clip flex flex-col gap-0  max-w-sm sm:max-w-md">
+      <CardHeader className="p-0 flex flex-row justify-center">
+        <Skeleton className="w-full aspect-[4/3] rounded-b-none" />
+      </CardHeader>
+      <CardContent className="p-6 flex flex-col gap-4 flex-1">
+        <Skeleton className="w-64 p-4 h-6" />
+        <Skeleton className="w-full h-36" />
+      </CardContent>
+      <CardContent className="pb-6 bg-muted-background gap-2 flex flex-row">
+        <Skeleton className="w-12 h-4 " />
+        <Skeleton className="w-12 h-4 " />
+        <Skeleton className="w-12 h-4 " />
+      </CardContent>
+      <CardAction className="p-6 pt-0 flex flex-row flex-wrap justify-between w-full gap-2">
+        <div className="gap-2 flex flex-row">
+          <Button variant={"outline"} className="cursor-pointer ">
+            <Loader2 className="animate-spin" />
+          </Button>
+
+          <Button variant={"outline"} className="cursor-pointer">
+            <Loader2 className="animate-spin" />
+          </Button>
+        </div>
+        <Button className="cursor-pointer">
+          <Loader2 className="animate-spin" />
+        </Button>
+      </CardAction>
+      <CardFooter className="pb-6 text-muted-foreground text-sm">
+        <Skeleton className="w-64 h-6" />
+      </CardFooter>
+    </Card>
   );
 }
 
