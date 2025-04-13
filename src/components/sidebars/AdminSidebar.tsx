@@ -1,18 +1,18 @@
 "use client";
 
-import { LucideEye, LucideMessageCircleReply, LucideUser } from "lucide-react";
+import {LucideEye, LucideMessageCircleReply, LucideUsers} from "lucide-react";
 
-import { DashboardPage, DashboardSidebar } from "./DashboardSidebar";
+import {DashboardPage, DashboardSidebar} from "./DashboardSidebar";
 
 const pages: DashboardPage[] = [
-  {
-    name: "Overview",
-    path: "/",
-    icon: <LucideEye />,
-  },
-  { name: "Reviews", path: "/reviews", icon: <LucideMessageCircleReply /> },
-  { name: "Users", path: "/users", icon: <LucideUser /> },
-  /*{
+	{
+		name: "Overview",
+		path: "/",
+		icon: <LucideEye />,
+	},
+	{name: "Reviews", path: "/reviews", icon: <LucideMessageCircleReply />},
+	{name: "Users", path: "/users", icon: <LucideUsers />},
+	/*{
     name: "Content management",
     path: "/content-management",
     icon: <LucideText />,
@@ -26,5 +26,5 @@ const pages: DashboardPage[] = [
 ];
 
 export default function AdminSidebar() {
-  return <DashboardSidebar pages={pages} />;
+	return <DashboardSidebar pages={pages} />;
 }
