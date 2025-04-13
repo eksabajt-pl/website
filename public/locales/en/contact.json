@@ -1,8 +1,8 @@
 {
 	"section": {
 		"title": "Need a website?",
-		"emphasis": "Contact us",
-		"description": "Our team responds very quickly to every inquiry. If you have any questions, feel free to write through the contact form, or email: kontakt@eksabajt.pl"
+		"emphasis": "Get in touch",
+		"description": "Our team responds very quickly to every inquiry. If you have any questions, feel free to contact us via the form or by email at: kontakt@eksabajt.pl"
 	},
 	"form": {
 		"name": "Name",
@@ -17,10 +17,10 @@
 		"submit": "Send"
 	},
 	"services": {
-		"cheap": "Your Concept",
+		"cheap": "Your Idea",
 		"landing": "Landing Page",
-		"startup": "Your Business",
-		"professional": "Advanced",
+		"startup": "Your Startup",
+		"professional": "Professional",
 		"other": "Other"
 	}
 }

@@ -1,13 +1,13 @@
 {
 	"section": {
 		"title": "What our",
-		"emphasis": "Clients think",
-		"description": "All reviews were written by users. Write yours through the section in the client panel, or via the link from the email. Note: reviews that do not comply with the regulations will not be displayed on the main page, please read the regulations at eksabajt.pl/regulations"
+		"emphasis": "clients say",
+		"description": "All reviews are written by users. You can submit yours via the client panel or the link in your email. Note: reviews that do not comply with our guidelines will not appear on the main page. Read the rules at eksabajt.pl/guidelines"
 	},
-	"waiting": "Waiting for your opinion...",
+	"waiting": "We're waiting for your review...",
 	"tooltip": {
-		"verified": "Content approved as compliant with regulations",
-		"rejected": "Content rejected, non-compliant with regulations",
-		"pending": "Waiting for content approval"
+		"verified": "Content approved according to the guidelines",
+		"rejected": "Content rejected — does not meet the guidelines",
+		"pending": "Awaiting content approval"
 	}
 }

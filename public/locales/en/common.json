@@ -13,7 +13,7 @@
 		"contact": "Contact"
 	},
 	"buttons": {
-		"contactUs": "Contact us",
+		"contactUs": "Get in touch",
 		"learnMore": "Learn more",
 		"submit": "Submit",
 		"send": "Send"
@@ -21,7 +21,7 @@
 	"footer": {
 		"rights": "All rights reserved",
 		"privacy": "Privacy Policy",
-		"terms": "Terms of Service",
+		"terms": "Terms of Use",
 		"companyData": "Company Data"
 	}
 }

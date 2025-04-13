@@ -47,6 +47,27 @@ export default function HeroSection() {
 										t("hero.points.3")
 											.split(t("hero.highlight"))[1]
 											.split(t("hero.highlight2"))[1]
+											.split(t("hero.highlight3")).length > 1 ? (
+											<>
+												{
+													t("hero.points.3")
+														.split(t("hero.highlight"))[1]
+														.split(t("hero.highlight2"))[1]
+														.split(t("hero.highlight3"))[0]
+												}
+												<span className="font-bold">{t("hero.highlight3")}</span>
+												{
+													t("hero.points.3")
+														.split(t("hero.highlight"))[1]
+														.split(t("hero.highlight2"))[1]
+														.split(t("hero.highlight3"))[1]
+												}
+											</>
+										) : (
+											t("hero.points.3")
+												.split(t("hero.highlight"))[1]
+												.split(t("hero.highlight2"))[1]
+										)
 									}
 								</>
 							) : (

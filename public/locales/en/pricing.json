@@ -2,13 +2,13 @@
 	"section": {
 		"title": "Our team will quote",
 		"emphasis": "your project",
-		"description": "Without additional charge, our qualified team will quote your website/web application"
+		"description": "Our qualified team will estimate the cost of your website or web application — free of charge."
 	},
-	"disclaimer": "(the prices given are starting prices, which may vary depending on the complexity of the project. For an exact quote, please contact our team. You can do this through the contact form)",
+	"disclaimer": "(The prices listed are starting points and may vary depending on project complexity. For an exact quote, contact our team via the form.)",
 	"mostPopular": "Most Popular",
 	"tiers": {
 		"cheap": {
-			"title": "Your Concept",
+			"title": "Your Idea",
 			"price": "From 500 PLN",
 			"subtitle": "Graphic mockup",
 			"features": [
@@ -23,7 +23,7 @@
 		"landing": {
 			"title": "Landing Page",
 			"price": "From 2000 PLN",
-			"subtitle": "E-business card",
+			"subtitle": "Online business card",
 			"features": [
 				"Unique design",
 				"SEO Optimization",
@@ -34,9 +34,9 @@
 			]
 		},
 		"startup": {
-			"title": "Your Business",
+			"title": "Your Startup",
 			"price": "From 4000 PLN",
-			"subtitle": "Website for your company",
+			"subtitle": "A website for your company",
 			"features": [
 				"Individual graphic design",
 				"SEO Optimization (extended)",
@@ -47,16 +47,16 @@
 			]
 		},
 		"professional": {
-			"title": "Advanced",
+			"title": "Professional",
 			"price": "From 8000 PLN",
-			"subtitle": "For professionals",
+			"subtitle": "Designed for professionals",
 			"features": [
 				"Advanced UI/UX design",
 				"SEO Optimization + content strategy",
 				"Custom content management panel",
 				"Performance + Core Web Vitals optimization",
 				"Language versions and GDPR",
-				"E-commerce or reservation system support"
+				"Support for e-commerce or booking systems"
 			]
 		}
 	}

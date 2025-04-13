@@ -3,13 +3,14 @@
 		"title": "What is",
 		"titleHighlight": "eksabajt?",
 		"points": [
-			"it's the next informatics unit after petabyte",
-			"it's a unit equal to 10^18 bytes",
-			"it's the amount of data globally sent through the internet every hour",
-			"most importantly, it's a programming company from Opole that will estimate, design and program your website"
+			"it's a name inspired by exabyte – the next data unit after a petabyte",
+			"it's equals 10^18 bytes",
+			"it's the amount of data sent globally over the internet every hour",
+			"most importantly, Eksabajt is a programming company from Opole, that will estimate the cost, design, and develop your website"
 		],
-		"highlight": "programming company",
-		"highlight2": "estimate, design and program your website"
+		"highlight": "Eksabajt",
+		"highlight2": "programming company",
+		"highlight3": "estimate, design and program your website"
 	},
 	"about": {
 		"title": "About us"
@@ -28,7 +29,7 @@
 		"name": "Name",
 		"email": "Email",
 		"message": "Message",
-		"success": "Message sent successfully!",
+		"success": "Your message has been sent!",
 		"error": "Error sending message. Please try again."
 	}
 }
