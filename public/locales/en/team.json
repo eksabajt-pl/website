@@ -3,5 +3,13 @@
 		"title": "Meet",
 		"emphasis": "Our team",
 		"description": "We're a professional team of developers ready to bring your dream of a functional, practical, and beautiful website to life — at an affordable price."
+	},
+	"mottos": {
+		"robert": "Nothing in life is impossible",
+		"dawid": "Lorem ipsum dolor sit amet",
+		"karol": "I don't have a problem with coffee, I have a problem without it",
+		"wojciech": "Lorem ipsum dolor sit amet",
+		"maciej": "Lorem ipsum dolor sit amet",
+		"axel": "You've mistaken the stars reflected on the surface of the lake at night for the heavens"
 	}
 }

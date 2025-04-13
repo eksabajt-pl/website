@@ -3,5 +3,13 @@
 		"title": "Zobacz, poznaj",
 		"emphasis": "Nasz zespół",
 		"description": "Nasz zespół to profesjonalna grupa programistów, która jest gotowa by zrealizować twoje marzenie o działającej, praktycznej i ładnej stronie internetowej w przystępnej cenie."
+	},
+	"mottos": {
+		"robert": "Nic w życiu jest niemożliwe",
+		"dawid": "Lorem ipsum dolor sit amet",
+		"karol": "Nie mam problemu z kawą, mam problem bez niej",
+		"wojciech": "Lorem ipsum dolor sit amet",
+		"maciej": "Lorem ipsum dolor sit amet",
+		"axel": "Mylisz niebo z gwiazdami odbitymi nocą na powierzchni stawu"
 	}
 }
