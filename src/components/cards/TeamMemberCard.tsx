@@ -36,8 +36,8 @@ export default function TeamMemberCard({
 	return (
 		<>
 			<Fade direction="up" triggerOnce>
-				<div className="w-72 h-full p-4 hover:scale-110 duration-200">
-					<Card className="h-full flex flex-col">
+				<div className="w-72 h-full p-4">
+					<Card className="h-full flex flex-col hover:scale-110 duration-200">
 						<CardHeader>
 							<CardTitle className="flex justify-center">
 								<TextGradient>
