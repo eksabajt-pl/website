@@ -67,7 +67,7 @@ export const PricingCard = ({
 			<button
 				onClick={orderButtonHandler}
 				className="z-1 text-sm flex-row font-bold p-1 flex justify-center items-center text-white gap-2 bg-green-600 mx-4 cursor-pointer rounded-lg">
-				<MailCheckIcon className="text-white" size={20} /> Zamów już dziś
+				<MailCheckIcon className="text-white" size={20} /> {t("orderToday")}
 			</button>
 		</CustomCard>
 	);
