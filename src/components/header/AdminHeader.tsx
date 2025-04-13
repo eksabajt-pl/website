@@ -7,7 +7,6 @@ import {Code2, LucideArrowLeftCircle} from "lucide-react";
 import HeaderButton from "../buttons/HeaderButton";
 import Link from "next/link";
 import LogOutButton from "../buttons/LogOutButton";
-import LanguageSwitcher from "../language/LanguageSwitcher";
 
 export default function AdminHeader() {
 	const {liftOff} = useLiftOff();
@@ -36,7 +35,6 @@ export default function AdminHeader() {
 						</HeaderButton>
 					</Link>
 					<ThemeToggle />
-					<LanguageSwitcher />
 					<LogOutButton />
 				</div>
 			</div>
