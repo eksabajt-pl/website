@@ -1,15 +1,14 @@
 import {
   pgTable,
+  foreignKey,
+  bigint,
+  timestamp,
   uuid,
   text,
-  foreignKey,
+  integer,
   serial,
-  timestamp,
   smallint,
   pgEnum,
-  integer,
-  bigint,
-  pgSchema,
 } from "drizzle-orm/pg-core";
 
 export const reviewType = pgEnum("review_type", [
@@ -19,19 +18,51 @@ export const reviewType = pgEnum("review_type", [
 ]);
 export const userGroup = pgEnum("user_group", ["admin", "user"]);
 
-export const profile = pgTable("profile", {
-  id: uuid().primaryKey().notNull(),
-  fullName: text("full_name"),
-  email: text().notNull(),
-  avatarUrl: text("avatar_url").notNull(),
-  userGroup: userGroup("user_group").default("user"),
-});
+export const portfolioTech = pgTable(
+  "portfolio_tech",
+  {
+    // You can use { mode: "bigint" } if numbers are exceeding js number limitations
+    id: bigint({ mode: "number" })
+      .primaryKey()
+      .generatedByDefaultAsIdentity({
+        name: "portfolio_tech_id_seq",
+        startWith: 1,
+        increment: 1,
+        minValue: 1,
+        maxValue: 9223372036854775807,
+        cache: 1,
+      }),
+    createdAt: timestamp("created_at", { withTimezone: true, mode: "string" })
+      .defaultNow()
+      .notNull(),
+    // You can use { mode: "bigint" } if numbers are exceeding js number limitations
+    portfolioId: bigint("portfolio_id", { mode: "number" }).notNull(),
+    // You can use { mode: "bigint" } if numbers are exceeding js number limitations
+    techId: bigint("tech_id", { mode: "number" }).notNull(),
+  },
+  (table) => [
+    foreignKey({
+      columns: [table.portfolioId],
+      foreignColumns: [portfolio.id],
+      name: "portfolio_tech_portfolio_id_fkey",
+    })
+      .onUpdate("cascade")
+      .onDelete("cascade"),
+    foreignKey({
+      columns: [table.techId],
+      foreignColumns: [table.id],
+      name: "portfolio_tech_tech_id_fkey",
+    })
+      .onUpdate("cascade")
+      .onDelete("cascade"),
+  ]
+);
 
 export const project = pgTable(
   "project",
   {
     // You can use { mode: "bigint" } if numbers are exceeding js number limitations
-    id: bigint({ mode: "bigint" })
+    id: bigint({ mode: "number" })
       .primaryKey()
       .generatedByDefaultAsIdentity({
         name: "project_id_seq",
@@ -40,9 +71,7 @@ export const project = pgTable(
         minValue: 1,
         maxValue: 92233720368547,
         cache: 1,
-      })
-      .primaryKey()
-      .notNull(),
+      }),
     createdAt: timestamp("created_at", { withTimezone: true, mode: "string" })
       .defaultNow()
       .notNull(),
@@ -61,6 +90,15 @@ export const project = pgTable(
     }),
   ]
 );
+
+export const profile = pgTable("profile", {
+  id: uuid().primaryKey().notNull(),
+  fullName: text("full_name"),
+  email: text().notNull(),
+  avatarUrl: text("avatar_url").notNull(),
+  userGroup: userGroup("user_group").default("user"),
+});
+
 export const review = pgTable(
   "review",
   {
@@ -71,7 +109,7 @@ export const review = pgTable(
     userId: uuid("user_id").notNull(),
     content: text().notNull(),
     stars: smallint().default(5).notNull(),
-    status: reviewType("status").default("pending"),
+    status: reviewType().default("pending"),
   },
   (table) => [
     foreignKey({
@@ -81,39 +119,92 @@ export const review = pgTable(
     }).onDelete("cascade"),
   ]
 );
-const authSchema = pgSchema("auth");
-
-const users = authSchema.table("users", {
-  id: uuid("id").primaryKey(),
-});
-export const usersInAuth = users;
 
 export const ban = pgTable("ban", {
   // You can use { mode: "bigint" } if numbers are exceeding js number limitations
-  id: bigint({ mode: "bigint" }).primaryKey().generatedByDefaultAsIdentity({
-    name: "ban_id_seq",
-    startWith: 1,
-    increment: 1,
-    minValue: 1,
-    maxValue: 92233720368547,
-    cache: 1,
-  }),
+  id: bigint({ mode: "number" })
+    .primaryKey()
+    .generatedByDefaultAsIdentity({
+      name: "ban_id_seq",
+      startWith: 1,
+      increment: 1,
+      minValue: 1,
+      maxValue: 92233720368547,
+      cache: 1,
+    }),
   createdAt: timestamp("created_at", { withTimezone: true, mode: "string" })
     .defaultNow()
     .notNull(),
-  email: text("email").notNull(),
+  email: text().notNull(),
 });
 
-export type SelectBan = typeof ban.$inferSelect;
-export type InsertBan = typeof ban.$inferInsert;
+export const portfolio = pgTable("portfolio", {
+  // You can use { mode: "bigint" } if numbers are exceeding js number limitations
+  id: bigint({ mode: "number" })
+    .primaryKey()
+    .generatedByDefaultAsIdentity({
+      name: "portfolio_id_seq",
+      startWith: 1,
+      increment: 1,
+      minValue: 1,
+      maxValue: 9223372036854775807,
+      cache: 1,
+    }),
+  createdAt: timestamp("created_at", { withTimezone: true, mode: "string" })
+    .defaultNow()
+    .notNull(),
+  title: text(),
+  description: text(),
+  githubUrl: text("github_url"),
+  liveUrl: text("live_url"),
+  author: text(),
+});
 
-export type SelectProfile = typeof profile.$inferSelect;
-export type SelectReview = typeof review.$inferSelect;
+export const portfolioImage = pgTable(
+  "portfolio_image",
+  {
+    // You can use { mode: "bigint" } if numbers are exceeding js number limitations
+    id: bigint({ mode: "number" })
+      .primaryKey()
+      .generatedByDefaultAsIdentity({
+        name: "portfolio_image_id_seq",
+        startWith: 1,
+        increment: 1,
+        minValue: 1,
+        maxValue: 9223372036854775807,
+        cache: 1,
+      }),
+    createdAt: timestamp("created_at", { withTimezone: true, mode: "string" })
+      .defaultNow()
+      .notNull(),
+    path: text(),
+    label: text(),
+    // You can use { mode: "bigint" } if numbers are exceeding js number limitations
+    portfolioId: bigint("portfolio_id", { mode: "number" }).notNull(),
+  },
+  (table) => [
+    foreignKey({
+      columns: [table.portfolioId],
+      foreignColumns: [portfolio.id],
+      name: "portfolio_image_portfolio_id_fkey",
+    })
+      .onUpdate("cascade")
+      .onDelete("cascade"),
+  ]
+);
 
-export type SelectReviewWithProfile = {
-  review: typeof review.$inferSelect;
-  profile: typeof profile.$inferSelect;
-};
-
-export type InsertProfile = typeof profile.$inferInsert;
-export type InsertReview = typeof review.$inferInsert;
+export const tech = pgTable("tech", {
+  // You can use { mode: "bigint" } if numbers are exceeding js number limitations
+  id: bigint({ mode: "number" })
+    .primaryKey()
+    .generatedByDefaultAsIdentity({
+      name: "technologies_id_seq",
+      startWith: 1,
+      increment: 1,
+      minValue: 1,
+      maxValue: 9223372036854775807,
+      cache: 1,
+    }),
+  name: text(),
+  icon: text(),
+});

@@ -13,6 +13,6 @@ export const useAdminPage = (redirectTo: string = "/") => {
       setLoaded(true);
     };
     payload();
-  }, []);
+  }, [redirectTo]);
   return { loaded };
 };

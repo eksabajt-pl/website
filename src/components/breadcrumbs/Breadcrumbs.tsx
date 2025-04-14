@@ -40,7 +40,7 @@ export default function Breadcrumbs() {
     });
 
     // Add in a default "Home" crumb for the top-level
-    return [...crumblist];
+    return [{ href: "/", title: "Home" }, ...crumblist];
   }, [pathname]);
 
   // Call the function to generate the breadcrumbs list

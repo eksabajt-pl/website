@@ -1,5 +1,4 @@
 "use client";
-import { SelectReviewWithProfile } from "@/db/schema";
 import {
   verifyReviewWithId,
   rejectReviewWithId,
@@ -9,6 +8,7 @@ import { BanIcon, CheckIcon, TrashIcon, UserIcon } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import AsyncButton from "../buttons/AsyncButton";
 import { redirect } from "next/navigation";
+import { SelectReviewWithProfile } from "@/db/types";
 
 export function ModerateUserReviewDecorator({
   children,

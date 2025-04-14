@@ -1,4 +1,4 @@
-import { SelectProfile, SelectReview } from "@/db/schema";
+import { SelectProfile, SelectReview } from "@/db/types";
 import { Card } from "../ui/card";
 import ReviewStars from "../stars/ReviewStars";
 import { twMerge } from "tailwind-merge";

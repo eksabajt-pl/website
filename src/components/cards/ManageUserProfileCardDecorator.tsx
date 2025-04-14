@@ -1,5 +1,5 @@
 "use client";
-import { SelectProfile } from "@/db/schema";
+import { SelectProfile } from "@/db/types";
 import {
   banUserAction,
   changeUserGroupAction,

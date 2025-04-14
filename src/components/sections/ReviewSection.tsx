@@ -3,7 +3,7 @@ import Section from "./Section";
 import { ReviewMarquee } from "../marquee/SectionMarquee";
 import SectionHeading from "../text/SectionHeading";
 import { useEffect, useMemo, useState } from "react";
-import { SelectReviewWithProfile } from "@/db/schema";
+import { SelectReviewWithProfile } from "@/db/types";
 import { getVerifiedReviews } from "@/db/review/getVerifiedReviews";
 import { HourglassIcon } from "lucide-react";
 
