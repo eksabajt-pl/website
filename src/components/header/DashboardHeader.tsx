@@ -3,7 +3,7 @@
 import { useMediaQuery } from "react-responsive";
 import { ThemeToggle } from "../buttons/ThemeToggle";
 import useLiftOff from "../hooks/useLiftOff";
-import { Code2, LucideArrowLeftCircle } from "lucide-react";
+import { Code2, LucideHouse } from "lucide-react";
 import HeaderButton from "../buttons/HeaderButton";
 import Link from "next/link";
 import LogOutButton from "../buttons/LogOutButton";
@@ -32,7 +32,7 @@ export default function DashboardHeader() {
         <div className="flex flex-row gap-1">
           <Link href="/">
             <HeaderButton>
-              <LucideArrowLeftCircle />
+              <LucideHouse />
             </HeaderButton>
           </Link>
           <ThemeToggle />
