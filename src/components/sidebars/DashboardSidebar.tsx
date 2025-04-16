@@ -1,6 +1,6 @@
 "use client";
 
-import { LucideArrowLeftToLine, LucideArrowRightToLine } from "lucide-react";
+import { LucidePanelLeftOpen, LucidePanelLeftClose } from "lucide-react";
 import Link from "next/link";
 import { ReactNode, useState } from "react";
 import { twMerge } from "tailwind-merge";
@@ -31,7 +31,7 @@ export function DashboardSidebar({ pages }: SidebarListProps) {
             className="cursor-pointer flex flex-row gap-2"
             onClick={() => setExtended((val) => !val)}
           >
-            {extended ? <LucideArrowLeftToLine /> : <LucideArrowRightToLine />}
+            {extended ? <LucidePanelLeftClose /> : <LucidePanelLeftOpen />}
             <p>Hide</p>
           </button>
           <hr />
