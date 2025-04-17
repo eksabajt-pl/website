@@ -1,7 +1,7 @@
 "use server";
 import ProjectCard from "@/components/cards/ProjectCard";
 import UserProjectForm from "@/components/forms/UserProjectForm";
-import WebsiteProjectForm from "@/components/forms/WebsiteProjectFrom";
+
 import { getCurrentUserProfile } from "@/db/profile/getCurrentUserProfile";
 
 const ProjectPanel = async () => {
@@ -15,13 +15,6 @@ const ProjectPanel = async () => {
         title="New Project"
       >
         <UserProjectForm />
-      </ProjectCard>
-      <ProjectCard
-        className="w-[90%]"
-        description="coming soon"
-        title="New Web Project"
-      >
-        <WebsiteProjectForm></WebsiteProjectForm>
       </ProjectCard>
     </div>
   );

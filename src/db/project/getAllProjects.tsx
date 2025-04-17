@@ -5,7 +5,8 @@ import { getCurrentUserProfile } from "../profile/getCurrentUserProfile";
 import { project, profile } from "../schema";
 import ProjectCard from "@/components/cards/ProjectCard";
 import PaymentButton from "@/components/buttons/Project/PaymentButton";
-import DetailsButton from "@/components/buttons/Project/detailsButton";
+import DetailsShow from "./DetailsShow";
+import ProjectStatusButton from "@/components/buttons/Project/projectStatus";
 const GetAllProjects = async () => {
   const user = await getCurrentUserProfile();
   const result =
@@ -33,7 +34,7 @@ const GetAllProjects = async () => {
           <ProjectCard
             title={`Project type: ${item.project.type}`}
             description={`${item.project.phase || undefined} - ${item.project.price || undefined}`}
-            className="overscroll-none w-[100%]"
+            className="h-full w-[95%] p-5"
             key={key}
           >
             <p>
@@ -41,18 +42,16 @@ const GetAllProjects = async () => {
               {item.project.email}
             </p>
             <p>Link do Projektu: {item.project.link}</p>
-            {item.project.phase === "Unpaid" ? (
+            {item.project.phase === "Unpaid" && user.userGroup !== "admin" ? (
               <PaymentButton
                 email={item.profile.email}
                 projectId={item.project.id}
               />
             ) : (
-              <button className="rounded-lg bg-background text-foreground p-2">
-                Zobacz Status
-              </button>
+              <ProjectStatusButton item={item}></ProjectStatusButton>
             )}
             <div>
-              <DetailsButton ProjectId={item.project.id} />
+              <DetailsShow ProjectId={item.project.id} />
             </div>
           </ProjectCard>,
         ];
